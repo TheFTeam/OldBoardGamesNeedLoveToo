@@ -23,22 +23,20 @@ namespace OldBoardGamesNeedLoveToo.Data
 
             modelBuilder.Entity<User>()
                 .HasMany(i => i.BoughtGames)
-                .WithMany()
+                .WithRequired(u => u.Buyer)
                 .Map(x =>
                 {
-                    x.MapLeftKey("Id");
-                    x.MapRightKey("BuyerId")
-                    .ToTable("BuyerBoughtGames");
+                    x.MapKey("Id");
+                    x.ToTable("BuyerBoughtGames");
                 });
 
             modelBuilder.Entity<User>()
                 .HasMany(i => i.SellingGames)
-                .WithMany()
+                .WithRequired(u => u.Owner)
                 .Map(x =>
                 {
-                    x.MapLeftKey("Id");
-                    x.MapRightKey("OwnerId")
-                    .ToTable("OwnerSellingGames");
+                    x.MapKey("Id");
+                    x.ToTable("OwnerSellingGames");
                 });
 
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();

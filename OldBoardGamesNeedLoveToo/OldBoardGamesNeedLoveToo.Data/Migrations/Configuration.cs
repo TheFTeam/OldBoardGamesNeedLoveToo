@@ -10,7 +10,7 @@ namespace OldBoardGamesNeedLoveToo.Data.Migrations
     {
         public Configuration()
         {
-            this.AutomaticMigrationsEnabled = false;
+            this.AutomaticMigrationsEnabled = true;
             this.AutomaticMigrationDataLossAllowed = false;
             this.ContextKey = "OldBoardGamesNeedLoveToo.Data.ObgnltContext";
         }
