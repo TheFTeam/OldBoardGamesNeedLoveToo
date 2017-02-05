@@ -5,7 +5,7 @@ using OldBoardGamesNeedLoveToo.Models;
 
 namespace OldBoardGamesNeedLoveToo.Data
 {
-    public class ObgnltContext : DbContext
+    public class ObgnltContext : DbContext, IObgnltContext
     {
         public ObgnltContext()
             : base("OldBoardGamesNeedLoveToo")
@@ -23,7 +23,7 @@ namespace OldBoardGamesNeedLoveToo.Data
 
             modelBuilder.Entity<User>()
                 .HasMany(i => i.BoughtGames)
-                .WithRequired(u => u.Buyer)
+                .WithOptional(u => u.Buyer)
                 .Map(x =>
                 {
                     x.MapKey("Id");
@@ -49,7 +49,7 @@ namespace OldBoardGamesNeedLoveToo.Data
             //       .WillCascadeOnDelete(false);
 
             //modelBuilder.Entity<Game>()
-            //            .HasRequired(m => m.Buyer)
+            //            .HasOptional(m => m.Buyer)
             //            .WithMany(t => t.BoughtGames)
             //            .HasForeignKey(m => m.BuyerId)
             //            .WillCascadeOnDelete(false);

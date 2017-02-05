@@ -8,6 +8,7 @@ namespace OldBoardGamesNeedLoveToo.Models
     {
         private ICollection<Game> boughtGames;
         private ICollection<Game> sellingGame;
+        private UserRoleType role;
 
         public User()
         {
@@ -16,7 +17,17 @@ namespace OldBoardGamesNeedLoveToo.Models
         }
         public int Id { get; set; }
 
-        public UserRoleType Role { get; set; }
+        public UserRoleType Role
+        {
+            get
+            {
+                return UserRoleType.User;
+            }
+            set
+            {
+                this.role = value;
+            }
+        }
 
         [Index(IsUnique = true)]
         [MinLength(2)]

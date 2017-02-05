@@ -6,7 +6,6 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using OldBoardGamesNeedLoveToo.Web.Models;
 
 namespace OldBoardGamesNeedLoveToo.Web.Models
 {

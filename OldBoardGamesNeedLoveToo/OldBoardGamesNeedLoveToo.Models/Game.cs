@@ -1,8 +1,7 @@
-﻿using DataAnnotationsExtensions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using DataAnnotationsExtensions;
 
 namespace OldBoardGamesNeedLoveToo.Models
 {
@@ -39,13 +38,24 @@ namespace OldBoardGamesNeedLoveToo.Models
         public int MaxPlayers { get; set; }
 
         [Range(2, 100)]
-        public int AgeOfPlayers { get; set; }
+        public int MinAgeOfPlayers { get; set; }
+
+        [Range(2, 100)]
+        public int MaxAgeOfPlayers { get; set; }
 
         [Required]
         public string Language { get; set; }
 
         [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:yyyy}", ApplyFormatInEditMode = true)]
         public DateTime ReleaseDate { get; set; }
+
+        public DateTime AddedOnDate
+        {
+            get
+            {
+                return DateTime.Now;
+            }
+        }
 
         public string Producer { get; set; }
 
@@ -59,20 +69,8 @@ namespace OldBoardGamesNeedLoveToo.Models
 
         public virtual User Owner { get; set; }
 
-        public int BuyerId { get; set; }
+        public int? BuyerId { get; set; }
 
         public virtual User Buyer { get; set; }
-
-        //public virtual ICollection<User> User
-        //{
-        //    get
-        //    {
-        //        return this.user;
-        //    }
-        //    set
-        //    {
-        //        this.user = value;
-        //    }
-        //}
     }
 }

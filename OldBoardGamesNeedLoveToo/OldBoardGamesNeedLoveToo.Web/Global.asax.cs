@@ -16,16 +16,16 @@ namespace OldBoardGamesNeedLoveToo.Web
     {
         void Application_Start(object sender, EventArgs e)
         {
-            // Code that runs on application startup
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
-
             using (var dbContext = new ObgnltContext())
             {
                 dbContext.Database.CreateIfNotExists();
             }
 
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<ObgnltContext, Configuration>());
+
+            // Code that runs on application startup
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
     }
 }

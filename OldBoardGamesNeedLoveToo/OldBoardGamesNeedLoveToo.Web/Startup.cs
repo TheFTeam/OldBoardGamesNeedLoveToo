@@ -1,5 +1,4 @@
 ﻿using Microsoft.Owin;
-using OldBoardGamesNeedLoveToo.Data;
 using Owin;
 
 [assembly: OwinStartupAttribute(typeof(OldBoardGamesNeedLoveToo.Web.Startup))]

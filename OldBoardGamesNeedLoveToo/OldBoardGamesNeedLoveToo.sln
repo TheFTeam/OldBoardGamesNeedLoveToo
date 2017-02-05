@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OldBoardGamesNeedLoveToo.We
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OldBoardGamesNeedLoveToo.Data", "OldBoardGamesNeedLoveToo.Data\OldBoardGamesNeedLoveToo.Data.csproj", "{914CF4C6-E913-4FFE-9327-1DAA99E69C6F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OldBoardGamesNeedLoveToo.MVP", "OldBoardGamesNeedLoveToo.MVP\OldBoardGamesNeedLoveToo.MVP.csproj", "{44603C4C-3431-417C-A0B0-6283440370A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{914CF4C6-E913-4FFE-9327-1DAA99E69C6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{914CF4C6-E913-4FFE-9327-1DAA99E69C6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{914CF4C6-E913-4FFE-9327-1DAA99E69C6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44603C4C-3431-417C-A0B0-6283440370A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44603C4C-3431-417C-A0B0-6283440370A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44603C4C-3431-417C-A0B0-6283440370A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44603C4C-3431-417C-A0B0-6283440370A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
