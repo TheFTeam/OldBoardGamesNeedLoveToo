@@ -230,6 +230,22 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\Theme\css\about.css" />
+    <Content Include="Content\Theme\css\grid.css" />
+    <Content Include="Content\Theme\css\ie.css" />
+    <Content Include="Content\Theme\css\main.css" />
+    <Content Include="Content\Theme\css\modal.css" />
+    <Content Include="Content\Theme\css\normalize.css" />
+    <Content Include="Content\Theme\css\owl.carousel.css" />
+    <Content Include="Content\Theme\img\frame-1.jpg" />
+    <Content Include="Content\Theme\img\slide-1.jpg" />
+    <Content Include="Content\Theme\scripts\bootstrap.min.js" />
+    <Content Include="Content\Theme\scripts\dropdown.js" />
+    <Content Include="Content\Theme\scripts\jquery.validate.js" />
+    <Content Include="Content\Theme\scripts\main.js" />
+    <Content Include="Content\Theme\scripts\vendor\modernizr.js" />
+    <Content Include="Content\Theme\scripts\vendor\owl.carousel.min.js" />
+    <Content Include="Content\Theme\scripts\vendor\respond.min.js" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -240,6 +256,11 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Theme\css\.DS_Store" />
+    <Content Include="Content\Theme\img\.DS_Store" />
+    <Content Include="Content\Theme\img\v2\.DS_Store" />
+    <Content Include="Content\Theme\scripts\.DS_Store" />
+    <Content Include="Content\Theme\scripts\vendor\.DS_Store" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="GameDetails.aspx" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />

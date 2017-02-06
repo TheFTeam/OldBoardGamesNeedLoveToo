@@ -5,6 +5,8 @@ using WebFormsMvp.Web;
 
 using OldBoardGamesNeedLoveToo.MVP.Presenters;
 using OldBoardGamesNeedLoveToo.MVP.Views;
+using System.Linq;
+using OldBoardGamesNeedLoveToo.Models;
 
 namespace OldBoardGamesNeedLoveToo.Web
 {
@@ -17,8 +19,11 @@ namespace OldBoardGamesNeedLoveToo.Web
         {
             this.DefaultPageInit?.Invoke(sender, e);
 
-            this.ListViewGames.DataSource = this.Model.Games;
-            this.ListViewGames.DataBind();
+            if (!IsPostBack)
+            {
+                this.ListViewGames.DataSource = this.Model.Games;
+                this.ListViewGames.DataBind();
+            }
         }
     }
 }

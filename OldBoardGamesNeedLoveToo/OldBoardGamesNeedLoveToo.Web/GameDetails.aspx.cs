@@ -21,8 +21,12 @@ namespace OldBoardGamesNeedLoveToo.Web
 
             this.GameDatailsPageInit?.Invoke(sender, new GameDetailsEventArgs(id));
 
-            this.FormViewGameDetails.DataSource = this.Model.Games;
-            this.FormViewGameDetails.DataBind();
+            if (!IsPostBack)
+            {
+                this.FormViewGameDetails.DataSource = this.Model.Games;
+                this.FormViewGameDetails.DataBind();
+            }
         }
+
     }
 }
