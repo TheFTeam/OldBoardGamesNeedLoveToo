@@ -1,14 +1,12 @@
-﻿using OldBoardGamesNeedLoveToo.Data;
-using OldBoardGamesNeedLoveToo.Data.Migrations;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Data.Entity;
-using System.Linq;
 using System.Web;
 using System.Web.Optimization;
 using System.Web.Routing;
-using System.Web.Security;
-using System.Web.SessionState;
+
+using OldBoardGamesNeedLoveToo.Data;
+using OldBoardGamesNeedLoveToo.Data.Migrations;
+using OldBoardGamesNeedLoveToo.Web.Models;
 
 namespace OldBoardGamesNeedLoveToo.Web
 {
@@ -16,12 +14,14 @@ namespace OldBoardGamesNeedLoveToo.Web
     {
         void Application_Start(object sender, EventArgs e)
         {
-            using (var dbContext = new ObgnltContext())
-            {
-                dbContext.Database.CreateIfNotExists();
-            }
+            //using (var dbContext = new ObgnltContext())
+            //{
+            //    dbContext.Database.CreateIfNotExists();
+            //}
 
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ObgnltContext, Configuration>());
+            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<ObgnltContext, Configuration>());
+            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, OldBoardGamesNeedLoveToo.Web.Migrations.Configuration>());
+
 
             // Code that runs on application startup
             RouteConfig.RegisterRoutes(RouteTable.Routes);

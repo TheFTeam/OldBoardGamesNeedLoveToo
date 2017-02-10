@@ -420,18 +420,11 @@
       <DependentUpon>VerifyPhoneNumber.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="About.aspx.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="About.aspx.designer.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\Factories\ICustomPresenterFactory.cs" />
     <Compile Include="App_Start\Factories\WebFormsMvpPresenterFactory.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\Modules\ApplicationNinjectModule.cs" />
-    <Compile Include="App_Start\Modules\MvpNinjectModule.cs" />
+    <Compile Include="App_Start\Modules\mvpNinjectModule.cs" />
     <Compile Include="App_Start\NinjectWeb.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -460,6 +453,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702101136260_AddApplicationUserRelation.cs" />
+    <Compile Include="Migrations\201702101136260_AddApplicationUserRelation.Designer.cs">
+      <DependentUpon>201702101136260_AddApplicationUserRelation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702101207422_UserCustomInfoId nullable - true.cs" />
+    <Compile Include="Migrations\201702101207422_UserCustomInfoId nullable - true.Designer.cs">
+      <DependentUpon>201702101207422_UserCustomInfoId nullable - true.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
@@ -501,6 +503,18 @@
       <Project>{44603c4c-3431-417c-a0b0-6283440370a8}</Project>
       <Name>OldBoardGamesNeedLoveToo.MVP</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OldBoardGamesNeedLoveToo.Services\OldBoardGamesNeedLoveToo.Services.csproj">
+      <Project>{D62B3951-73C5-43E6-9D6C-2E7E4CEA5ABA}</Project>
+      <Name>OldBoardGamesNeedLoveToo.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201702101136260_AddApplicationUserRelation.resx">
+      <DependentUpon>201702101136260_AddApplicationUserRelation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702101207422_UserCustomInfoId nullable - true.resx">
+      <DependentUpon>201702101207422_UserCustomInfoId nullable - true.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

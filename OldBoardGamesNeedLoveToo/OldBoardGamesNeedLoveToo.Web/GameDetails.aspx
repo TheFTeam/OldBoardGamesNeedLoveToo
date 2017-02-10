@@ -6,7 +6,7 @@
             <ItemTemplate>
                 <div class="level level-img-right">
                     <div class="container xs-mb-30">
-                        <img class="img-right-sprite" src="img/v2/iphone-bg-lg.min.png" alt>
+                        <img class="img-right-sprite" src="<%# Item.Image %>"/>">
                         <div class="row mb-60 xs-mb-20">
                             <div class="col-sm-6 col-lg-offset-1 col-lg-5">
                                 <h1 class="mb-20 xs-mb-10 heading color-dark heading-bordered xl-heading-outdent"><%#: Item.Name %> Details</h1>
@@ -15,7 +15,7 @@
                             </div>
 
                             <div class=" col-md-4 visible-xs xs-mw xs-mb-30">
-                                <%--<img src="<%# Item.Image %>""/>--%>
+                                <img src="<%# Item.Image %>"/>
                             </div>
                         </div>
 

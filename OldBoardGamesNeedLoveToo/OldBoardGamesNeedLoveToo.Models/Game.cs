@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using DataAnnotationsExtensions;
 
+using OldBoardGamesNeedLoveToo.Models.Contracts;
+
 namespace OldBoardGamesNeedLoveToo.Models
 {
-    public class Game
+    public class Game : IGame
     {
-        private ICollection<User> user;
+        private ICollection<UserCustomInfo> user;
         public Game()
         {
-            this.user = new HashSet<User>();
+            this.user = new HashSet<UserCustomInfo>();
         }
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         [MinLength(2)]
@@ -65,12 +67,12 @@ namespace OldBoardGamesNeedLoveToo.Models
 
         public bool isSold { get; set; }
 
-        public int OwnerId { get; set; }
+        public Guid OwnerId { get; set; }
 
-        public virtual User Owner { get; set; }
+        public virtual UserCustomInfo Owner { get; set; }
 
-        public int? BuyerId { get; set; }
+        public Guid? BuyerId { get; set; }
 
-        public virtual User Buyer { get; set; }
+        public virtual UserCustomInfo Buyer { get; set; }
     }
 }

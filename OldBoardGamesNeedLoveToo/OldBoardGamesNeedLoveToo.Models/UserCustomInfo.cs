@@ -1,21 +1,25 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Security.Principal;
+
+using OldBoardGamesNeedLoveToo.Models.Contracts;
 
 namespace OldBoardGamesNeedLoveToo.Models
 {
-    public class User
+    public class UserCustomInfo : IUserCustomInfo
     {
         private ICollection<Game> boughtGames;
         private ICollection<Game> sellingGame;
         private UserRoleType role;
 
-        public User()
+        public UserCustomInfo()
         {
             this.boughtGames = new HashSet<Game>();
             this.sellingGame = new HashSet<Game>();
         }
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         public UserRoleType Role
         {
@@ -44,14 +48,10 @@ namespace OldBoardGamesNeedLoveToo.Models
         [Required]
         public string LastName { get; set; }
 
-        public string HashPassword { get; set; }
+        public string ApplicationUserId { get; set; }
 
-        [MinLength(4)]
-        [MaxLength(20)]
-        public string PhoneNumber { get; set; }
-
-        [Required]
-        public string Email { get; set; }
+        [ForeignKey("ApplicationUserId")]
+        public virtual IPrincipal ApplicationUser { get; set; }
 
         [ForeignKey("BuyerId")]
         [Column("BoughtGames")]

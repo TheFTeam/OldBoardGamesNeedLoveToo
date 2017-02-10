@@ -7,6 +7,10 @@ using OldBoardGamesNeedLoveToo.Data.UnitOfWork;
 using OldBoardGamesNeedLoveToo.MVP.Models;
 using OldBoardGamesNeedLoveToo.MVP.Views;
 using OldBoardGamesNeedLoveToo.MVP.Presenters;
+using OldBoardGamesNeedLoveToo.Services.Contracts;
+using OldBoardGamesNeedLoveToo.Services;
+using OldBoardGamesNeedLoveToo.Models.Contracts;
+using OldBoardGamesNeedLoveToo.Models;
 
 namespace OldBoardGamesNeedLoveToo.Web.App_Start.Modules
 {
@@ -14,9 +18,14 @@ namespace OldBoardGamesNeedLoveToo.Web.App_Start.Modules
     {
         public override void Load()
         {
+            this.Bind<IGame>().To<Game>();
+            this.Bind<IUserCustomInfo>().To<UserCustomInfo>();
+
             this.Bind<IObgnltContext>().To<ObgnltContext>().InRequestScope();
             this.Bind(typeof(IRepository<>)).To(typeof(EfRepository<>));
             this.Bind<IUnitOfWork>().To<UnitOfWork>();
+
+            this.Bind<IUserService>().To<UserService>();
 
             this.Bind<IGamesViewModel>().To<GamesViewModel>();
             this.Bind<GamesPresenter>().ToSelf();

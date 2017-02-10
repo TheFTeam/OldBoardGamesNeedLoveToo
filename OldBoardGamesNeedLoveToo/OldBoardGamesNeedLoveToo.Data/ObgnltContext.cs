@@ -15,13 +15,13 @@ namespace OldBoardGamesNeedLoveToo.Data
 
         public virtual IDbSet<Game> Games { get; set; }
 
-        public virtual IDbSet<User> Users { get; set; }
+        public virtual IDbSet<UserCustomInfo> UsersCustomInfo { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<User>()
+            modelBuilder.Entity<UserCustomInfo>()
                 .HasMany(i => i.BoughtGames)
                 .WithOptional(u => u.Buyer)
                 .Map(x =>
@@ -30,7 +30,7 @@ namespace OldBoardGamesNeedLoveToo.Data
                     x.ToTable("BuyerBoughtGames");
                 });
 
-            modelBuilder.Entity<User>()
+            modelBuilder.Entity<UserCustomInfo>()
                 .HasMany(i => i.SellingGames)
                 .WithRequired(u => u.Owner)
                 .Map(x =>

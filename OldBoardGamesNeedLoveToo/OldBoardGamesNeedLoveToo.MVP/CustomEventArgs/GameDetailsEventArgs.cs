@@ -1,12 +1,14 @@
-﻿namespace OldBoardGamesNeedLoveToo.MVP.CustomEventArgs
+﻿using System;
+
+namespace OldBoardGamesNeedLoveToo.MVP.CustomEventArgs
 {
     public class GameDetailsEventArgs
     {
-        public GameDetailsEventArgs(int id)
+        public GameDetailsEventArgs(Guid id)
         {
             this.Id = id;
         }
 
-        public int Id { get; private set; }
+        public Guid Id { get; private set; }
     }
 }

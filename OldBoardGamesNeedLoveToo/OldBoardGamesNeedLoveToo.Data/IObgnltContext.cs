@@ -8,6 +8,6 @@ namespace OldBoardGamesNeedLoveToo.Data
     {
         IDbSet<Game> Games { get; set; }
 
-        IDbSet<User> Users { get; set; }
+        IDbSet<UserCustomInfo> UsersCustomInfo { get; set; }
     }
 }
