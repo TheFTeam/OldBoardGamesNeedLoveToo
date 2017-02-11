@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
@@ -14,9 +15,6 @@ namespace OldBoardGamesNeedLoveToo.Web.Models
     // You can add User data for the user by adding more properties to your User class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
-        public Guid? UserCustomInfoId { get; set; }
-
-        [ForeignKey("UserCustomInfoId")]
         public virtual UserCustomInfo UserCustomInfo { get; set; }
 
         public ClaimsIdentity GenerateUserIdentity(ApplicationUserManager manager)

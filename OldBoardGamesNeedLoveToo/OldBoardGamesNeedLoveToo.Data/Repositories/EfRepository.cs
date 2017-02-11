@@ -71,12 +71,14 @@ namespace OldBoardGamesNeedLoveToo.Data.Repositories
 
         public void Add(T entity)
         {
+            this.DbSet.Add(entity);
             var entry = AttachIfDetached(entity);
             entry.State = EntityState.Added;
         }
 
         public void Update(T entity)
         {
+            this.DbSet.Add(entity);
             var entry = AttachIfDetached(entity);
             entry.State = EntityState.Modified;
         }

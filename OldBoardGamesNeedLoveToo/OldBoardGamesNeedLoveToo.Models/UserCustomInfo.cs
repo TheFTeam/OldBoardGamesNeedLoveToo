@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Security.Principal;
 
 using OldBoardGamesNeedLoveToo.Models.Contracts;
 
@@ -19,6 +18,9 @@ namespace OldBoardGamesNeedLoveToo.Models
             this.boughtGames = new HashSet<Game>();
             this.sellingGame = new HashSet<Game>();
         }
+
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
 
         public UserRoleType Role
@@ -40,18 +42,13 @@ namespace OldBoardGamesNeedLoveToo.Models
 
         [MinLength(2)]
         [MaxLength(30)]
-        [Required]
         public string FirstName { get; set; }
 
         [MinLength(2)]
         [MaxLength(30)]
-        [Required]
         public string LastName { get; set; }
-
+        
         public string ApplicationUserId { get; set; }
-
-        [ForeignKey("ApplicationUserId")]
-        public virtual IPrincipal ApplicationUser { get; set; }
 
         [ForeignKey("BuyerId")]
         [Column("BoughtGames")]

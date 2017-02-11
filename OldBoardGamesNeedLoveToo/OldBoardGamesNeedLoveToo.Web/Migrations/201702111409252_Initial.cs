@@ -3,24 +3,10 @@ namespace OldBoardGamesNeedLoveToo.Web.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class AddApplicationUserRelation : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
-            CreateTable(
-                "dbo.UserCustomInfoes",
-                c => new
-                {
-                    Id = c.Guid(nullable: false),
-                    Role = c.Int(nullable: false),
-                    Username = c.String(maxLength: 30),
-                    FirstName = c.String(nullable: false, maxLength: 30),
-                    LastName = c.String(nullable: false, maxLength: 30),
-                    ApplicationUserId = c.String(),
-                })
-                .PrimaryKey(t => t.Id)
-                .Index(t => t.Username, unique: true);
-
             CreateTable(
                 "dbo.AspNetRoles",
                 c => new
@@ -49,7 +35,6 @@ namespace OldBoardGamesNeedLoveToo.Web.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
-                        UserCustomInfoId = c.Guid(nullable: true),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
@@ -61,11 +46,12 @@ namespace OldBoardGamesNeedLoveToo.Web.Migrations
                         LockoutEnabled = c.Boolean(nullable: false),
                         AccessFailedCount = c.Int(nullable: false),
                         UserName = c.String(nullable: false, maxLength: 256),
+                        UserCustomInfo_Id = c.Guid(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.UserCustomInfoes", t => t.UserCustomInfoId, cascadeDelete: true)
-                .Index(t => t.UserCustomInfoId)
-                .Index(t => t.UserName, unique: true, name: "UserNameIndex");
+                .ForeignKey("dbo.UserCustomInfoes", t => t.UserCustomInfo_Id)
+                .Index(t => t.UserName, unique: true, name: "UserNameIndex")
+                .Index(t => t.UserCustomInfo_Id);
             
             CreateTable(
                 "dbo.AspNetUserClaims",
@@ -90,42 +76,55 @@ namespace OldBoardGamesNeedLoveToo.Web.Migrations
                     })
                 .PrimaryKey(t => new { t.LoginProvider, t.ProviderKey, t.UserId })
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
-                .Index(t => t.UserId);           
+                .Index(t => t.UserId);
             
+            CreateTable(
+                "dbo.UserCustomInfoes",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false, identity: true),
+                        Role = c.Int(nullable: false),
+                        Username = c.String(maxLength: 30),
+                        FirstName = c.String(maxLength: 30),
+                        LastName = c.String(maxLength: 30),
+                        ApplicationUserId = c.String(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .Index(t => t.Username, unique: true);
             
-            //CreateTable(
-            //    "dbo.Games",
-            //    c => new
-            //        {
-            //            Id = c.Guid(nullable: false),
-            //            Name = c.String(nullable: false, maxLength: 100),
-            //            Desription = c.String(),
-            //            Contents = c.String(nullable: false),
-            //            Image = c.Binary(),
-            //            Condition = c.Int(nullable: false),
-            //            MinPlayers = c.Int(nullable: false),
-            //            MaxPlayers = c.Int(nullable: false),
-            //            MinAgeOfPlayers = c.Int(nullable: false),
-            //            MaxAgeOfPlayers = c.Int(nullable: false),
-            //            Language = c.String(nullable: false),
-            //            ReleaseDate = c.DateTime(nullable: false),
-            //            Producer = c.String(),
-            //            Price = c.Decimal(nullable: false, precision: 18, scale: 2),
-            //            isSold = c.Boolean(nullable: false),
-            //            OwnerId = c.Guid(nullable: false),
-            //            BuyerId = c.Guid(),
-            //        })
-            //    .PrimaryKey(t => t.Id)
-            //    .ForeignKey("dbo.UserCustomInfoes", t => t.BuyerId)
-            //    .ForeignKey("dbo.UserCustomInfoes", t => t.OwnerId, cascadeDelete: true)
-            //    .Index(t => t.OwnerId)
-            //    .Index(t => t.BuyerId);
+            CreateTable(
+                "dbo.Games",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        Name = c.String(nullable: false, maxLength: 100),
+                        Desription = c.String(),
+                        Contents = c.String(nullable: false),
+                        Image = c.Binary(),
+                        Condition = c.Int(nullable: false),
+                        MinPlayers = c.Int(nullable: false),
+                        MaxPlayers = c.Int(nullable: false),
+                        MinAgeOfPlayers = c.Int(nullable: false),
+                        MaxAgeOfPlayers = c.Int(nullable: false),
+                        Language = c.String(nullable: false),
+                        ReleaseDate = c.DateTime(nullable: false),
+                        Producer = c.String(),
+                        Price = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        isSold = c.Boolean(nullable: false),
+                        OwnerId = c.Guid(nullable: false),
+                        BuyerId = c.Guid(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.UserCustomInfoes", t => t.BuyerId)
+                .ForeignKey("dbo.UserCustomInfoes", t => t.OwnerId, cascadeDelete: true)
+                .Index(t => t.OwnerId)
+                .Index(t => t.BuyerId);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.AspNetUsers", "UserCustomInfoId", "dbo.UserCustomInfoes");
+            DropForeignKey("dbo.AspNetUsers", "UserCustomInfo_Id", "dbo.UserCustomInfoes");
             DropForeignKey("dbo.Games", "OwnerId", "dbo.UserCustomInfoes");
             DropForeignKey("dbo.Games", "BuyerId", "dbo.UserCustomInfoes");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
@@ -137,8 +136,8 @@ namespace OldBoardGamesNeedLoveToo.Web.Migrations
             DropIndex("dbo.UserCustomInfoes", new[] { "Username" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
+            DropIndex("dbo.AspNetUsers", new[] { "UserCustomInfo_Id" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.AspNetUsers", new[] { "UserCustomInfoId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");

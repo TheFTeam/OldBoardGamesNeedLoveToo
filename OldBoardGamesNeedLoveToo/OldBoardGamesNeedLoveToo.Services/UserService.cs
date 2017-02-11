@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 
 using OldBoardGamesNeedLoveToo.Models;
-using OldBoardGamesNeedLoveToo.Models.Contracts;
 
 using OldBoardGamesNeedLoveToo.Services.Contracts;
 using OldBoardGamesNeedLoveToo.Data.Repositories;

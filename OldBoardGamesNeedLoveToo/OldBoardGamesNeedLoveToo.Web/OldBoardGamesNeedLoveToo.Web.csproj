@@ -453,13 +453,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201702101136260_AddApplicationUserRelation.cs" />
-    <Compile Include="Migrations\201702101136260_AddApplicationUserRelation.Designer.cs">
-      <DependentUpon>201702101136260_AddApplicationUserRelation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702101207422_UserCustomInfoId nullable - true.cs" />
-    <Compile Include="Migrations\201702101207422_UserCustomInfoId nullable - true.Designer.cs">
-      <DependentUpon>201702101207422_UserCustomInfoId nullable - true.cs</DependentUpon>
+    <Compile Include="Migrations\201702111409252_Initial.cs" />
+    <Compile Include="Migrations\201702111409252_Initial.Designer.cs">
+      <DependentUpon>201702111409252_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -509,11 +505,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201702101136260_AddApplicationUserRelation.resx">
-      <DependentUpon>201702101136260_AddApplicationUserRelation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702101207422_UserCustomInfoId nullable - true.resx">
-      <DependentUpon>201702101207422_UserCustomInfoId nullable - true.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201702111409252_Initial.resx">
+      <DependentUpon>201702111409252_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
