@@ -3,30 +3,30 @@
 <%@ Register Src="~/Account/OpenAuthProviders.ascx" TagPrefix="uc" TagName="OpenAuthProviders" %>
 
 <asp:Content ContentPlaceHolderID="MainContent" runat="server">
-    <h2><%: Title %>.</h2>
+    <h2><%: Title %> </h2>
 
     <div>
         <asp:PlaceHolder runat="server" ID="successMessage" Visible="false" ViewStateMode="Disabled">
             <p class="text-success"><%: SuccessMessage %></p>
         </asp:PlaceHolder>
     </div>
-
+    <hr />
     <div class="row">
         <div class="col-md-12">
-            <div class="form-horizontal">
+            <div class="col-md-4">
                 <h4>Change your account settings</h4>
                 <hr />
-                <dl class="dl-horizontal">
-                    <dt>Password:</dt>
-                    <dd>
-                        <asp:HyperLink NavigateUrl="/Account/ManagePassword" Text="[Change]" Visible="false" ID="ChangePassword" runat="server" />
-                        <asp:HyperLink NavigateUrl="/Account/ManagePassword" Text="[Create]" Visible="false" ID="CreatePassword" runat="server" />
-                    </dd>
-                    <dt>External Logins:</dt>
-                    <dd><%: LoginsCount %>
-                        <asp:HyperLink NavigateUrl="/Account/ManageLogins" Text="[Manage]" runat="server" />
+                <div class="dl-horizontal">
+                    <%--<dt>Password:</dt>--%>
+                    <p>
+                        <asp:HyperLink NavigateUrl="/Account/ManagePassword" Text="Change Password" Visible="false" ID="ChangePassword" runat="server" />
+                        <asp:HyperLink NavigateUrl="/Account/ManagePassword" Text="Create Password" Visible="false" ID="CreatePassword" runat="server" />
+                    </p>
+                    <%--<dt>External Logins:</dt>--%>
+                    <p>
+                        <asp:HyperLink NavigateUrl="/Account/ManageLogins" Text="Manage External Logins - " runat="server" /><%: LoginsCount %>
 
-                    </dd>
+                    </p>
                     <%--
                         Phone Numbers can used as a second factor of verification in a two-factor authentication system.
                         See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
@@ -51,28 +51,44 @@
                     <% } %>
                     --%>
 
-                    <dt>Two-Factor Authentication:</dt>
+                    <%--<dt>Two-Factor Authentication:</dt>
                     <dd>
                         <p>
                             There are no two-factor authentication providers configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
                             for details on setting up this ASP.NET application to support two-factor authentication.
-                        </p>
-                        <% if (TwoFactorEnabled)
-                          { %> 
-                        <%--
+                        </p>--%>
+                    <% if (TwoFactorEnabled)
+                        { %>
+                    <%--
                         Enabled
                         <asp:LinkButton Text="[Disable]" runat="server" CommandArgument="false" OnClick="TwoFactorDisable_Click" />
-                        --%>
-                        <% }
-                          else
-                          { %> 
-                        <%--
+                    --%>
+                    <% }
+                        else
+                        { %>
+                    <%--
                         Disabled
                         <asp:LinkButton Text="[Enable]" CommandArgument="true" OnClick="TwoFactorEnable_Click" runat="server" />
-                        --%>
-                        <% } %>
+                    --%>
+                    <% } %>
                     </dd>
-                </dl>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h4>Verify/Update Account</h4>
+                <hr />
+                <p>
+                   <asp:HyperLink ID="HyperLinkVerifyAccount" runat="server" NavigateUrl="~/verifyaccount.aspx" Text="Add some additional personal info.This way other users will know more about you and will feel more secure to buy a game from you."/>
+                    Or
+                   <asp:HyperLink ID="HyperlinkAccountInfo" NavigateUrl="~/accountinfo.aspx" Text="Check Your Account Information" runat="server"/>
+                </p>
+            </div>
+            <div class="col-md-4">
+                <h4>My Old Board Games</h4>
+                <hr />
+                <p>
+                   <asp:HyperLink ID="HyperlinkAddGame" NavigateUrl="~/mygames.aspx" Text="Add a game to sell. It's easy and takes only few minutes." runat="server"/>
+                </p>
             </div>
         </div>
     </div>

@@ -33,9 +33,10 @@
                     </div>
                 </div>
             </div>
-            <div class="hint-arrow"></div>
+            <div class="hint-arrow"><span class="glyphicon-class"></span></div>
         </div>
     </div>
+    <hr />
     <div class="level">
 
         <div class="container mb-100 xs-mb-40">

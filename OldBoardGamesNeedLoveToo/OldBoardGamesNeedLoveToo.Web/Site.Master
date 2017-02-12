@@ -12,7 +12,7 @@
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
     <webopt:BundleReference runat="server" Path="~/Content/css" />
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link href="Content/Theme/css/main.css" rel="stylesheet" />
 
     <script src="Content/Theme/scripts/vendor/modernizr.js"></script>
@@ -41,7 +41,8 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar navbar-default navbar-fixed-top">
+
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -49,24 +50,26 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/">Old Board Games Need Love Too</a>
+                    <a class="pull-left" runat="server" href="~/">
+                        <img src="/Content/images/Dice_WhiteHearts.png" width="48" />
+                    </a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="~/About">About</a></li>
-                        <li><a runat="server" href="~/Contact">Contact</a></li>
+                        <li><a runat="server" href="~/about">About</a></li>
+                        <li><a runat="server" href="~/contact">Contact</a></li>
                     </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Register">Register</a></li>
-                                <li><a runat="server" href="~/Account/Login">Log in</a></li>
+                                <li><a runat="server" href="~/account/register">Register</a></li>
+                                <li><a runat="server" href="~/account/login">Log in</a></li>
                             </ul>
                         </AnonymousTemplate>
                         <LoggedInTemplate>
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %> !</a></li>
+                                <li><a runat="server" href="~/account/manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %> !</a></li>
                                 <li>
                                     <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
                                 </li>
@@ -81,13 +84,16 @@
             </asp:ContentPlaceHolder>
         </div>
     </form>
-    <div class="footer text-center">
-        <p class="fmenu">
-            <a href="/default.aspx">HOME</a> | <a href="/about.aspx">ABOUT</a>
-            <br />
-            <br />
-            &copy; <%: DateTime.Now.Year %> - Old Board Games Need Love Too - Telerik Academy Project 2017
-        </p>
+    <br />
+    <div class="col-md-12">
+        <div class="footer text-center">
+            <p class="fmenu">
+                <a href="/default.aspx">HOME</a> | <a href="/about.aspx">ABOUT</a>
+                <br />
+                <br />
+                &copy; <%: DateTime.Now.Year %> - Old Board Games Need Love Too - Telerik Academy Project 2017
+            </p>
+        </div>
     </div>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="Scripts/jquery-1.10.2.min.js"><\/script>')</script>

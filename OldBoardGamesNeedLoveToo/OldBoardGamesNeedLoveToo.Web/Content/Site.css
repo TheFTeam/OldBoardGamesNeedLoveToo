@@ -21,13 +21,13 @@ body {
 }
 
 /* Set widths on the form inputs since otherwise they're 100% wide */
-input[type="text"],
+/*input[type="text"],
 input[type="password"],
 input[type="email"],
 input[type="tel"],
 input[type="select"] {
     max-width: 280px;
-}
+}*/
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
@@ -37,4 +37,27 @@ input[type="select"] {
     .body-content {
         padding: 0;
     }
+}
+
+h2{
+    display: inline-block;
+    margin: 10px;
+    padding: 10px;
+}
+
+.accept-span{
+    font-size: 0.9em;
+}
+
+.has-hint{
+    margin-bottom: 1%;
+}
+
+tr, td, th {
+    font-size: 0.9em;
+}
+
+.add-game-btn{
+    margin: 1%;
+    padding: 1%;
 }

@@ -3,6 +3,7 @@ using System.Web;
 
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using OldBoardGamesNeedLoveToo.Web.Models;
 
 namespace OldBoardGamesNeedLoveToo.Web.Account
 {

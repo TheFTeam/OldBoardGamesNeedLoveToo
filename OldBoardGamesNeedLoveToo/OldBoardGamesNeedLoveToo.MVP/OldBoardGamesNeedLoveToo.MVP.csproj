@@ -45,13 +45,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomEventArgs\GameDetailsEventArgs.cs" />
+    <Compile Include="CustomEventArgs\MyGamesEventArgs.cs" />
+    <Compile Include="CustomEventArgs\ObjectDataSourceUserDetailsEventArgs.cs" />
+    <Compile Include="CustomEventArgs\UserDetailsEventArgs.cs" />
     <Compile Include="Models\IGamesViewModel.cs" />
+    <Compile Include="Models\IUsersViewModel.cs" />
+    <Compile Include="Models\UsersViewModel.cs" />
     <Compile Include="Presenters\GameDetailsPresenter.cs" />
     <Compile Include="Presenters\GamesPresenter.cs" />
+    <Compile Include="Presenters\AccountInfoPresenter.cs" />
+    <Compile Include="Presenters\MyGamesPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\GamesViewModel.cs" />
     <Compile Include="Views\IGameDetailsView.cs" />
     <Compile Include="Views\IGamesView.cs" />
+    <Compile Include="Views\IAccountInfoView.cs" />
+    <Compile Include="Views\IMyGamesView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -64,6 +73,10 @@
     <ProjectReference Include="..\OldBoardGamesNeedLoveToo.Models\OldBoardGamesNeedLoveToo.Models.csproj">
       <Project>{C9214AE0-3736-44BA-BC8F-DAD2232B9422}</Project>
       <Name>OldBoardGamesNeedLoveToo.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OldBoardGamesNeedLoveToo.Services\OldBoardGamesNeedLoveToo.Services.csproj">
+      <Project>{D62B3951-73C5-43E6-9D6C-2E7E4CEA5ABA}</Project>
+      <Name>OldBoardGamesNeedLoveToo.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

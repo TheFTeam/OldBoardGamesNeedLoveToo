@@ -47,6 +47,12 @@ namespace OldBoardGamesNeedLoveToo.Models
         [MinLength(2)]
         [MaxLength(30)]
         public string LastName { get; set; }
+
+        public string Email { get; set; }
+
+        public string Phone { get; set; }
+
+        public string Address { get; set; }
         
         public string ApplicationUserId { get; set; }
 

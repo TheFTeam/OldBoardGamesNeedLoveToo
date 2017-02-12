@@ -26,10 +26,14 @@ namespace OldBoardGamesNeedLoveToo.Web.App_Start.Modules
             this.Bind<IUnitOfWork>().To<UnitOfWork>();
 
             this.Bind<IUserService>().To<UserService>();
+            this.Bind<IGamesService>().To<GamesService>();
 
             this.Bind<IGamesViewModel>().To<GamesViewModel>();
             this.Bind<GamesPresenter>().ToSelf();
             this.Bind<GameDetailsPresenter>().ToSelf();
+
+            this.Bind<IUsersViewModel>().To<UsersViewModel>();
+            this.Bind<AccountInfoPresenter>().ToSelf();
         }
     }
 }

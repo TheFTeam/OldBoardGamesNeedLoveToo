@@ -4,8 +4,8 @@ using OldBoardGamesNeedLoveToo.Models;
 
 namespace OldBoardGamesNeedLoveToo.MVP.Models
 {
-    public interface IGamesViewModel
+    public interface IUsersViewModel
     {
-        IEnumerable<Game> Games { get; set; }
+        IEnumerable<UserCustomInfo> Users { get; set; }
     }
 }

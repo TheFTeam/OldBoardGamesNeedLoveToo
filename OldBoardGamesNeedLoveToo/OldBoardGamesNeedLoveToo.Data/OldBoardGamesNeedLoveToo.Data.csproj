@@ -50,10 +50,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IObgnltContext.cs" />
-    <Compile Include="Migrations\201702111207247_Seed roles.cs" />
-    <Compile Include="Migrations\201702111207247_Seed roles.Designer.cs">
-      <DependentUpon>201702111207247_Seed roles.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ObgnltContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -73,11 +69,6 @@
       <Project>{C9214AE0-3736-44BA-BC8F-DAD2232B9422}</Project>
       <Name>OldBoardGamesNeedLoveToo.Models</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201702111207247_Seed roles.resx">
-      <DependentUpon>201702111207247_Seed roles.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
