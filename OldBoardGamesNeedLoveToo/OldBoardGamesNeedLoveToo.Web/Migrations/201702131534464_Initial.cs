@@ -87,6 +87,9 @@ namespace OldBoardGamesNeedLoveToo.Web.Migrations
                         Username = c.String(maxLength: 30),
                         FirstName = c.String(maxLength: 30),
                         LastName = c.String(maxLength: 30),
+                        Email = c.String(),
+                        Phone = c.String(),
+                        Address = c.String(),
                         ApplicationUserId = c.String(),
                     })
                 .PrimaryKey(t => t.Id)
@@ -96,7 +99,7 @@ namespace OldBoardGamesNeedLoveToo.Web.Migrations
                 "dbo.Games",
                 c => new
                     {
-                        Id = c.Guid(nullable: false),
+                        Id = c.Guid(nullable: false, identity: true),
                         Name = c.String(nullable: false, maxLength: 100),
                         Desription = c.String(),
                         Contents = c.String(nullable: false),

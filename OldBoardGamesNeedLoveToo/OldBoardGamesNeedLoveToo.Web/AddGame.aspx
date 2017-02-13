@@ -1,8 +1,14 @@
 ﻿<%@ Page Title="Add Game" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddGame.aspx.cs" Inherits="OldBoardGamesNeedLoveToo.Web.AddGame" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>Add Game</h2>
-    <h5>Add an old game to find someone to love</h5>    <br />
+    <div class="col-md-6">
+        <h2>Add Game</h2>
+        <h5>Add an old game to find someone to love</h5>
+        <br />
+    </div>
+    <div class="col-md-6">
+        <a href="/mygames" class="btn btn-default btn-lg pull-right">Back</a>
+    </div>
     <hr />
     <div class="col-md-12">
         <div class="col-lg-6 col-lg-offset-3 text-center">
@@ -90,6 +96,46 @@
                 <p>
                     <asp:TextBox runat="server" ID="TextBoxLanguage" placeholder="Language" CssClass="form-control" />
                 </p>
+                <p>
+                    <asp:TextBox runat="server" ID="TextBoxMinPlayers" placeholder="Minimum Number of Players" TextMode="Number" CssClass="form-control" />
+                    <asp:RangeValidator ID="RangeValidatorMinPlayers" runat="server"
+                        ErrorMessage="*Minimum number of players is 1 and should not be negative"
+                        MinimumValue="1"
+                        MaximumValue="100"
+                        ValidationGroup="DetailedGameInfo"
+                        ControlToValidate="TextBoxMinPlayers">
+                    </asp:RangeValidator>
+                </p>
+                <p>
+                    <asp:TextBox runat="server" ID="TextBoxMaxPlayers" placeholder="Maximum Number of Players" TextMode="Number" CssClass="form-control" />
+                    <asp:RangeValidator ID="RangeValidatorMaxPlayers" runat="server"
+                        ErrorMessage="*Maximum number of players is 100 and should not be negative"
+                        MinimumValue="1"
+                        MaximumValue="100"
+                        ValidationGroup="DetailedGameInfo"
+                        ControlToValidate="TextBoxMaxPlayers">
+                    </asp:RangeValidator>
+                </p>
+                <p>
+                    <asp:TextBox runat="server" ID="TextBoxMinAgeOfPlayers" placeholder="Minimum Age of Players" TextMode="Number" CssClass="form-control" />
+                    <%--<asp:RangeValidator ID="RangeValidatorMinAgeOfPlayers" runat="server"
+                        ErrorMessage="*Minimum age of players is 2 and should not be negative"
+                        MinimumValue="2"
+                        MaximumValue="100"
+                        ValidationGroup="DetailedGameInfo"
+                        ControlToValidate="TextBoxMinAgeOfPlayers">
+                    </asp:RangeValidator>--%>
+                </p>
+                <p>
+                    <asp:TextBox runat="server" ID="TextBoxMaxAgeOfPlayers" placeholder="Maximum Age of Players" TextMode="Number" CssClass="form-control" />
+                    <%--<asp:RangeValidator ID="RangeValidatorMaxEgeofPlayers" runat="server"
+                        ErrorMessage="*Maximum age of players is 100 and should not be negative"
+                        MinimumValue="2"
+                        MaximumValue="100"
+                        ValidationGroup="DetailedGameInfo"
+                        ControlToValidate="TextBoxMaxAgeOfPlayers">
+                    </asp:RangeValidator>--%>
+                </p>
             </asp:Panel>
         </div>
         <div class="col-md-12 text-center">
@@ -97,7 +143,7 @@
             <p>
                 <asp:Button Text="Submit" runat="server" ID="ButtonSubmit"
                     CausesValidation="true"
-                    onClick="ButtonSubmit_Click"
+                    OnClick="ButtonSubmit_Click"
                     CssClass="btn btn-primary btn-lg" />
             </p>
         </div>

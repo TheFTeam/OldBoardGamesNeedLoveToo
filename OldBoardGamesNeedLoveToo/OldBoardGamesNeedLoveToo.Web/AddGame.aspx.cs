@@ -4,51 +4,60 @@ using System.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 
+using WebFormsMvp.Web;
+using WebFormsMvp;
 using Ninject;
 
-using OldBoardGamesNeedLoveToo.Models;
-using OldBoardGamesNeedLoveToo.Services;
+using OldBoardGamesNeedLoveToo.MVP.Presenters;
+using OldBoardGamesNeedLoveToo.MVP.Models;
+using OldBoardGamesNeedLoveToo.MVP.Views;
 using OldBoardGamesNeedLoveToo.Web.App_Start;
 using OldBoardGamesNeedLoveToo.Web.Models;
 
 namespace OldBoardGamesNeedLoveToo.Web
 {
-    public partial class AddGame : System.Web.UI.Page
+    [PresenterBinding(typeof(AddGamePresenter))]
+    public partial class AddGame : MvpPage<AddGameViewModel>, IAddGameView
     {
+        private Action onSubmit;
+
         protected void Page_Load(object sender, EventArgs e)
         {
         }
 
+        public IAddGameViewModel GetFormData()
+        {
+            IAddGameViewModel inputViewData = NinjectWebCommon.Kernel.Get<AddGameViewModel>();
+            inputViewData.Name = this.TextBoxName.Text;
+            inputViewData.Condition = this.DropDownListCondition.SelectedValue;
+            inputViewData.Content = this.TextBoxContents.Text;
+            inputViewData.Description = this.TextBoxDescription.Text;
+            inputViewData.Language = this.TextBoxLanguage.Text;
+            inputViewData.Producer = this.TextBoxProducer.Text;
+            inputViewData.Price = this.TextBoxPrice.Text;
+            inputViewData.ReleaseDate = this.TextBoxReleaseDate.Text;
+            inputViewData.MinPlayers = this.TextBoxMinPlayers.Text;
+            inputViewData.MaxPlayers = this.TextBoxMaxPlayers.Text;
+            inputViewData.MinAgeOfPlayers = this.TextBoxMinAgeOfPlayers.Text;
+            inputViewData.MaxAgeOfPlayers = this.TextBoxMaxAgeOfPlayers.Text;
+            inputViewData.Image = this.FileUploadGameImage.FileBytes;
+
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            var id = user.UserCustomInfo.Id;
+
+            inputViewData.OwnerId = id;
+
+            return inputViewData;
+        }
+
+        public void SetSubmitAction(Action onSubmit)
+        {
+            this.onSubmit = onSubmit;
+        }
+
         protected void ButtonSubmit_Click(object sender, EventArgs e)
         {
-            var name = this.TextBoxName.Text;
-            var image = this.FileUploadGameImage.FileBytes;
-            var producer = this.TextBoxProducer.Text;
-            var price = this.TextBoxPrice.Text;
-            var description = this.TextBoxDescription.Text;
-            var condition = this.DropDownListCondition.SelectedValue;
-            var content = this.TextBoxDescription.Text;
-            var dateOfRelease = this.TextBoxReleaseDate.Text;
-            var language = this.TextBoxLanguage.Text;
-
-            if (this.IsValid)
-            {
-                var gameToAdd = NinjectWebCommon.Kernel.Get<Game>();
-                ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-                var id = user.UserCustomInfo.Id;
-                gameToAdd.OwnerId = id;
-                gameToAdd.Name = name;
-                gameToAdd.Image = image;
-                gameToAdd.Producer = producer;
-                gameToAdd.Price = decimal.Parse(price);
-                gameToAdd.Desription = description;
-                gameToAdd.Contents = content;
-                gameToAdd.Condition = (ConditionType) Enum.Parse(typeof(ConditionType), condition);
-                gameToAdd.ReleaseDate = DateTime.Parse(dateOfRelease);
-                gameToAdd.Language = language;
-                var service = NinjectWebCommon.Kernel.Get<GamesService>();
-                service.AddGame(gameToAdd);
-            }
+            this.onSubmit();
         }
     }
 }

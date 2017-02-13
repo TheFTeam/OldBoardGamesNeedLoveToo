@@ -184,6 +184,60 @@ namespace OldBoardGamesNeedLoveToo.Web {
         protected global::System.Web.UI.WebControls.TextBox TextBoxLanguage;
         
         /// <summary>
+        /// TextBoxMinPlayers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBoxMinPlayers;
+        
+        /// <summary>
+        /// RangeValidatorMinPlayers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator RangeValidatorMinPlayers;
+        
+        /// <summary>
+        /// TextBoxMaxPlayers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBoxMaxPlayers;
+        
+        /// <summary>
+        /// RangeValidatorMaxPlayers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator RangeValidatorMaxPlayers;
+        
+        /// <summary>
+        /// TextBoxMinAgeOfPlayers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBoxMinAgeOfPlayers;
+        
+        /// <summary>
+        /// TextBoxMaxAgeOfPlayers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBoxMaxAgeOfPlayers;
+        
+        /// <summary>
         /// ButtonSubmit control.
         /// </summary>
         /// <remarks>

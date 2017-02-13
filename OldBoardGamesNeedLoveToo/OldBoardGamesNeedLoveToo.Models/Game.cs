@@ -4,16 +4,14 @@ using System.ComponentModel.DataAnnotations;
 using DataAnnotationsExtensions;
 
 using OldBoardGamesNeedLoveToo.Models.Contracts;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OldBoardGamesNeedLoveToo.Models
 {
     public class Game : IGame
     {
-        private ICollection<UserCustomInfo> user;
-        public Game()
-        {
-            this.user = new HashSet<UserCustomInfo>();
-        }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
 
         [Required]

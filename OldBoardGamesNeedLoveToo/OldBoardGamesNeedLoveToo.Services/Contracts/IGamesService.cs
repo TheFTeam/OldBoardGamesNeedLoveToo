@@ -13,7 +13,7 @@ namespace OldBoardGamesNeedLoveToo.Services.Contracts
 
         IEnumerable<Game> GetAllGamesOfCurrentUser(Guid id);
 
-        Game CreateGame();
+        Game CreateGame(string name, string contents, ConditionType condition, string language, decimal price, Guid ownerId, DateTime releaseDate, string producer = null, string description = null, byte[] image = null, int minPlayers = 1, int maxPlayers = 100, int minAgeOfPlayers = 2, int maxAgeOfPlayers = 100);
 
         void AddGame(Game game);
 

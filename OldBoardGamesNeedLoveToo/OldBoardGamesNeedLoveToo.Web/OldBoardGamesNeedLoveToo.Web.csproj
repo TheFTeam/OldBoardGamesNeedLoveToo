@@ -88,6 +88,10 @@
       <HintPath>..\packages\Ninject.Extensions.Factory.3.2.1.0\lib\net45-full\Ninject.Extensions.Factory.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Ninject.Extensions.UnitOfWork, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Extensions.UnitOfWork.1.0.1\lib\net45\Ninject.Extensions.UnitOfWork.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Ninject.Web, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.Web.3.2.1.0\lib\net45-full\Ninject.Web.dll</HintPath>
       <Private>True</Private>
@@ -472,13 +476,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201702111409252_Initial.cs" />
-    <Compile Include="Migrations\201702111409252_Initial.Designer.cs">
-      <DependentUpon>201702111409252_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702112106248_Initial1.cs" />
-    <Compile Include="Migrations\201702112106248_Initial1.Designer.cs">
-      <DependentUpon>201702112106248_Initial1.cs</DependentUpon>
+    <Compile Include="Migrations\201702131534464_Initial.cs" />
+    <Compile Include="Migrations\201702131534464_Initial.Designer.cs">
+      <DependentUpon>201702131534464_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -542,11 +542,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201702111409252_Initial.resx">
-      <DependentUpon>201702111409252_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702112106248_Initial1.resx">
-      <DependentUpon>201702112106248_Initial1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201702131534464_Initial.resx">
+      <DependentUpon>201702131534464_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
