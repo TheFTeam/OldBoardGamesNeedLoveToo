@@ -10,7 +10,7 @@
 namespace OldBoardGamesNeedLoveToo.Web {
     
     
-    public partial class _Default {
+    public partial class Games {
         
         /// <summary>
         /// DefaultGamesList control.

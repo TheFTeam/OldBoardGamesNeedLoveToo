@@ -7,5 +7,7 @@ namespace OldBoardGamesNeedLoveToo.MVP.Models
     public interface IGamesViewModel
     {
         IEnumerable<Game> Games { get; set; }
+
+        IEnumerable<Category> Categories { get; set; }
     }
 }

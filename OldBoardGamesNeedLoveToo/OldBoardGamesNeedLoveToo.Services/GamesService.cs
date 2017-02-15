@@ -1,23 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 using OldBoardGamesNeedLoveToo.Models;
 using OldBoardGamesNeedLoveToo.Data.Repositories;
 using OldBoardGamesNeedLoveToo.Data.UnitOfWork;
 using OldBoardGamesNeedLoveToo.Services.Contracts;
-using System.Linq;
 
 namespace OldBoardGamesNeedLoveToo.Services
 {
     public class GamesService : IGamesService
     {
         private readonly string gamesRepositoryCannotBeNullExceptinMessage = "Games repository can not be null";
+        private readonly string categoriesRepositoryCannotBeNullExceptinMessage = "Categories repository can not be null";
         private readonly string unitOfWorkCannotBeNullExceptinMessage = "UnitfWork can not be null";
 
         private readonly IRepository<Game> gamesRepository;
+        private readonly IRepository<Category> categoriesRepository;
         private readonly IUnitOfWork unitOfWork;
 
-        public GamesService(IRepository<Game> gamesRepository, IUnitOfWork unitOfWork)
+        public GamesService(IRepository<Game> gamesRepository, IRepository<Category> categoriesRepository, IUnitOfWork unitOfWork)
         {
             if (gamesRepository == null)
             {
@@ -25,6 +27,13 @@ namespace OldBoardGamesNeedLoveToo.Services
             }
 
             this.gamesRepository = gamesRepository;
+
+            if (categoriesRepository == null)
+            {
+                throw new ArgumentException(categoriesRepositoryCannotBeNullExceptinMessage);
+            }
+
+            this.categoriesRepository = categoriesRepository;
 
             if (unitOfWork == null)
             {
@@ -57,7 +66,7 @@ namespace OldBoardGamesNeedLoveToo.Services
                 MaxAgeOfPlayers = maxAgeOfPlayers,
                 isSold = false,
                 ReleaseDate = releaseDate,
-                Producer = producer    
+                Producer = producer
             };
         }
 
@@ -86,6 +95,26 @@ namespace OldBoardGamesNeedLoveToo.Services
         {
             this.gamesRepository.Update(game);
             this.unitOfWork.Commit();
+        }
+
+        public IEnumerable<Game> GetAllFilteredGames(decimal minPrice, decimal maxPrice, int minNumberOfPlayers, int maxNumberOfPlayers, int minPlayersAge, int maxPlayersAge, Guid categoryId, ConditionType condition, DateTime releasedDateFrom, DateTime releasedDateTo)
+        {
+            //var categories = this.categoriesRepository.GetAll().Where(c => c.Id == categoryId);
+            //var filteredGamesByCategory = categories.Select(c => c.Games);
+
+            var filteredGames = this.gamesRepository.GetAll()
+                .Where(g =>
+                minPrice <= g.Price
+                && g.Price <= maxPrice
+                //&& minNumberOfPlayers <= g.MinPlayers
+                //&& maxNumberOfPlayers >= g.MaxPlayers
+                //&& minPlayersAge <= g.MinAgeOfPlayers
+                //&& maxPlayersAge <= g.MaxAgeOfPlayers
+                && releasedDateFrom <= g.ReleaseDate
+                && g.ReleaseDate <= releasedDateTo
+                && g.Condition == condition);
+
+            return filteredGames;
         }
     }
 }

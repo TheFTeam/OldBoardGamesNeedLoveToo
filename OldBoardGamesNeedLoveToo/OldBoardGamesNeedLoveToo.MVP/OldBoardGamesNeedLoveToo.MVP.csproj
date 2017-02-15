@@ -44,6 +44,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomEventArgs\FilterGamesEventArgs.cs" />
     <Compile Include="CustomEventArgs\GameDetailsEventArgs.cs" />
     <Compile Include="CustomEventArgs\MyGamesEventArgs.cs" />
     <Compile Include="CustomEventArgs\ObjectDataSourceUserDetailsEventArgs.cs" />
