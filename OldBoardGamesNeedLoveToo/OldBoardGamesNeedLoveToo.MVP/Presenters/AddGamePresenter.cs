@@ -55,8 +55,9 @@ namespace OldBoardGamesNeedLoveToo.MVP.Presenters
                 throw new InvalidOperationException(e.Message);
             }
 
+            byte[] image = inputData.Image;
 
-            Game newGame = this.service.CreateGame(name, content, condition, language, price, ownerId, releaseDate, producer, description, null, minPlayers, maxPlayers, minAgeofPlayers, maxAgeOfPlayers);
+            Game newGame = this.service.CreateGame(name, content, condition, language, price, ownerId, releaseDate, image, producer, description, minPlayers, maxPlayers, minAgeofPlayers, maxAgeOfPlayers);
             this.service.AddGame(newGame);
         }
     }

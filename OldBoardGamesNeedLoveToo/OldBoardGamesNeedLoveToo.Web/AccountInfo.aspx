@@ -40,13 +40,13 @@
                     </li>
                 </ul>
             </EditItemTemplate>
-            <EmptyDataTemplate>
+            <%--<EmptyDataTemplate>
                 <div class="panel panel-warning">
                     <p>
                         <strong>No data was returned.</strong>
                     </p>
                 </div>
-            </EmptyDataTemplate>
+            </EmptyDataTemplate>--%>
             <ItemTemplate>
                 <ul class="list-group col-md-6 col-md-offset-3">
                     <li class="list-group-item">

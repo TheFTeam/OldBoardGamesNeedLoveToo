@@ -53,8 +53,14 @@ namespace OldBoardGamesNeedLoveToo.Models
         public string Phone { get; set; }
 
         public string Address { get; set; }
-        
+
         public string ApplicationUserId { get; set; }
+
+        public double AverageRatingResult { get; set; }
+
+        public int NumberOfUsersGivenRating { get; set; }
+
+        public int SumOfUsersRating { get; set; }
 
         [ForeignKey("BuyerId")]
         [Column("BoughtGames")]

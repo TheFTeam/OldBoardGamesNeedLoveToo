@@ -25,7 +25,6 @@
                     <%--<dt>External Logins:</dt>--%>
                     <p>
                         <asp:HyperLink NavigateUrl="/Account/ManageLogins" Text="Manage External Logins - " runat="server" /><%: LoginsCount %>
-
                     </p>
                     <%--
                         Phone Numbers can used as a second factor of verification in a two-factor authentication system.
@@ -78,19 +77,18 @@
                 <h4>Verify/Update Account</h4>
                 <hr />
                 <p>
-                   <asp:HyperLink ID="HyperLinkVerifyAccount" runat="server" NavigateUrl="~/verifyaccount.aspx" Text="Add some additional personal info.This way other users will know more about you and will feel more secure to buy a game from you."/>
+                    <asp:HyperLink ID="HyperLinkVerifyAccount" runat="server" NavigateUrl="~/verifyaccount.aspx" Text="Add some additional personal info.This way other users will know more about you and will feel more secure to buy a game from you." />
                     Or
-                   <asp:HyperLink ID="HyperlinkAccountInfo" NavigateUrl="~/accountinfo.aspx" Text="Check Your Account Information" runat="server"/>
+                   <asp:HyperLink ID="HyperlinkAccountInfo" NavigateUrl="~/accountinfo.aspx" Text="Check Your Account Information" runat="server" />
                 </p>
             </div>
             <div class="col-md-4">
                 <h4>My Old Board Games</h4>
                 <hr />
                 <p>
-                   <asp:HyperLink ID="HyperlinkAddGame" NavigateUrl="~/mygames.aspx" Text="Add a game to sell. It's easy and takes only few minutes." runat="server"/>
+                    <asp:HyperLink ID="HyperlinkAddGame" NavigateUrl="~/mygames.aspx" Text="Add a game to sell. It's easy and takes only few minutes." runat="server" />
                 </p>
             </div>
         </div>
     </div>
-
 </asp:Content>

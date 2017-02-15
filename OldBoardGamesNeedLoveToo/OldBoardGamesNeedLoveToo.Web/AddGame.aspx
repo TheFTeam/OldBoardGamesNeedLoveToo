@@ -23,6 +23,7 @@
                 </p>
                 <p>
                     <asp:FileUpload ID="FileUploadGameImage" runat="server" CssClass="form-control" />
+                    <asp:Label ID="LabelFileUploadStatus" Text=".jpg | .jpeg | .png | .gif" runat="server" /></asp:Label>
                     <br />
                 </p>
                 <p>

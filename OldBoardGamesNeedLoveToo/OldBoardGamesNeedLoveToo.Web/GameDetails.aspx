@@ -1,12 +1,15 @@
 ﻿<%@ Page Title="Game Details" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="GameDetails.aspx.cs" Inherits="OldBoardGamesNeedLoveToo.Web.GameDetails" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
+
 <asp:Content ID="ContentGameDetails" ContentPlaceHolderID="MainContent" runat="server">
     <div class="col-lg-12">
         <asp:FormView ID="FormViewGameDetails" runat="server" ItemType="OldBoardGamesNeedLoveToo.Models.Game">
             <ItemTemplate>
                 <div class="level level-img-right">
                     <div class="container xs-mb-30">
-                        <img class="img-right-sprite" src="<%# Item.Image %>"/>">
+                        <asp:Image ID="ImageOfGame" runat="server" CssClass="img-right-sprite" ImageUrl='<%# string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(Item.Image)) %>' />
+
                         <div class="row mb-60 xs-mb-20">
                             <div class="col-sm-6 col-lg-offset-1 col-lg-5">
                                 <h1 class="mb-20 xs-mb-10 heading color-dark heading-bordered xl-heading-outdent"><%#: Item.Name %> Details</h1>
@@ -15,7 +18,7 @@
                             </div>
 
                             <div class=" col-md-4 visible-xs xs-mw xs-mb-30">
-                                <img src="<%# Item.Image %>"/>
+                                <asp:Image ID="ImageOfGame2" runat="server" CssClass="img-right-sprite" ImageUrl='<%# string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(Item.Image)) %>' />
                             </div>
                         </div>
 
@@ -152,11 +155,13 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="#" class="text-right">Contact Owner</a>
+                        <div class="col-md-12 col-md-offset-5">
+                            <a href="#" class="btn btn-danger btn-lg">Contact Owner</a>
+                            <a href="/default" class="btn btn-default">Back</a>
+                        </div>
                     </div>
                 </div>
             </ItemTemplate>
         </asp:FormView>
-        <asp:LinkButton Text="Back" runat="server" PostBackUrl="~/Default.aspx" CssClass="btn btn-default text-right" />
     </div>
 </asp:Content>

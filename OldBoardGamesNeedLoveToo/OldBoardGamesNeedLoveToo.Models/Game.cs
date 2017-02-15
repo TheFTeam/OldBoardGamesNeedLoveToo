@@ -10,6 +10,13 @@ namespace OldBoardGamesNeedLoveToo.Models
 {
     public class Game : IGame
     {
+        private ICollection<Category> categories;
+
+        public Game()
+        {
+            this.categories = new HashSet<Category>();
+        }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
@@ -72,5 +79,17 @@ namespace OldBoardGamesNeedLoveToo.Models
         public Guid? BuyerId { get; set; }
 
         public virtual UserCustomInfo Buyer { get; set; }
+
+        public ICollection<Category> Categories
+        {
+            get
+            {
+                return this.categories;
+            }
+            set
+            {
+                this.categories = value;
+            }
+        }
     }
 }

@@ -29,9 +29,13 @@ namespace OldBoardGamesNeedLoveToo.Web
         protected void Page_Load(object sender, EventArgs e)
         {
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-            var id = user.UserCustomInfo.Id;
-            this.Session["Id"] = id;
-            this.Session.Timeout = 30;
+
+            if (user != null)
+            {
+                var id = user.UserCustomInfo.Id;
+                this.Session["Id"] = id;
+                this.Session.Timeout = 30;
+            }            
 
             //this.DefaultPageInit?.Invoke(sender, new UserDetailsEventArgs(id));
 

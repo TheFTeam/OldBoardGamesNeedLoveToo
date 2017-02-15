@@ -24,7 +24,6 @@
                     <asp:CheckBoxField DataField="isSold" HeaderText="Is sold" SortExpression="isSold"></asp:CheckBoxField>
                     <asp:CommandField ShowEditButton="True" ShowDeleteButton="True" ShowSelectButton="True" ControlStyle-CssClass="btn btn-group btn-default"></asp:CommandField>
                 </Columns>
-
             </asp:GridView>
         </div>
     </div>
