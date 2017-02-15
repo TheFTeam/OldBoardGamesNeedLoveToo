@@ -236,6 +236,9 @@
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
     <Content Include="AddGame.aspx" />
+    <Content Include="Admin\ManageCategories.aspx" />
+    <Content Include="Admin\ManageGames.aspx" />
+    <Content Include="Admin\ManageUsers.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -273,6 +276,7 @@
     <Content Include="Content\Theme\img\v2\.DS_Store" />
     <Content Include="Content\Theme\scripts\.DS_Store" />
     <Content Include="Content\Theme\scripts\vendor\.DS_Store" />
+    <Content Include="Admin\Web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="GameDetails.aspx" />
     <Content Include="MyGames.aspx" />
@@ -446,6 +450,27 @@
     <Compile Include="AddGame.aspx.designer.cs">
       <DependentUpon>AddGame.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\ManageCategories.aspx.cs">
+      <DependentUpon>ManageCategories.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ManageCategories.aspx.designer.cs">
+      <DependentUpon>ManageCategories.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ManageGames.aspx.cs">
+      <DependentUpon>ManageGames.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ManageGames.aspx.designer.cs">
+      <DependentUpon>ManageGames.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ManageUsers.aspx.cs">
+      <DependentUpon>ManageUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ManageUsers.aspx.designer.cs">
+      <DependentUpon>ManageUsers.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\Factories\ICustomPresenterFactory.cs" />
     <Compile Include="App_Start\Factories\WebFormsMvpPresenterFactory.cs" />
@@ -479,6 +504,10 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702151143173_init.cs" />
+    <Compile Include="Migrations\201702151143173_init.Designer.cs">
+      <DependentUpon>201702151143173_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -540,6 +569,11 @@
       <Project>{d62b3951-73c5-43e6-9d6c-2e7e4cea5aba}</Project>
       <Name>OldBoardGamesNeedLoveToo.Services</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201702151143173_init.resx">
+      <DependentUpon>201702151143173_init.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
