@@ -94,15 +94,6 @@ namespace OldBoardGamesNeedLoveToo.Web {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorPrice;
         
         /// <summary>
-        /// RangeValidatorPrice control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator RangeValidatorPrice;
-        
-        /// <summary>
         /// DetailedGameInfo control.
         /// </summary>
         /// <remarks>

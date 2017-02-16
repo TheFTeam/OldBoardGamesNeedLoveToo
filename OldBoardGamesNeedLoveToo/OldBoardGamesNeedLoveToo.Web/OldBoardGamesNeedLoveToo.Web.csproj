@@ -279,6 +279,7 @@
     <Content Include="Admin\Web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="GameDetails.aspx" />
+    <Content Include="Games.aspx" />
     <Content Include="MyGames.aspx" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
@@ -314,6 +315,8 @@
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
+    <Content Include="UserControls\CommentsList.ascx" />
+    <Content Include="UserControls\GamesList.ascx" />
     <Content Include="VerifyAccount.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config">
@@ -502,6 +505,13 @@
     <Compile Include="GameDetails.aspx.designer.cs">
       <DependentUpon>GameDetails.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Games.aspx.cs">
+      <DependentUpon>Games.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Games.aspx.designer.cs">
+      <DependentUpon>Games.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -534,6 +544,20 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="UserControls\CommentsList.ascx.cs">
+      <DependentUpon>CommentsList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\CommentsList.ascx.designer.cs">
+      <DependentUpon>CommentsList.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\GamesList.ascx.cs">
+      <DependentUpon>GamesList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\GamesList.ascx.designer.cs">
+      <DependentUpon>GamesList.ascx</DependentUpon>
+    </Compile>
     <Compile Include="VerifyAccount.aspx.cs">
       <DependentUpon>VerifyAccount.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

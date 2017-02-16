@@ -28,6 +28,7 @@ namespace OldBoardGamesNeedLoveToo.Web.App_Start.Modules
 
             this.Bind<IUserService>().To<UserService>().InRequestScope();
             this.Bind<IGamesService>().To<GamesService>().InRequestScope();
+            this.Bind<ICategoryService>().To<CategoryService>().InRequestScope();
 
             this.Bind<IGamesViewModel>().To<GamesViewModel>();
             this.Bind<GamesPresenter>().ToSelf();

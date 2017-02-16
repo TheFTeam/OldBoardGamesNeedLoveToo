@@ -2,6 +2,9 @@
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
+<%@ Register Src="~/UserControls/CommentsList.ascx" TagPrefix="userControls"
+    TagName="CommentsList" %>
+
 <asp:Content ID="ContentGameDetails" ContentPlaceHolderID="MainContent" runat="server">
     <div class="col-lg-12">
         <asp:FormView ID="FormViewGameDetails" runat="server" ItemType="OldBoardGamesNeedLoveToo.Models.Game">
@@ -163,5 +166,8 @@
                 </div>
             </ItemTemplate>
         </asp:FormView>
+    </div>
+    <div class="col-md-12">
+        <userControls:CommentsList runat="server" ID="UserControlCommentsList"></userControls:CommentsList>
     </div>
 </asp:Content>

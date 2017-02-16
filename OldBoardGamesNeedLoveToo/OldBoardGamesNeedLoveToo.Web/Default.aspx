@@ -1,5 +1,8 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="OldBoardGamesNeedLoveToo.Web._Default" %>
 
+<%@ Register Src="~/UserControls/GamesList.ascx" TagPrefix="userControls"
+    TagName="GamesList" %>
+
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="level level-hero hero-home has-hint">
         <div class="hero-overlay visible-lg"></div>
@@ -27,7 +30,7 @@
                         <a class="btn btn-prepend btn-launch-video" href="/account/login.aspx">
                             <i class="prepended icon-append-play"></i>Login
 						</a>
-                        <a class="btn btn-prepend" href="#">
+                        <a class="btn btn-prepend" href="/games">
                             <i class="prepended icon-append-iphone"></i>Check games
 						</a>
                     </div>
@@ -37,50 +40,5 @@
         </div>
     </div>
     <hr />
-    <div class="level">
-
-        <div class="container mb-100 xs-mb-40">
-            <div class="row">
-                <div class="col-sm-5 col-md-4 col-md-offset-2 col-sm-offset-1">
-                    <h1 class="mb-10 xs-mb-10 heading color-dark heading-bordered">Browse Games<br class="hidden-xs">
-                        Now</h1>
-                </div>
-                <br />
-                <br />
-                <div class="col-sm-5 col-sm-offset-1">
-                    <h2 class="w-300 color-dark mb-10 xs-mb-10">Find the one to love</h2>
-                    <p class="xs-mw">
-                        Just call your friends and have fun                        			
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <h3>Filters</h3>
-        </div>
-        <div class="container">
-            <div class="col-md-9">
-                <asp:UpdatePanel runat="server" UpdateMode="Always">
-                    <ContentTemplate>
-                        <asp:ListView ID="ListViewGames" runat="server"
-                            ItemType="OldBoardGamesNeedLoveToo.Models.Game"
-                            DataKeyNames="Id">
-                            <ItemTemplate>
-                                <div class="col-sm-4">
-                                    <div class="panel panel-default">
-                                        <h3 class="mb-15 text-center"><a runat="server" href='<%# string.Format("GameDetails.aspx?id={0}", Item.Id) %>'><%#: Item.Name %></a></h3>
-                                        <asp:Image ID="ImageOfGame" runat="server" ImageUrl='<%# string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(Item.Image)) %>' Width="200"/>
-                                        <p class="smaller xs-mb-40 xs-mw">Producer: <%#: Item.Producer %></p>
-                                        <p class="smaller xs-mb-40 xs-mw">Price: <%# string.Format("{0:c}", Item.Price) %></p>
-                                        <%--<p class="smaller xs-mb-40 xs-mw">Owner: <%#: Item.Owner.Username %></p>--%>
-                                        <p class="smaller xs-mb-40 xs-mw">Added on: <%#: string.Format("{0:dd/MM/ yyyy}", Item.AddedOnDate) %></p>
-                                        <a runat="server" href='<%# string.Format("GameDetails.aspx?id={0}", Item.Id) %>'>Details</a>
-                                    </div>
-                                </div>
-                            </ItemTemplate>
-                        </asp:ListView>
-                    </ContentTemplate>
-                </asp:UpdatePanel>
-            </div>
-        </div>
-    </div>
+    <userControls:GamesList runat="server" ID="DefaultGamesList"></userControls:GamesList>
 </asp:Content>

@@ -23,7 +23,7 @@
                 </p>
                 <p>
                     <asp:FileUpload ID="FileUploadGameImage" runat="server" CssClass="form-control" />
-                    <asp:Label ID="LabelFileUploadStatus" Text=".jpg | .jpeg | .png | .gif" runat="server" /></asp:Label>
+                    <asp:Label ID="LabelFileUploadStatus" Text=".jpg | .jpeg | .png | .gif" runat="server" CssClass="smallest" />
                     <br />
                 </p>
                 <p>
@@ -36,25 +36,25 @@
                     </asp:RequiredFieldValidator>
                 </p>
                 <p>
-                    <asp:TextBox runat="server" ID="TextBoxPrice" placeholder="Price" TextMode="Number" CssClass="form-control" />
+                    <asp:TextBox runat="server" ID="TextBoxPrice" placeholder="Price" CssClass="form-control" />
                     <asp:RequiredFieldValidator ID="RequiredFieldValidatorPrice" runat="server"
                         ValidationGroup="DisplayGameInfo"
                         ErrorMessage="*Price is required"
                         ControlToValidate="TextBoxPrice">
                     </asp:RequiredFieldValidator>
-                    <asp:RangeValidator ID="RangeValidatorPrice" runat="server"
+                    <%--<asp:RangeValidator ID="RangeValidatorPrice" runat="server"
                         ErrorMessage="*Price should not be negative"
                         MinimumValue="0"
                         MaximumValue="100000000"
                         ControlToValidate="TextBoxPrice">
-                    </asp:RangeValidator>
+                    </asp:RangeValidator>--%>
                 </p>
             </asp:Panel>
 
-            <asp:Panel runat="server" ID="DetailedGameInfo" GroupingText="Detailed Game Info" CssClass="input-group">
+            <asp:Panel runat="server" ID="DetailedGameInfo" GroupingText="Detailed Game Info">
                 <p>
                     <asp:TextBox runat="server" ID="TextBoxDescription"
-                        TextMode="MultiLine" placeholder="Description" CssClass="form-control" Width="590" />
+                        TextMode="MultiLine" placeholder="Description" CssClass="form-control" Width="470" />
                     <asp:RequiredFieldValidator ID="RequiredFieldValidatorDescription" runat="server"
                         ErrorMessage="*Description is required"
                         ControlToValidate="TextBoxDescription"
@@ -112,25 +112,27 @@
                     <asp:RangeValidator ID="RangeValidatorMaxPlayers" runat="server"
                         ErrorMessage="*Maximum number of players is 100 and should not be negative"
                         MinimumValue="1"
-                        MaximumValue="100"
+                        MaximumValue="20"
                         ValidationGroup="DetailedGameInfo"
                         ControlToValidate="TextBoxMaxPlayers">
                     </asp:RangeValidator>
                 </p>
                 <p>
                     <asp:TextBox runat="server" ID="TextBoxMinAgeOfPlayers" placeholder="Minimum Age of Players" TextMode="Number" CssClass="form-control" />
-                    <%--<asp:RangeValidator ID="RangeValidatorMinAgeOfPlayers" runat="server"
-                        ErrorMessage="*Minimum age of players is 2 and should not be negative"
-                        MinimumValue="2"
-                        MaximumValue="100"
-                        ValidationGroup="DetailedGameInfo"
+                    <%--<asp:rangevalidator id="rangevalidatorminageofplayers" runat="server"
+                        ErrorMessage="*minimum age of players is 2 and should not be negative" 
+                        ForeColor="BurlyWood"
+                        minimumvalue="2"
+                        maximumvalue="100"
+                        validationgroup="detailedgameinfo"
                         ControlToValidate="TextBoxMinAgeOfPlayers">
-                    </asp:RangeValidator>--%>
+                    </asp:rangevalidator>--%>
                 </p>
                 <p>
                     <asp:TextBox runat="server" ID="TextBoxMaxAgeOfPlayers" placeholder="Maximum Age of Players" TextMode="Number" CssClass="form-control" />
                     <%--<asp:RangeValidator ID="RangeValidatorMaxEgeofPlayers" runat="server"
                         ErrorMessage="*Maximum age of players is 100 and should not be negative"
+                        ForeColor="BurlyWood"
                         MinimumValue="2"
                         MaximumValue="100"
                         ValidationGroup="DetailedGameInfo"

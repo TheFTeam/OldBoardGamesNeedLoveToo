@@ -2,10 +2,10 @@
 {
     public enum ConditionType
     {
-        Excellent,
-        VeryGood,
-        Good,
-        Poor,
-        VeryPoor
+        Excellent = 0,
+        VeryGood = 1,
+        Good = 2,
+        Poor = 3,
+        VeryPoor = 4
     }
 }
