@@ -4,6 +4,7 @@ using System;
 
 using WebFormsMvp;
 using WebFormsMvp.Web;
+using OldBoardGamesNeedLoveToo.MVP.CustomEventArgs;
 
 namespace OldBoardGamesNeedLoveToo.Web.Admin
 {
@@ -11,6 +12,7 @@ namespace OldBoardGamesNeedLoveToo.Web.Admin
     public partial class ManageGames : MvpPage<GamesViewModel>, IGamesView
     {
         public event EventHandler DefaultPageInit;
+        public event EventHandler<FilterGamesEventArgs> OnButtonFilterSubmit;
 
         protected void Page_Load(object sender, EventArgs e)
         {

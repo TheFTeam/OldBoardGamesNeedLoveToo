@@ -315,6 +315,7 @@
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
+    <Content Include="UserControls\CommentsList.ascx" />
     <Content Include="UserControls\GamesList.ascx" />
     <Content Include="VerifyAccount.aspx" />
     <Content Include="ViewSwitcher.ascx" />
@@ -543,6 +544,13 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="UserControls\CommentsList.ascx.cs">
+      <DependentUpon>CommentsList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\CommentsList.ascx.designer.cs">
+      <DependentUpon>CommentsList.ascx</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\GamesList.ascx.cs">
       <DependentUpon>GamesList.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

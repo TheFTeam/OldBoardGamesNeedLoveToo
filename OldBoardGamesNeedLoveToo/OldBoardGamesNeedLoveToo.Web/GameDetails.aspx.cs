@@ -6,6 +6,10 @@ using WebFormsMvp.Web;
 using OldBoardGamesNeedLoveToo.MVP.CustomEventArgs;
 using OldBoardGamesNeedLoveToo.MVP.Views;
 using OldBoardGamesNeedLoveToo.MVP.Presenters;
+using OldBoardGamesNeedLoveToo.Web.Models;
+using System.Web;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.AspNet.Identity;
 
 namespace OldBoardGamesNeedLoveToo.Web
 {
@@ -24,6 +28,24 @@ namespace OldBoardGamesNeedLoveToo.Web
             {
                 this.FormViewGameDetails.DataSource = this.Model.Games;
                 this.FormViewGameDetails.DataBind();
+            }
+
+            this.CheckIfUserIsLoggedToSetCommentsVisibility();
+        }
+
+        public void CheckIfUserIsLoggedToSetCommentsVisibility()
+        {
+            ApplicationUser user = HttpContext.Current.GetOwinContext()
+                .GetUserManager<ApplicationUserManager>()
+                .FindById(HttpContext.Current.User.Identity.GetUserId());
+
+            if (user != null)
+            {
+                this.UserControlCommentsList.IsVisible = true;
+            }
+            else
+            {
+                this.UserControlCommentsList.IsVisible = false;
             }
         }
 

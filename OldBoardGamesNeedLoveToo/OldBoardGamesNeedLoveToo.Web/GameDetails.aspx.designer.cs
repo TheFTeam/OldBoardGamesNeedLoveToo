@@ -20,5 +20,14 @@ namespace OldBoardGamesNeedLoveToo.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FormView FormViewGameDetails;
+        
+        /// <summary>
+        /// UserControlCommentsList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::OldBoardGamesNeedLoveToo.Web.UserControls.CommentsList UserControlCommentsList;
     }
 }
