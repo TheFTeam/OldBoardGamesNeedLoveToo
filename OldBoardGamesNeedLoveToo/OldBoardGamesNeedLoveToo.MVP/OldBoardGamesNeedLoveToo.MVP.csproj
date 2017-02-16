@@ -61,7 +61,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\GamesViewModel.cs" />
     <Compile Include="Views\IAddGameView.cs" />
-    <Compile Include="Views\IAdminGamesView.cs" />
     <Compile Include="Views\IGameDetailsView.cs" />
     <Compile Include="Views\IGamesView.cs" />
     <Compile Include="Views\IAccountInfoView.cs" />
