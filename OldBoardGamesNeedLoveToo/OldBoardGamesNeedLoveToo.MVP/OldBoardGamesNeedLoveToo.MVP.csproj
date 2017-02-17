@@ -51,11 +51,14 @@
     <Compile Include="CustomEventArgs\ObjectDataSourceUserDetailsEventArgs.cs" />
     <Compile Include="CustomEventArgs\UserDetailsByIdEventArgs.cs" />
     <Compile Include="Models\AddGameViewModel.cs" />
+    <Compile Include="Models\AdminGamesViewModel.cs" />
     <Compile Include="Models\IAddGameViewModel.cs" />
+    <Compile Include="Models\IAdminGamesViewModel.cs" />
     <Compile Include="Models\IGamesViewModel.cs" />
     <Compile Include="Models\IUsersViewModel.cs" />
     <Compile Include="Models\UsersViewModel.cs" />
     <Compile Include="Presenters\AddGamePresenter.cs" />
+    <Compile Include="Presenters\AdminGamesPresenter.cs" />
     <Compile Include="Presenters\GameDetailsPresenter.cs" />
     <Compile Include="Presenters\GamesPresenter.cs" />
     <Compile Include="Presenters\AccountInfoPresenter.cs" />
@@ -67,6 +70,7 @@
     <Compile Include="Views\IGamesView.cs" />
     <Compile Include="Views\IAccountInfoView.cs" />
     <Compile Include="Views\IMyGamesView.cs" />
+    <Compile Include="Views\IAdminGamesView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Views\packages.config" />
