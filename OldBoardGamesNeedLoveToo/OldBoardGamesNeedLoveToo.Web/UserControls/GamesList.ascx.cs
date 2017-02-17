@@ -6,16 +6,17 @@ using WebFormsMvp.Web;
 using OldBoardGamesNeedLoveToo.MVP.CustomEventArgs;
 using OldBoardGamesNeedLoveToo.MVP.Presenters;
 using OldBoardGamesNeedLoveToo.MVP.Views;
+using System.Web.UI.WebControls;
 
 namespace OldBoardGamesNeedLoveToo.Web.UserControls
 {
-    [PresenterBinding(typeof(GamesPresenter))]
+    [PresenterBinding(typeof(GamesListUserControlPresenter))]
     public partial class GamesList : MvpUserControl<GamesViewModel>, IGamesView
     {
         public event EventHandler DefaultPageInit;
         public event EventHandler<FilterGamesEventArgs> OnButtonFilterSubmit;
 
-        public object GamesDataSource
+        public object DataSource
         {
             get
             {
@@ -27,15 +28,18 @@ namespace OldBoardGamesNeedLoveToo.Web.UserControls
             }
         }
 
+        public override void DataBind()
+        {
+            base.DataBind();
+            this.ListViewGames.DataBind();
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             this.DefaultPageInit?.Invoke(sender, e);
 
             if (!IsPostBack)
             {
-                this.ListViewGames.DataSource = this.Model.Games;
-                this.ListViewGames.DataBind();
-
+                this.DataBind();
                 this.DropDownListCategories.DataSource = this.Model.Categories;
                 this.DropDownListCategories.DataBind();
             }
@@ -63,6 +67,12 @@ namespace OldBoardGamesNeedLoveToo.Web.UserControls
 
         protected void ButtonReset_Click(object sender, EventArgs e)
         {
+            this.DataBind();
+        }
+
+        protected void ListViewGames_PagePropertiesChanging(object sender, PagePropertiesChangingEventArgs e)
+        {
+            (this.ListViewGames.FindControl("DataPagerGamesList") as DataPager).SetPageProperties(e.StartRowIndex, e.MaximumRows, false);
             this.DataBind();
         }
     }

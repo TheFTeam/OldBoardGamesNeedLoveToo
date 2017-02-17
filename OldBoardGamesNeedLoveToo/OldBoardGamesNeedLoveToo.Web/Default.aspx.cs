@@ -1,13 +1,27 @@
 ﻿using System;
-using System.Web.UI;
+
+using WebFormsMvp;
+using WebFormsMvp.Web;
+
+using OldBoardGamesNeedLoveToo.MVP.Presenters;
+using OldBoardGamesNeedLoveToo.MVP.Views;
+using System.Linq;
 
 namespace OldBoardGamesNeedLoveToo.Web
 {
-    public partial class _Default : Page
+    [PresenterBinding(typeof(DefaultPagePresenter))]
+    public partial class _Default : MvpPage<GamesViewModel>, IDefaultPageView
     {
+        public event EventHandler DefaultPageInit;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            this.DefaultPageInit?.Invoke(sender, e);
+            if (!IsPostBack)
+            {
+                this.DefaultGamesList.DataSource = this.Model.Games.ToList();
+                this.DefaultGamesList.DataBind();
+            }
         }
     }
 }

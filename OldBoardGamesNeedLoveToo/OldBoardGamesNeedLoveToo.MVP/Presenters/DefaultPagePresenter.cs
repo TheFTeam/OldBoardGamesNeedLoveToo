@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 
 using WebFormsMvp;
 using Bytes2you.Validation;
@@ -9,23 +8,22 @@ using OldBoardGamesNeedLoveToo.Services.Contracts;
 
 namespace OldBoardGamesNeedLoveToo.MVP.Presenters
 {
-    public class MyGamesPresenter : Presenter<IMyGamesView>
+    public class DefaultPagePresenter : Presenter<IDefaultPageView>
     {
         private readonly IGamesService gamesService;
-
-        public MyGamesPresenter(IMyGamesView view, IGamesService gamesService)
+        public DefaultPagePresenter(IDefaultPageView view, IGamesService gamesService)
             : base(view)
         {
             Guard.WhenArgument(gamesService, "gamesService").IsNull().Throw();
 
             this.gamesService = gamesService;
 
-            this.View.MyGamesPageInit += View_MyGamesPageInit;
+            this.View.DefaultPageInit += this.View_DefaultPageInit;
         }
 
-        private void View_MyGamesPageInit(object sender, CustomEventArgs.MyGamesEventArgs e)
+        private void View_DefaultPageInit(object sender, EventArgs e)
         {
-            this.View.Model.Games = this.gamesService.GetAllGames().Where(x => x.OwnerId == e.Id);
+            this.View.Model.Games = this.gamesService.GetAllGames();
         }
     }
 }

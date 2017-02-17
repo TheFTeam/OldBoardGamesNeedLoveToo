@@ -26,12 +26,14 @@ namespace OldBoardGamesNeedLoveToo.Web.App_Start.Modules
             this.Bind(typeof(IRepository<>)).To(typeof(EfRepository<>));
             this.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();
 
-            this.Bind<IUserService>().To<UserService>().InRequestScope();
+            this.Bind<IUsersService>().To<UsersService>().InRequestScope();
             this.Bind<IGamesService>().To<GamesService>().InRequestScope();
-            this.Bind<ICategoryService>().To<CategoryService>().InRequestScope();
+            this.Bind<ICategoriesService>().To<CategoriesService>().InRequestScope();
+            this.Bind<ICommentsService>().To<CommentsService>().InRequestScope();
+
 
             this.Bind<IGamesViewModel>().To<GamesViewModel>();
-            this.Bind<GamesPresenter>().ToSelf();
+            this.Bind<GamesListUserControlPresenter>().ToSelf();
             this.Bind<GameDetailsPresenter>().ToSelf();
 
             this.Bind<IAddGameViewModel>().To<AddGameViewModel>();

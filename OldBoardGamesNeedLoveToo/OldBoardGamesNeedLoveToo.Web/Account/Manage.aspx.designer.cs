@@ -40,24 +40,6 @@ namespace OldBoardGamesNeedLoveToo.Web.Account {
         protected global::System.Web.UI.WebControls.HyperLink CreatePassword;
         
         /// <summary>
-        /// HyperLinkVerifyAccount control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLinkVerifyAccount;
-        
-        /// <summary>
-        /// HyperlinkAccountInfo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperlinkAccountInfo;
-        
-        /// <summary>
         /// HyperlinkAddGame control.
         /// </summary>
         /// <remarks>

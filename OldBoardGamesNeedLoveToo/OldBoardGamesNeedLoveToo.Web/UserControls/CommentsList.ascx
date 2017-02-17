@@ -12,11 +12,20 @@
                     <h3>Leave Your Comment Here</h3>
                 </p>
                 <ul class="comments-list">
-                    <li>Comment
-                    </li>
+                    <asp:Repeater ID="RepeaterComments" runat="server" ItemType="OldBoardGamesNeedLoveToo.Models.Comment" SelectMethod="RepeaterComments_GetData">
+                        <ItemTemplate>
+                            <p>
+                                <%# Item.Content %>
+                            </p>
+                            <small>Posted on <%# Item.PostedOnDate %></small>
+                            by
+                            <a><%# GetUsernameFromApplicationUserManager() %></a>
+                        </ItemTemplate>
+                    </asp:Repeater>
                 </ul>
             </div>
         </ContentTemplate>
+
     </asp:UpdatePanel>
     <asp:Timer ID="TimerTimeRefresh" runat="Server" Interval="5000" />
     <div class="col-md-12">
@@ -24,7 +33,7 @@
             <asp:TextBox ID="TextBoxInputComment" runat="server" placeholder="What do you think about this game?" TextMode="MultiLine" CssClass="form-control"></asp:TextBox>
         </div>
         <div>
-            <asp:Button ID="ButtonSubmitComment" runat="server" Text="Comment" CssClass="btn btn-primary" />
+            <asp:Button ID="ButtonSubmitComment" runat="server" Text="Comment" CssClass="btn btn-primary" OnClick="ButtonSubmitComment_Click" />
         </div>
     </div>
 </div>

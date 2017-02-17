@@ -8,7 +8,7 @@ using OldBoardGamesNeedLoveToo.MVP.CustomEventArgs;
 
 namespace OldBoardGamesNeedLoveToo.Web.Admin
 {
-    [PresenterBinding(typeof(GamesPresenter))]
+    [PresenterBinding(typeof(GamesListUserControlPresenter))]
     public partial class ManageGames : MvpPage<GamesViewModel>, IGamesView
     {
         public event EventHandler DefaultPageInit;

@@ -77,9 +77,11 @@
                 <h4>Verify/Update Account</h4>
                 <hr />
                 <p>
-                    <asp:HyperLink ID="HyperLinkVerifyAccount" runat="server" NavigateUrl="~/verifyaccount.aspx" Text="Add some additional personal info.This way other users will know more about you and will feel more secure to buy a game from you." />
-                    Or
-                   <asp:HyperLink ID="HyperlinkAccountInfo" NavigateUrl="~/accountinfo.aspx" Text="Check Your Account Information" runat="server" />
+                    <a id="HyperUserProfile" href='<%= string.Format("/userprofile.aspx?username={0}", GetCurrentUserProfileFromQueryString()) %>'>View your public profile</a>
+                </p>
+                Or
+                <p>
+                    <a id="HyperlinkAccountInfo" href="/accountinfo.aspx">Update Your Account Information</a>
                 </p>
             </div>
             <div class="col-md-4">

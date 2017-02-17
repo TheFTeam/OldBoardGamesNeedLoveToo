@@ -1,6 +1,7 @@
 ﻿using System;
 
 using WebFormsMvp;
+using Bytes2you.Validation;
 
 using OldBoardGamesNeedLoveToo.Models;
 using OldBoardGamesNeedLoveToo.MVP.Models;
@@ -11,20 +12,21 @@ namespace OldBoardGamesNeedLoveToo.MVP.Presenters
 {
     public class AddGamePresenter : Presenter<IAddGameView>
     {
-        private readonly IAddGameView view;
-        private readonly IGamesService service;
+        private readonly IGamesService gamesService;
 
-        public AddGamePresenter(IAddGameView view, IGamesService service) : base(view)
+        public AddGamePresenter(IAddGameView view, IGamesService gamesService)
+            : base(view)
         {
-            this.view = view;
-            this.service = service;
+            Guard.WhenArgument(gamesService, "gamesService").IsNull().Throw();
 
-            this.view.SetSubmitAction(this.OnSubmit);
+            this.gamesService = gamesService;
+
+            this.View.SetSubmitAction(this.OnSubmit);
         }
 
         public void OnSubmit()
         {
-            IAddGameViewModel inputData = this.view.GetFormData();
+            IAddGameViewModel inputData = this.View.GetFormData();
             string name = inputData.Name;
             string content = inputData.Content;
             string description = inputData.Description;
@@ -57,8 +59,8 @@ namespace OldBoardGamesNeedLoveToo.MVP.Presenters
 
             byte[] image = inputData.Image;
 
-            Game newGame = this.service.CreateGame(name, content, condition, language, price, ownerId, releaseDate, image, producer, description, minPlayers, maxPlayers, minAgeofPlayers, maxAgeOfPlayers);
-            this.service.AddGame(newGame);
+            Game newGame = this.gamesService.CreateGame(name, content, condition, language, price, ownerId, releaseDate, image, producer, description, minPlayers, maxPlayers, minAgeofPlayers, maxAgeOfPlayers);
+            this.gamesService.AddGame(newGame);
         }
     }
 }

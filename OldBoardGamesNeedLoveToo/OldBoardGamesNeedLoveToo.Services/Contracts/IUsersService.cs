@@ -1,18 +1,16 @@
-﻿using OldBoardGamesNeedLoveToo.Models;
-using OldBoardGamesNeedLoveToo.Models.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+
+using OldBoardGamesNeedLoveToo.Models;
 
 namespace OldBoardGamesNeedLoveToo.Services.Contracts
 {
-    public interface IUserService
+    public interface IUsersService
     {
         UserCustomInfo GetUserCustomInfoById(object id);
 
         IEnumerable<UserCustomInfo> GetAllUserCustomInfos();
+
+        IEnumerable<Game> GetAllUserCustomInfoSellinGames(string username);
 
         void SetApplicationUserIdToUserCustomInfo(UserCustomInfo userCustomInfo, string applicationUserId);
 

@@ -4,11 +4,11 @@ namespace OldBoardGamesNeedLoveToo.MVP.CustomEventArgs
 {
     public class ObjectDataSourceUserDetailsEventArgs
     {
-        public ObjectDataSourceUserDetailsEventArgs(IUserService service)
+        public ObjectDataSourceUserDetailsEventArgs(IUsersService service)
         {
             this.ObjectInstance = service;
         }
 
-        public IUserService ObjectInstance { get; set; }
+        public IUsersService ObjectInstance { get; set; }
     }
 }

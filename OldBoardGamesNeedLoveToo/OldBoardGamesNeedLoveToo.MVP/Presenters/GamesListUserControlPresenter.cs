@@ -1,6 +1,7 @@
 ﻿using System;
 
 using WebFormsMvp;
+using Bytes2you.Validation;
 
 using OldBoardGamesNeedLoveToo.MVP.Views;
 using OldBoardGamesNeedLoveToo.Services.Contracts;
@@ -8,42 +9,22 @@ using OldBoardGamesNeedLoveToo.Models;
 
 namespace OldBoardGamesNeedLoveToo.MVP.Presenters
 {
-    public class GamesPresenter : Presenter<IGamesView>
+    public class GamesListUserControlPresenter : Presenter<IGamesView>
     {
-        private readonly string viewCannotBeNullExceptionMessage = "View can not be null.";
-        private readonly string gamesServiceCannotBeNullExceptionMessage = "Games service can not be null.";
-        private readonly string categoriesServiceCannotBeNullExceptionMessage = "Categories service can not be null.";
-
-        private readonly IGamesView view;
         private readonly IGamesService gamesService;
-        private readonly ICategoryService categoryService;
+        private readonly ICategoriesService categoriesService;
 
-        public GamesPresenter(IGamesView view, IGamesService gamesService, ICategoryService categoryService)
+        public GamesListUserControlPresenter(IGamesView view, IGamesService gamesService, ICategoriesService categoriesService)
             : base(view)
         {
-            if (view == null)
-            {
-                throw new ArgumentException(viewCannotBeNullExceptionMessage);
-            }
-
-            this.view = view;
-
-            if (gamesService == null)
-            {
-                throw new ArgumentException(gamesServiceCannotBeNullExceptionMessage);
-            }
+            Guard.WhenArgument(gamesService, "gamesService").IsNull().Throw();
+            Guard.WhenArgument(categoriesService, "categoriesService").IsNull().Throw();
 
             this.gamesService = gamesService;
+            this.categoriesService = categoriesService;
 
-            if (categoryService == null)
-            {
-                throw new ArgumentException(categoriesServiceCannotBeNullExceptionMessage);
-            }
-
-            this.categoryService = categoryService;
-
-            this.view.DefaultPageInit += View_DefaultPageInit;
-            this.view.OnButtonFilterSubmit += View_OnButtonFilterSubmit;
+            this.View.DefaultPageInit += View_DefaultPageInit;
+            this.View.OnButtonFilterSubmit += View_OnButtonFilterSubmit;
         }
 
         private void View_OnButtonFilterSubmit(object sender, CustomEventArgs.FilterGamesEventArgs e)
@@ -77,13 +58,12 @@ namespace OldBoardGamesNeedLoveToo.MVP.Presenters
                 throw new InvalidOperationException(ex.Message);
             }
 
-            this.view.Model.Games = this.gamesService.GetAllFilteredGames(minPrice, maxPrice, minNumberOfPlayers, maxNumberOfPlayers, minAgefPlayers, maxAgeOfPlayers, categoryId, condition, releaseDateFrom, releaseDateTo);
+            this.View.Model.Games = this.gamesService.GetAllFilteredGames(minPrice, maxPrice, minNumberOfPlayers, maxNumberOfPlayers, minAgefPlayers, maxAgeOfPlayers, categoryId, condition, releaseDateFrom, releaseDateTo);
         }
 
         private void View_DefaultPageInit(object sender, EventArgs e)
         {
-            this.view.Model.Games = this.gamesService.GetAllGames();
-            this.view.Model.Categories = this.categoryService.GetAllCategories();
+            this.View.Model.Categories = this.categoriesService.GetAllCategories();
         }
     }
 }

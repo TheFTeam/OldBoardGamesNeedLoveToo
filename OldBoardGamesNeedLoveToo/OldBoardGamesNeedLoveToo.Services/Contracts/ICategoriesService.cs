@@ -4,7 +4,7 @@ using OldBoardGamesNeedLoveToo.Models;
 
 namespace OldBoardGamesNeedLoveToo.Services.Contracts
 {
-    public interface ICategoryService
+    public interface ICategoriesService
     {
         Category GetCategoryById(object id);
 

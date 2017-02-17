@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
+
 using WebFormsMvp;
+using Bytes2you.Validation;
 
 using OldBoardGamesNeedLoveToo.MVP.Views;
 using OldBoardGamesNeedLoveToo.Services.Contracts;
@@ -10,26 +12,12 @@ namespace OldBoardGamesNeedLoveToo.MVP.Presenters
 {
     public class AccountInfoPresenter : Presenter<IAccountInfoView>
     {
-        private readonly string viewCannotBeNullExceptionMessage = "View can not be null.";
-        private readonly string usersServiceCannotBeNullMessage = "Users service cannot be null";
+        private readonly IUsersService usersService;
 
-        private readonly IAccountInfoView view;
-        private readonly IUserService usersService;
-
-        public AccountInfoPresenter(IAccountInfoView view, IUserService usersService)
+        public AccountInfoPresenter(IAccountInfoView view, IUsersService usersService)
             : base(view)
         {
-            if (view == null)
-            {
-                throw new ArgumentException(viewCannotBeNullExceptionMessage);
-            }
-
-            this.view = view;
-
-            if (usersService == null)
-            {
-                throw new ArgumentException(usersServiceCannotBeNullMessage);
-            }
+            Guard.WhenArgument(usersService, "usersService").IsNull().Throw();
 
             this.usersService = usersService;
 

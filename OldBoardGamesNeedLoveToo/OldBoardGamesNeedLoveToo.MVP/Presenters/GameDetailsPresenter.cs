@@ -1,46 +1,32 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 
 using WebFormsMvp;
+using Bytes2you.Validation;
 
-using OldBoardGamesNeedLoveToo.Data.Repositories;
-using OldBoardGamesNeedLoveToo.Models;
 using OldBoardGamesNeedLoveToo.MVP.CustomEventArgs;
 using OldBoardGamesNeedLoveToo.MVP.Views;
+using OldBoardGamesNeedLoveToo.Services.Contracts;
 
 namespace OldBoardGamesNeedLoveToo.MVP.Presenters
 {
     public class GameDetailsPresenter : Presenter<IGameDetailsView>
     {
-        private readonly string viewCannotBeNullExceptionMessage = "View can not be null.";
-        private readonly string gamesRepositoryCannotBeNullExceptionMessage = "Games repository can not be null.";
+        private readonly IGamesService gamesService;
 
-        private readonly IGameDetailsView view;
-        private readonly EfRepository<Game> gamesRepository;
-
-        public GameDetailsPresenter(IGameDetailsView view, EfRepository<Game> gamesRepository)
+        public GameDetailsPresenter(IGameDetailsView view, IGamesService gamesService)
             : base(view)
         {
-            if (view == null)
-            {
-                throw new ArgumentException(viewCannotBeNullExceptionMessage);
-            }
+            Guard.WhenArgument(gamesService, "gamesService").IsNull().Throw();
 
-            this.view = view;
 
-            if (gamesRepository == null)
-            {
-                throw new ArgumentException(gamesRepositoryCannotBeNullExceptionMessage);
-            }
+            this.gamesService = gamesService;
 
-            this.gamesRepository = gamesRepository;
-
-            this.view.GameDatailsPageInit += this.View_GameDatailsPageInit;
+            this.View.GameDatailsPageInit += this.View_GameDatailsPageInit;
         }
 
         private void View_GameDatailsPageInit(object sender, GameDetailsEventArgs e)
         {
-            this.view.Model.Games = this.gamesRepository.GetAll().Where(g => g.Id == e.Id);
+            this.View.Model.Games = this.gamesService.GetAllGames().Where(g => g.Id == e.Id);
         }
     }
 }

@@ -119,5 +119,14 @@ namespace OldBoardGamesNeedLoveToo.Web.Account
 
             Response.Redirect("/Account/Manage");
         }
+
+        public string GetCurrentUserProfileFromQueryString()
+        {
+            ApplicationUser user = HttpContext.Current.GetOwinContext()
+                .GetUserManager<ApplicationUserManager>()
+                .FindById(HttpContext.Current.User.Identity.GetUserId());
+
+            return user.UserName;
+        }
     }
 }

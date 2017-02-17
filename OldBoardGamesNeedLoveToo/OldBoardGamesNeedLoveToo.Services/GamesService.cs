@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 
+using Bytes2you.Validation;
+
 using OldBoardGamesNeedLoveToo.Models;
 using OldBoardGamesNeedLoveToo.Data.Repositories;
 using OldBoardGamesNeedLoveToo.Data.UnitOfWork;
@@ -11,35 +13,18 @@ namespace OldBoardGamesNeedLoveToo.Services
 {
     public class GamesService : IGamesService
     {
-        private readonly string gamesRepositoryCannotBeNullExceptinMessage = "Games repository can not be null";
-        private readonly string categoriesRepositoryCannotBeNullExceptinMessage = "Categories repository can not be null";
-        private readonly string unitOfWorkCannotBeNullExceptinMessage = "UnitfWork can not be null";
-
         private readonly IRepository<Game> gamesRepository;
         private readonly IRepository<Category> categoriesRepository;
         private readonly IUnitOfWork unitOfWork;
 
         public GamesService(IRepository<Game> gamesRepository, IRepository<Category> categoriesRepository, IUnitOfWork unitOfWork)
         {
-            if (gamesRepository == null)
-            {
-                throw new ArgumentException(gamesRepositoryCannotBeNullExceptinMessage);
-            }
+            Guard.WhenArgument(gamesRepository, "gamesRepository").IsNull().Throw();
+            Guard.WhenArgument(categoriesRepository, "categoriesRepository").IsNull().Throw();
+            Guard.WhenArgument(unitOfWork, "unitOfWork").IsNull().Throw();
 
             this.gamesRepository = gamesRepository;
-
-            if (categoriesRepository == null)
-            {
-                throw new ArgumentException(categoriesRepositoryCannotBeNullExceptinMessage);
-            }
-
             this.categoriesRepository = categoriesRepository;
-
-            if (unitOfWork == null)
-            {
-                throw new ArgumentException(unitOfWorkCannotBeNullExceptinMessage);
-            }
-
             this.unitOfWork = unitOfWork;
         }
         public void AddGame(Game game)

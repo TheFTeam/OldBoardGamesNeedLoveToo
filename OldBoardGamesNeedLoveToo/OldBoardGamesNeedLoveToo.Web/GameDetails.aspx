@@ -159,7 +159,7 @@
                             </div>
                         </div>
                         <div class="col-md-12 col-md-offset-5">
-                            <a href="#" class="btn btn-danger btn-lg">Contact Owner</a>
+                            <a href='<%# string.Format("/userprofile.aspx?username={0}", Item.Owner.Username) %>' class="btn btn-danger btn-lg">Contact Owner</a>
                             <a href="/default" class="btn btn-default">Back</a>
                         </div>
                     </div>

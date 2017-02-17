@@ -318,6 +318,7 @@
     <Content Include="Site.Master" />
     <Content Include="UserControls\CommentsList.ascx" />
     <Content Include="UserControls\GamesList.ascx" />
+    <Content Include="UserProfile.aspx" />
     <Content Include="VerifyAccount.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config">
@@ -516,14 +517,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201702170757256_Profile picture added to UserCustomInfo model.cs" />
-    <Compile Include="Migrations\201702170757256_Profile picture added to UserCustomInfo model.Designer.cs">
-      <DependentUpon>201702170757256_Profile picture added to UserCustomInfo model.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702171153409_Models updated with Comments.cs" />
-    <Compile Include="Migrations\201702171153409_Models updated with Comments.Designer.cs">
-      <DependentUpon>201702171153409_Models updated with Comments.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="MyGames.aspx.cs">
@@ -563,6 +556,13 @@
     <Compile Include="UserControls\GamesList.ascx.designer.cs">
       <DependentUpon>GamesList.ascx</DependentUpon>
     </Compile>
+    <Compile Include="UserProfile.aspx.cs">
+      <DependentUpon>UserProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserProfile.aspx.designer.cs">
+      <DependentUpon>UserProfile.aspx</DependentUpon>
+    </Compile>
     <Compile Include="VerifyAccount.aspx.cs">
       <DependentUpon>VerifyAccount.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -598,14 +598,6 @@
       <Project>{d62b3951-73c5-43e6-9d6c-2e7e4cea5aba}</Project>
       <Name>OldBoardGamesNeedLoveToo.Services</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201702170757256_Profile picture added to UserCustomInfo model.resx">
-      <DependentUpon>201702170757256_Profile picture added to UserCustomInfo model.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702171153409_Models updated with Comments.resx">
-      <DependentUpon>201702171153409_Models updated with Comments.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

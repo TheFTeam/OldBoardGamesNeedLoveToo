@@ -1,36 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 
-using OldBoardGamesNeedLoveToo.Models;
+using Bytes2you.Validation;
 
+using OldBoardGamesNeedLoveToo.Models;
 using OldBoardGamesNeedLoveToo.Services.Contracts;
 using OldBoardGamesNeedLoveToo.Data.Repositories;
 using OldBoardGamesNeedLoveToo.Data.UnitOfWork;
+using System.Linq;
 
 namespace OldBoardGamesNeedLoveToo.Services
 {
-    public class UserService : IUserService
+    public class UsersService : IUsersService
     {
-        private readonly string userCustomRpositoryCannotBeNullExceptinMessage = "UserCustomInfo repository can not be null";
-        private readonly string unitOfWorkCannotBeNullExceptinMessage = "UnitfWork can not be null";
-
         private readonly IRepository<UserCustomInfo> userCustomInfoRepository;
         private readonly IUnitOfWork unitOfWork;
 
-        public UserService(IRepository<UserCustomInfo> userCustomInfoRepository, IUnitOfWork unitOfWork)
+        public UsersService(IRepository<UserCustomInfo> userCustomInfoRepository, IUnitOfWork unitOfWork)
         {
-            if (userCustomInfoRepository == null)
-            {
-                throw new ArgumentException(userCustomRpositoryCannotBeNullExceptinMessage);
-            }
+            Guard.WhenArgument(userCustomInfoRepository, "userCustomInfoRepository").IsNull().Throw();
+            Guard.WhenArgument(unitOfWork, "unitOfWork").IsNull().Throw();
 
             this.userCustomInfoRepository = userCustomInfoRepository;
-
-            if (unitOfWork == null)
-            {
-                throw new ArgumentException(unitOfWorkCannotBeNullExceptinMessage);
-            }
-
             this.unitOfWork = unitOfWork;
         }
 
@@ -53,6 +44,11 @@ namespace OldBoardGamesNeedLoveToo.Services
         public IEnumerable<UserCustomInfo> GetAllUserCustomInfos()
         {
             return this.userCustomInfoRepository.GetAll();
+        }
+
+        public IEnumerable<Game> GetAllUserCustomInfoSellinGames(string username)
+        {
+            return this.userCustomInfoRepository.GetAll().Where(u => u.Username == username).SelectMany(u => u.SellingGames);
         }
 
         public UserCustomInfo GetUserDetailsById(object id)

@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Web;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.AspNet.Identity;
 
 using WebFormsMvp;
 using WebFormsMvp.Web;
@@ -7,9 +10,6 @@ using OldBoardGamesNeedLoveToo.MVP.CustomEventArgs;
 using OldBoardGamesNeedLoveToo.MVP.Views;
 using OldBoardGamesNeedLoveToo.MVP.Presenters;
 using OldBoardGamesNeedLoveToo.Web.Models;
-using System.Web;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.AspNet.Identity;
 
 namespace OldBoardGamesNeedLoveToo.Web
 {
@@ -27,7 +27,7 @@ namespace OldBoardGamesNeedLoveToo.Web
             if (!IsPostBack)
             {
                 this.FormViewGameDetails.DataSource = this.Model.Games;
-                this.FormViewGameDetails.DataBind();
+                this.DataBind();
             }
 
             this.CheckIfUserIsLoggedToSetCommentsVisibility();
@@ -48,6 +48,5 @@ namespace OldBoardGamesNeedLoveToo.Web
                 this.UserControlCommentsList.IsVisible = false;
             }
         }
-
     }
 }
