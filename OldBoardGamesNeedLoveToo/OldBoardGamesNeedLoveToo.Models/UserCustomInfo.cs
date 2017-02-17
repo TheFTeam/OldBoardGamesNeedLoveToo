@@ -11,12 +11,14 @@ namespace OldBoardGamesNeedLoveToo.Models
     {
         private ICollection<Game> boughtGames;
         private ICollection<Game> sellingGame;
+        //private ICollection<Comment> comments;
         private UserRoleType role;
 
         public UserCustomInfo()
         {
             this.boughtGames = new HashSet<Game>();
             this.sellingGame = new HashSet<Game>();
+            //this.comments = new HashSet<Comment>();
         }
 
         [Key]
@@ -62,6 +64,8 @@ namespace OldBoardGamesNeedLoveToo.Models
 
         public int SumOfUsersRating { get; set; }
 
+        public byte[] ProfilePricture { get; set; }
+
         [ForeignKey("BuyerId")]
         [Column("BoughtGames")]
 
@@ -91,5 +95,17 @@ namespace OldBoardGamesNeedLoveToo.Models
                 this.sellingGame = value;
             }
         }
+
+        //public virtual ICollection<Comment> Comments
+        //{
+        //    get
+        //    {
+        //        return this.comments;
+        //    }
+        //    set
+        //    {
+        //        this.comments = value;
+        //    }
+        //}
     }
 }

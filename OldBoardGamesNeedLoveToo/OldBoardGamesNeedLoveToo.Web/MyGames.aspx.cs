@@ -37,11 +37,5 @@ namespace OldBoardGamesNeedLoveToo.Web
                 this.GridViewMyGames.DataBind();
             }
         }
-
-
-        protected void GridViewMyGames_CallingDataMethods(object sender, CallingDataMethodsEventArgs e)
-        {
-            e.DataMethodsObject = NinjectWebCommon.Kernel.Get<IGamesService>();
-        }
     }
 }

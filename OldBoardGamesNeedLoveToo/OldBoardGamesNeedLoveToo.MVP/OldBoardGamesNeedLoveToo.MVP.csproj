@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,7 +49,7 @@
     <Compile Include="CustomEventArgs\GameDetailsEventArgs.cs" />
     <Compile Include="CustomEventArgs\MyGamesEventArgs.cs" />
     <Compile Include="CustomEventArgs\ObjectDataSourceUserDetailsEventArgs.cs" />
-    <Compile Include="CustomEventArgs\UserDetailsEventArgs.cs" />
+    <Compile Include="CustomEventArgs\UserDetailsByIdEventArgs.cs" />
     <Compile Include="Models\AddGameViewModel.cs" />
     <Compile Include="Models\IAddGameViewModel.cs" />
     <Compile Include="Models\IGamesViewModel.cs" />
@@ -68,7 +69,7 @@
     <Compile Include="Views\IMyGamesView.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="Views\packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OldBoardGamesNeedLoveToo.Data\OldBoardGamesNeedLoveToo.Data.csproj">

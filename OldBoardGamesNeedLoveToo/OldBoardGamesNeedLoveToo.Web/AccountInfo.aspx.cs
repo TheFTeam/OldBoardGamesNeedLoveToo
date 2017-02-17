@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Linq;
 using System.Web;
 using System.Web.UI.WebControls;
 
@@ -8,50 +10,87 @@ using Microsoft.AspNet.Identity.Owin;
 using WebFormsMvp;
 using WebFormsMvp.Web;
 
-using Ninject;
-
 using OldBoardGamesNeedLoveToo.MVP.CustomEventArgs;
 using OldBoardGamesNeedLoveToo.MVP.Models;
 using OldBoardGamesNeedLoveToo.MVP.Presenters;
 using OldBoardGamesNeedLoveToo.MVP.Views;
 using OldBoardGamesNeedLoveToo.Web.Models;
-using OldBoardGamesNeedLoveToo.Web.App_Start;
-using OldBoardGamesNeedLoveToo.Services.Contracts;
+using OldBoardGamesNeedLoveToo.Models;
 
 namespace OldBoardGamesNeedLoveToo.Web
 {
     [PresenterBinding(typeof(AccountInfoPresenter))]
     public partial class AccountInfo : MvpPage<UsersViewModel>, IAccountInfoView
     {
-        public event EventHandler<UserDetailsEventArgs> DefaultPageInit;
-        public event EventHandler<ObjectDataSourceUserDetailsEventArgs> ObjectCreating;
+        public event EventHandler<UserDetailsByIdEventArgs> OnGetData;
+        public event EventHandler<UserDetailsByIdEventArgs> OnUpdateItem;
 
-        protected void Page_Load(object sender, EventArgs e)
+        public IQueryable<UserCustomInfo> ListViewUserDetails_GetData()
         {
-            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            Guid id = this.GetCurrentUserIdFromSession();
+            this.OnGetData?.Invoke(null, new UserDetailsByIdEventArgs(id));
 
-            if (user != null)
-            {
-                var id = user.UserCustomInfo.Id;
-                this.Session["Id"] = id;
-                this.Session.Timeout = 30;
-            }            
-
-            //this.DefaultPageInit?.Invoke(sender, new UserDetailsEventArgs(id));
-
-            //if (!IsPostBack)
-            //{
-            //    this.ListViewUserDetails.DataSource = this.Model.Users;
-            //    this.ListViewUserDetails.DataBind();
-            //}
+            return this.Model.Users.ToList().AsQueryable();
         }
 
-        protected void ObjectDataSourceUserDetails_ObjectCreating(object sender, ObjectDataSourceEventArgs e)
+        public void ListViewUserDetails_UpdateItem(Guid Id)
         {
-            var service = NinjectWebCommon.Kernel.Get<IUserService>();
-            this.ObjectCreating?.Invoke(sender, new ObjectDataSourceUserDetailsEventArgs(service));
-            e.ObjectInstance = service;
-            this.ListViewUserDetails.DataBind();
+            this.OnUpdateItem?.Invoke(this, new UserDetailsByIdEventArgs(Id));
+        }
+
+        private Guid GetCurrentUserIdFromSession()
+        {
+            ApplicationUser user = HttpContext.Current.GetOwinContext()
+                .GetUserManager<ApplicationUserManager>()
+                .FindById(HttpContext.Current.User.Identity.GetUserId());
+
+            Guid id = Guid.Empty;
+            if (user != null)
+            {
+                id = user.UserCustomInfo.Id;
+                this.Session["Id"] = id;
+                this.Session.Timeout = 30;
+            }
+
+            return id;
+        }
+
+        protected void ButtonSubmitProfilePic_Click(object sender, EventArgs e)
+        {
+            var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            ApplicationUser user = HttpContext.Current.GetOwinContext()
+                .GetUserManager<ApplicationUserManager>()
+                .FindById(HttpContext.Current.User.Identity.GetUserId());
+            byte[] fileData = null;
+            Stream fileStream = null;
+            int length = 0;
+
+            if (this.FileUploadProfilePic.HasFile)
+            {
+                try
+                {
+                    if (this.FileUploadProfilePic.PostedFile.ContentType == "image/jpeg" ||
+                        this.FileUploadProfilePic.PostedFile.ContentType == "image/jpg" ||
+                        this.FileUploadProfilePic.PostedFile.ContentType == "image/png")
+                    {
+                        length = this.FileUploadProfilePic.PostedFile.ContentLength;
+                        fileData = new byte[length + 1];
+                        fileStream = this.FileUploadProfilePic.PostedFile.InputStream;
+                        fileStream.Read(fileData, 0, length);
+                        user.UserCustomInfo.ProfilePricture = fileData;
+                        manager.Update(user);
+                    }
+                    else
+                    {
+                        this.LabelFileUploadStatus.Text = "Accepted file formats: .jpg | .jpeg | .png";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    this.LabelFileUploadStatus.Text = "The file could not be uploaded.The following error occured: " + ex.Message;
+                }
+
+            }
         }
     }
 }

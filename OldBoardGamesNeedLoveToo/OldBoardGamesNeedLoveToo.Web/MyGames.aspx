@@ -12,11 +12,10 @@
         <div class="col-md-12">
             <asp:GridView ID="GridViewMyGames" runat="server"
                 ItemType="OldBoardGamesNeedLoveToo.Models.Game"
-                OnCallingDataMethods="GridViewMyGames_CallingDataMethods"
                 DataKeyNames="Id"
-                AllowSorting="true"
                 AutoGenerateColumns="false" CssClass="table table-responsive table-bordered">
                 <Columns>
+                    <asp:ImageField  DataImageUrlField="Image"></asp:ImageField>
                     <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name"></asp:BoundField>
                     <asp:BoundField DataField="AddedOnDate" HeaderText="Added On" SortExpression="AddedOnDate" ReadOnly="True"></asp:BoundField>
                     <asp:BoundField DataField="Producer" HeaderText="Producer" SortExpression="Producer"></asp:BoundField>

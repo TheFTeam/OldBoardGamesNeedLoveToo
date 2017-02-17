@@ -11,10 +11,12 @@ namespace OldBoardGamesNeedLoveToo.Models
     public class Game : IGame
     {
         private ICollection<Category> categories;
+        private ICollection<Comment> comments;
 
         public Game()
         {
             this.categories = new HashSet<Category>();
+            this.comments = new HashSet<Comment>();
         }
 
         [Key]
@@ -80,7 +82,7 @@ namespace OldBoardGamesNeedLoveToo.Models
 
         public virtual UserCustomInfo Buyer { get; set; }
 
-        public ICollection<Category> Categories
+        public virtual ICollection<Category> Categories
         {
             get
             {
@@ -89,6 +91,18 @@ namespace OldBoardGamesNeedLoveToo.Models
             set
             {
                 this.categories = value;
+            }
+        }
+
+        public virtual ICollection<Comment> Comments
+        {
+            get
+            {
+                return this.comments;
+            }
+            set
+            {
+                this.comments = value;
             }
         }
     }

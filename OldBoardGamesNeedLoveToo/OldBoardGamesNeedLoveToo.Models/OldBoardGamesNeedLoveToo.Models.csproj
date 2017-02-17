@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Category.cs" />
+    <Compile Include="Comment.cs" />
     <Compile Include="ConditionType.cs" />
     <Compile Include="Contracts\IGame.cs" />
     <Compile Include="Contracts\IUserCustomInfo.cs" />

@@ -2,9 +2,9 @@
 
 namespace OldBoardGamesNeedLoveToo.MVP.CustomEventArgs
 {
-    public class UserDetailsEventArgs
+    public class UserDetailsByIdEventArgs
     {
-        public UserDetailsEventArgs(Guid id)
+        public UserDetailsByIdEventArgs(Guid id)
         {
             this.Id = id;
         }

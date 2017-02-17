@@ -10,17 +10,29 @@ using Ninject;
 
 using OldBoardGamesNeedLoveToo.Models;
 using OldBoardGamesNeedLoveToo.Web.Models;
+using System.IO;
 
 namespace OldBoardGamesNeedLoveToo.Web.Account
 {
     public partial class Register : Page
     {
+        private byte[] ReadImageFile(string imageLocation)
+        {
+            byte[] imageData = null;
+            FileInfo fileInfo = new FileInfo(imageLocation);
+            long imageFileLength = fileInfo.Length;
+            FileStream fs = new FileStream(imageLocation, FileMode.Open, FileAccess.Read);
+            BinaryReader br = new BinaryReader(fs);
+            imageData = br.ReadBytes((int) imageFileLength);
+            return imageData;
+        }
         protected void CreateUser_Click(object sender, EventArgs e)
         {
             var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
             var signInManager = Context.GetOwinContext().Get<ApplicationSignInManager>();
             var user = new ApplicationUser() { UserName = Email.Text, Email = Email.Text };
             IdentityResult result = manager.Create(user, Password.Text);
+            string location = Server.MapPath("~\\Content\\images\\Superman-profile-pic.svg.png");
             if (result.Succeeded)
             {
                 var currentUser = manager.FindByName(user.UserName);
@@ -29,7 +41,8 @@ namespace OldBoardGamesNeedLoveToo.Web.Account
                 var newUserCustomInfo = new UserCustomInfo()
                 {
                     Username = currentUser.UserName,
-                    ApplicationUserId = currentUser.Id
+                    ApplicationUserId = currentUser.Id,
+                    ProfilePricture = this.ReadImageFile(location)
                 };
 
                 currentUser.UserCustomInfo = newUserCustomInfo;

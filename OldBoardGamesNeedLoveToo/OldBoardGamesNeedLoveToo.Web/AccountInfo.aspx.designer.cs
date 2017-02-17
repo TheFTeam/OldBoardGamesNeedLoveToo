@@ -13,6 +13,33 @@ namespace OldBoardGamesNeedLoveToo.Web {
     public partial class AccountInfo {
         
         /// <summary>
+        /// FileUploadProfilePic control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload FileUploadProfilePic;
+        
+        /// <summary>
+        /// LabelFileUploadStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelFileUploadStatus;
+        
+        /// <summary>
+        /// ButtonSubmitProfilePic control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonSubmitProfilePic;
+        
+        /// <summary>
         /// ListViewUserDetails control.
         /// </summary>
         /// <remarks>
@@ -20,14 +47,5 @@ namespace OldBoardGamesNeedLoveToo.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListView ListViewUserDetails;
-        
-        /// <summary>
-        /// ObjectDataSourceUserDetails control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSourceUserDetails;
     }
 }

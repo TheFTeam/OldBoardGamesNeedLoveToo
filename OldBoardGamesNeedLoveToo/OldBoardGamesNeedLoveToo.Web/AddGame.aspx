@@ -12,8 +12,9 @@
     <hr />
     <div class="col-md-12">
         <div class="col-lg-6 col-lg-offset-3 text-center">
-            <asp:Panel runat="server" ID="DisplayGameInfo" GroupingText="Display Game Info" CssClass="input-group">
+            <asp:Panel runat="server" ID="DisplayGameInfo" GroupingText="Display Game Info">
                 <p>
+                    <h5>Name of the board game</h5>
                     <asp:TextBox runat="server" ID="TextBoxName" placeholder="Name of the game" CssClass="form-control" />
                     <asp:RequiredFieldValidator ID="RequiredFieldValidatorName" runat="server"
                         ErrorMessage="*Name of the game is required"
@@ -22,11 +23,13 @@
                     </asp:RequiredFieldValidator>
                 </p>
                 <p>
+                    <h5>Upload an image</h5>
                     <asp:FileUpload ID="FileUploadGameImage" runat="server" CssClass="form-control" />
                     <asp:Label ID="LabelFileUploadStatus" Text=".jpg | .jpeg | .png | .gif" runat="server" CssClass="smallest" />
                     <br />
                 </p>
                 <p>
+                    <h5>Producer</h5>
                     <asp:TextBox ID="TextBoxProducer" runat="server" placeholder="Producer" CssClass="form-control"></asp:TextBox>
                     <asp:RequiredFieldValidator
                         ID="RequiredFieldValidatorProducer" runat="server"
@@ -36,6 +39,7 @@
                     </asp:RequiredFieldValidator>
                 </p>
                 <p>
+                    <h5>Price</h5>
                     <asp:TextBox runat="server" ID="TextBoxPrice" placeholder="Price" CssClass="form-control" />
                     <asp:RequiredFieldValidator ID="RequiredFieldValidatorPrice" runat="server"
                         ValidationGroup="DisplayGameInfo"
@@ -53,8 +57,9 @@
 
             <asp:Panel runat="server" ID="DetailedGameInfo" GroupingText="Detailed Game Info">
                 <p>
+                    <h5>Description</h5>
                     <asp:TextBox runat="server" ID="TextBoxDescription"
-                        TextMode="MultiLine" placeholder="Description" CssClass="form-control" Width="470" />
+                        TextMode="MultiLine" placeholder="Description" CssClass="form-control" Width="600" />
                     <asp:RequiredFieldValidator ID="RequiredFieldValidatorDescription" runat="server"
                         ErrorMessage="*Description is required"
                         ControlToValidate="TextBoxDescription"
@@ -62,6 +67,7 @@
                     </asp:RequiredFieldValidator>
                 </p>
                 <p>
+                    <h5>Content</h5>
                     <asp:TextBox runat="server" ID="TextBoxContents" placeholder="Content" CssClass="form-control" />
                     <asp:RequiredFieldValidator ID="RequiredFieldValidatorContents" runat="server"
                         ErrorMessage="*Content is required"
@@ -70,6 +76,7 @@
                     </asp:RequiredFieldValidator>
                 </p>
                 <p>
+                    <h5>Condition</h5>
                     <asp:DropDownList ID="DropDownListCondition" runat="server" AutoPostBack="false" CssClass="dropdown form-control" DataTextField="-- Condition --">
                         <asp:ListItem Text="Excellent" Value="0" />
                         <asp:ListItem Text="Very Good" Value="1" />
@@ -86,6 +93,7 @@
                 </p>
                 <br />
                 <p>
+                    <h5>Release Date</h5>
                     <asp:TextBox runat="server" TextMode="Date" ID="TextBoxReleaseDate" CssClass="form-control" />
                     <asp:RequiredFieldValidator
                         ID="RequiredFieldValidatorReleaseDate" runat="server"
@@ -95,9 +103,11 @@
                     </asp:RequiredFieldValidator>
                 </p>
                 <p>
+                    <h5>Language</h5>
                     <asp:TextBox runat="server" ID="TextBoxLanguage" placeholder="Language" CssClass="form-control" />
                 </p>
                 <p>
+                    <h5>Minimum Number of Players</h5>
                     <asp:TextBox runat="server" ID="TextBoxMinPlayers" placeholder="Minimum Number of Players" TextMode="Number" CssClass="form-control" />
                     <asp:RangeValidator ID="RangeValidatorMinPlayers" runat="server"
                         ErrorMessage="*Minimum number of players is 1 and should not be negative"
@@ -108,6 +118,7 @@
                     </asp:RangeValidator>
                 </p>
                 <p>
+                    <h5>Maximum Number of Players</h5>
                     <asp:TextBox runat="server" ID="TextBoxMaxPlayers" placeholder="Maximum Number of Players" TextMode="Number" CssClass="form-control" />
                     <asp:RangeValidator ID="RangeValidatorMaxPlayers" runat="server"
                         ErrorMessage="*Maximum number of players is 100 and should not be negative"
@@ -118,6 +129,7 @@
                     </asp:RangeValidator>
                 </p>
                 <p>
+                    <h5>Minimum Age of Players</h5>
                     <asp:TextBox runat="server" ID="TextBoxMinAgeOfPlayers" placeholder="Minimum Age of Players" TextMode="Number" CssClass="form-control" />
                     <%--<asp:rangevalidator id="rangevalidatorminageofplayers" runat="server"
                         ErrorMessage="*minimum age of players is 2 and should not be negative" 
@@ -129,6 +141,7 @@
                     </asp:rangevalidator>--%>
                 </p>
                 <p>
+                    <h5>Maximum Age of Players</h5>
                     <asp:TextBox runat="server" ID="TextBoxMaxAgeOfPlayers" placeholder="Maximum Age of Players" TextMode="Number" CssClass="form-control" />
                     <%--<asp:RangeValidator ID="RangeValidatorMaxEgeofPlayers" runat="server"
                         ErrorMessage="*Maximum age of players is 100 and should not be negative"

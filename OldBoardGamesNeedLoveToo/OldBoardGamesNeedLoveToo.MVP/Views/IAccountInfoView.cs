@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web.ModelBinding;
 
 using WebFormsMvp;
 
@@ -9,8 +10,12 @@ namespace OldBoardGamesNeedLoveToo.MVP.Views
 {
     public interface IAccountInfoView : IView<UsersViewModel>
     {
-        event EventHandler<UserDetailsEventArgs> DefaultPageInit;
+        event EventHandler<UserDetailsByIdEventArgs> OnGetData;
 
-        event EventHandler<ObjectDataSourceUserDetailsEventArgs> ObjectCreating;
+        event EventHandler<UserDetailsByIdEventArgs> OnUpdateItem;
+                
+        ModelStateDictionary ModelState { get; }
+
+        bool TryUpdateModel<TModel>(TModel model) where TModel : class;
     }
 }

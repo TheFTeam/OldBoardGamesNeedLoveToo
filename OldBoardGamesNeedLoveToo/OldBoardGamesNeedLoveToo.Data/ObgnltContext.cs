@@ -21,6 +21,9 @@ namespace OldBoardGamesNeedLoveToo.Data
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+
             modelBuilder.Entity<UserCustomInfo>()
                 .HasMany(i => i.BoughtGames)
                 .WithOptional(u => u.Buyer)
@@ -39,20 +42,18 @@ namespace OldBoardGamesNeedLoveToo.Data
                     x.ToTable("OwnerSellingGames");
                 });
 
-            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
-            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
 
-            //modelBuilder.Entity<Game>()
-            //       .HasRequired(m => m.Owner)
-            //       .WithMany(t => t.SellingGames)
-            //       .HasForeignKey(m => m.OwnerId)
+
+            modelBuilder.Entity<Game>()
+                   .HasMany(g => g.Comments)
+                   .WithRequired(g => g.Game)
+                   .HasForeignKey(g => g.GameId)
+                   .WillCascadeOnDelete(true);
+
+            //modelBuilder.Entity<UserCustomInfo>()
+            //       .HasMany(u => u.Comments)
+            //       .WithRequired()
             //       .WillCascadeOnDelete(false);
-
-            //modelBuilder.Entity<Game>()
-            //            .HasOptional(m => m.Buyer)
-            //            .WithMany(t => t.BoughtGames)
-            //            .HasForeignKey(m => m.BuyerId)
-            //            .WillCascadeOnDelete(false);
         }
     }
 }
