@@ -13,7 +13,7 @@ namespace OldBoardGamesNeedLoveToo.MVP.Views
     public interface IAdminGamesView : IView<AdminGamesViewModel>
     {
         event EventHandler AdminGetAllGames;
-        event EventHandler AdminGetAllCategories;
+        event EventHandler<GameDetailsEventArgs> AdminDeteleGame;
 
         event EventHandler<GameDetailsEventArgs> AdminUpdateGames;
         ModelStateDictionary ModelState { get; }

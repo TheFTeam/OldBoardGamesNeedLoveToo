@@ -10,7 +10,6 @@ namespace OldBoardGamesNeedLoveToo.MVP.Models
     public interface IAdminGamesViewModel
     {
         IEnumerable<Game> Games { get; set; }
-        IEnumerable<Category> Categories { get; set; }
 
     }
 }

@@ -10,7 +10,7 @@ namespace OldBoardGamesNeedLoveToo.MVP.Models
     public class AdminGamesViewModel : IAdminGamesViewModel
     {
         public IEnumerable<Game> Games { get; set; }
-        public IEnumerable<Category> Categories{ get; set; }
+        
 
         
     }
