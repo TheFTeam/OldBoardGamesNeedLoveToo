@@ -1,17 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using OldBoardGamesNeedLoveToo.Models;
+using OldBoardGamesNeedLoveToo.MVP.Models;
+using OldBoardGamesNeedLoveToo.MVP.Presenters;
+using OldBoardGamesNeedLoveToo.MVP.Views;
+using System;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebFormsMvp;
+using WebFormsMvp.Web;
+using OldBoardGamesNeedLoveToo.MVP.CustomEventArgs;
 
 namespace OldBoardGamesNeedLoveToo.Web.Admin
 {
-    public partial class ManageUsers : System.Web.UI.Page
+    [PresenterBinding(typeof(AdminUserPresenter))]
+    public partial class ManageUsers : MvpPage<AdminUsersViewModel>, IAdminUsersView
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
+        public event EventHandler AdminGetAllUsers;
+        public event EventHandler<GameDetailsEventArgs> AdminUpdateUser;
+        public event EventHandler<GameDetailsEventArgs> AdminDeleteUser;
 
+        public IQueryable<UserCustomInfo> GridViewManageUsers_GetData()
+        {
+            this.AdminGetAllUsers?.Invoke(this, null);
+            return this.Model.Users.ToList().AsQueryable();
+        }
+
+        public void GridViewManageUsers_UpdateItem(Guid id)
+        {
+            this.AdminUpdateUser?.Invoke(this, new GameDetailsEventArgs(id));
+        }
+
+        public void GridViewManageUsers_DeleteItem(Guid id)
+        {
+            this.AdminDeleteUser?.Invoke(this, new GameDetailsEventArgs(id));
         }
     }
 }

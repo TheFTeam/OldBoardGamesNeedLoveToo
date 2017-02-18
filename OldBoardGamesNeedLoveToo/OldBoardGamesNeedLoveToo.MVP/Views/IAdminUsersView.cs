@@ -6,11 +6,11 @@ using WebFormsMvp;
 
 namespace OldBoardGamesNeedLoveToo.MVP.Views
 {
-    public interface IAdminGamesView : IView<AdminGamesViewModel>
+    public interface IAdminUsersView : IView<AdminUsersViewModel>
     {
-        event EventHandler AdminGetAllGames;
-        event EventHandler<GameDetailsEventArgs> AdminDeteleGame;
-        event EventHandler<GameDetailsEventArgs> AdminUpdateGames;
+        event EventHandler AdminGetAllUsers;
+        event EventHandler<GameDetailsEventArgs> AdminUpdateUser;
+        event EventHandler<GameDetailsEventArgs> AdminDeleteUser;
         ModelStateDictionary ModelState { get; }
 
         bool TryUpdateModel<TModel>(TModel model) where TModel : class;
