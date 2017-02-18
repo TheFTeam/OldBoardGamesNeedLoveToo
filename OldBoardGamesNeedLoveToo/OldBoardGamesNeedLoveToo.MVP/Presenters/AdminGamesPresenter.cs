@@ -2,11 +2,6 @@
 using OldBoardGamesNeedLoveToo.MVP.Views;
 using OldBoardGamesNeedLoveToo.Services.Contracts;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.ModelBinding;
 using WebFormsMvp;
 
 namespace OldBoardGamesNeedLoveToo.MVP.Presenters
@@ -15,12 +10,10 @@ namespace OldBoardGamesNeedLoveToo.MVP.Presenters
     {
         private readonly string viewCannotBeNullExceptionMessage = "View can not be null.";
         private readonly string gamesServiceCannotBeNullExceptionMessage = "Games service can not be null.";
-        private readonly string categoriesServiceCannotBeNullExceptionMessage = "categories service can not be null";
         
         private readonly IGamesService gamesService;
-        private readonly ICategoriesService categoriesService;
 
-        public AdminGamesPresenter(IAdminGamesView view, IGamesService gamesService, ICategoriesService categoriesService) : base(view)
+        public AdminGamesPresenter(IAdminGamesView view, IGamesService gamesService) : base(view)
         {
             if (view == null)
             {
@@ -32,18 +25,24 @@ namespace OldBoardGamesNeedLoveToo.MVP.Presenters
             }
 
             this.gamesService = gamesService;
-
-            if (categoriesService == null)
-            {
-                throw new ArgumentException(categoriesServiceCannotBeNullExceptionMessage);
-            }
-
-            this.categoriesService = categoriesService;
+            
 
             this.View.AdminGetAllGames += View_AdminGetAllGames;
             this.View.AdminUpdateGames += View_AdminUpdateGames;
-            this.View.AdminGetAllCategories += View_AdminGetAllCategories;
+            this.View.AdminDeteleGame += View_AdminDeteleGame; ;
 
+        }
+
+        private void View_AdminDeteleGame(object sender, CustomEventArgs.GameDetailsEventArgs e)
+        {
+            Game gameToDelete = this.gamesService.GetGameById(e.Id);
+            if (gameToDelete == null)
+            {
+                this.View.ModelState.AddModelError("", string.Format("Item with id {0} was not found", e.Id));
+                return;
+            }
+
+            this.gamesService.DeleteGame(gameToDelete);
         }
 
         private void View_AdminGetAllGames(object sender, EventArgs e)
@@ -66,9 +65,6 @@ namespace OldBoardGamesNeedLoveToo.MVP.Presenters
             }
         }
 
-        private void View_AdminGetAllCategories(object sender, EventArgs e)
-        {
-            this.View.Model.Categories = this.categoriesService.GetAllCategories();
-        }
+        
     }
 }

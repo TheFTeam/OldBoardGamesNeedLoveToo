@@ -44,6 +44,9 @@ namespace OldBoardGamesNeedLoveToo.Web.App_Start.Modules
 
             this.Bind<IAdminGamesViewModel>().To<AdminGamesViewModel>();
             this.Bind<AdminGamesPresenter>().ToSelf();
+
+            this.Bind<IAdminUsersViewModel>().To<AdminUsersViewModel>();
+            this.Bind<AdminUserPresenter>().ToSelf();
         }
     }
 }

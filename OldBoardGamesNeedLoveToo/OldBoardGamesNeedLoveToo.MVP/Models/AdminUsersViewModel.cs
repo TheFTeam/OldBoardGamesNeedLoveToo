@@ -7,11 +7,9 @@ using OldBoardGamesNeedLoveToo.Models;
 
 namespace OldBoardGamesNeedLoveToo.MVP.Models
 {
-    public class AdminGamesViewModel : IAdminGamesViewModel
+    public class AdminUsersViewModel : IAdminUsersViewModel
     {
-        public IEnumerable<Game> Games { get; set; }
-        
-
+        public IEnumerable<UserCustomInfo> Users { get; set; }
         
     }
 }

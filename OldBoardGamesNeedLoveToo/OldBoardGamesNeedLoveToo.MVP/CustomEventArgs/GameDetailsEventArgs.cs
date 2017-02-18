@@ -2,7 +2,7 @@
 
 namespace OldBoardGamesNeedLoveToo.MVP.CustomEventArgs
 {
-    public class GameDetailsEventArgs
+    public class GameDetailsEventArgs :EventArgs
     {
         public GameDetailsEventArgs(Guid id)
         {
