@@ -65,3 +65,7 @@ tr, td, th {
 .register label{
     font-size: 0.9em;
 }
+
+.listview-mygames > table{
+    font-size: 0.7em;
+}

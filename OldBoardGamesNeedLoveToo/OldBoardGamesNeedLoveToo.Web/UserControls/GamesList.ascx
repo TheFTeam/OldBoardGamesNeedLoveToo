@@ -129,7 +129,7 @@
         </div>
         <div class="col-md-9">
             <asp:ListView ID="ListViewGames" runat="server"
-                ItemType="OldBoardGamesNeedLoveToo.Models.Game" AllowPaging="true"  ItemPlaceholderID="groupGamesPlaceHolder"  OnPagePropertiesChanging="ListViewGames_PagePropertiesChanging"
+                ItemType="OldBoardGamesNeedLoveToo.Models.Game" AllowPaging="true"  ItemPlaceholderID="groupGamesPlaceHolder"
                 DataKeyNames="Id">
                 <ItemTemplate>
                     <div class="col-md-3">
@@ -145,11 +145,11 @@
                 </ItemTemplate>
                 <LayoutTemplate>
                     <asp:PlaceHolder runat="server" ID="groupGamesPlaceHolder"></asp:PlaceHolder>
-                    <asp:DataPager ID="DataPagerGamesList" runat="server" PagedControlID="ListViewGames" PageSize="4">
+                   <%-- <asp:DataPager ID="DataPagerGamesList" runat="server" PagedControlID="ListViewGames" PageSize="4">
                         <Fields>
                             <asp:NumericPagerField  ButtonType="Link"/>
                         </Fields>
-                    </asp:DataPager>
+                    </asp:DataPager>--%>
                 </LayoutTemplate>
             </asp:ListView>
         </div>

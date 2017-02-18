@@ -1,41 +1,55 @@
-﻿using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Ninject;
-using OldBoardGamesNeedLoveToo.MVP.Presenters;
-using OldBoardGamesNeedLoveToo.MVP.Views;
-using OldBoardGamesNeedLoveToo.Services;
-using OldBoardGamesNeedLoveToo.Services.Contracts;
-using OldBoardGamesNeedLoveToo.Web.App_Start;
-using OldBoardGamesNeedLoveToo.Web.Models;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
 using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
+
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+
 using WebFormsMvp;
 using WebFormsMvp.Web;
+
+using OldBoardGamesNeedLoveToo.Models;
+using OldBoardGamesNeedLoveToo.MVP.Presenters;
+using OldBoardGamesNeedLoveToo.MVP.Views;
 using OldBoardGamesNeedLoveToo.MVP.CustomEventArgs;
+using OldBoardGamesNeedLoveToo.Web.Models;
 
 namespace OldBoardGamesNeedLoveToo.Web
 {
     [PresenterBinding(typeof(MyGamesPresenter))]
     public partial class MyGames : MvpPage<GamesViewModel>, IMyGamesView
     {
-        public event EventHandler<MyGamesEventArgs> MyGamesPageInit;
+        public event EventHandler<MyGamesEventArgs> OnGetData;
+        public event EventHandler<MyGamesEventArgs> OnDeleteItem;
+        public event EventHandler<MyGamesEventArgs> OnUpdateItem;
 
-        protected void Page_Load(object sender, EventArgs e)
+        public IQueryable<Game> GridViewMyGames_GetData()
         {
-            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-            var id = user.UserCustomInfo.Id;
+            Guid id = GetCurrentUserCustomInfoId();
+            this.OnGetData?.Invoke(this, new MyGamesEventArgs(id));
 
-            this.MyGamesPageInit?.Invoke(sender, new MyGamesEventArgs(id));
+            return this.Model.Games.ToList().AsQueryable();
+        }
 
-            if (!IsPostBack)
-            {
-                this.GridViewMyGames.DataSource = this.Model.Games;
-                this.GridViewMyGames.DataBind();
-            }
+        public void GridViewMyGames_UpdateItem(Guid Id)
+        {
+            this.OnUpdateItem?.Invoke(this, new MyGamesEventArgs(Id));
+        }
+
+        public void GridViewMyGames_DeleteItem(Guid Id)
+        {
+            this.OnDeleteItem?.Invoke(this, new MyGamesEventArgs(Id));
+        }
+
+        private Guid GetCurrentUserCustomInfoId()
+        {
+            ApplicationUser user = HttpContext.Current.GetOwinContext()
+                .GetUserManager<ApplicationUserManager>()
+                .FindById(HttpContext.Current.User.Identity.GetUserId());
+            Guid id = user.UserCustomInfo.Id;
+
+            return id;
         }
     }
 }

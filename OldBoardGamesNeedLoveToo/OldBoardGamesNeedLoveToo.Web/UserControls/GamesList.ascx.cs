@@ -70,10 +70,10 @@ namespace OldBoardGamesNeedLoveToo.Web.UserControls
             this.DataBind();
         }
 
-        protected void ListViewGames_PagePropertiesChanging(object sender, PagePropertiesChangingEventArgs e)
-        {
-            (this.ListViewGames.FindControl("DataPagerGamesList") as DataPager).SetPageProperties(e.StartRowIndex, e.MaximumRows, false);
-            this.DataBind();
-        }
+        //protected void ListViewGames_PagePropertiesChanging(object sender, PagePropertiesChangingEventArgs e)
+        //{
+        //    (this.ListViewGames.FindControl("DataPagerGamesList") as DataPager).SetPageProperties(e.StartRowIndex, e.MaximumRows, false);
+        //    this.DataBind();
+        //}
     }
 }

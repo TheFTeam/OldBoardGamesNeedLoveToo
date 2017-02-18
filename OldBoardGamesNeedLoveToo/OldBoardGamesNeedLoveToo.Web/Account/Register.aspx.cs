@@ -32,7 +32,7 @@ namespace OldBoardGamesNeedLoveToo.Web.Account
             var signInManager = Context.GetOwinContext().Get<ApplicationSignInManager>();
             var user = new ApplicationUser() { UserName = Email.Text, Email = Email.Text };
             IdentityResult result = manager.Create(user, Password.Text);
-            string location = Server.MapPath("~\\Content\\images\\Superman-profile-pic.svg.png");
+            string defaultProfilePicLocation = Server.MapPath("~\\Content\\images\\Superman-profile-pic.svg.png");
             if (result.Succeeded)
             {
                 var currentUser = manager.FindByName(user.UserName);
@@ -41,8 +41,9 @@ namespace OldBoardGamesNeedLoveToo.Web.Account
                 var newUserCustomInfo = new UserCustomInfo()
                 {
                     Username = currentUser.UserName,
+                    Email = currentUser.Email,
                     ApplicationUserId = currentUser.Id,
-                    ProfilePricture = this.ReadImageFile(location)
+                    ProfilePricture = this.ReadImageFile(defaultProfilePicLocation)
                 };
 
                 currentUser.UserCustomInfo = newUserCustomInfo;
