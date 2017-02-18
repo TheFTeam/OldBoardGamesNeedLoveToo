@@ -14,8 +14,8 @@ using OldBoardGamesNeedLoveToo.MVP.CustomEventArgs;
 using OldBoardGamesNeedLoveToo.MVP.Models;
 using OldBoardGamesNeedLoveToo.MVP.Presenters;
 using OldBoardGamesNeedLoveToo.MVP.Views;
-using OldBoardGamesNeedLoveToo.Web.Models;
 using OldBoardGamesNeedLoveToo.Models;
+using OldBoardGamesNeedLoveToo.Auth;
 
 namespace OldBoardGamesNeedLoveToo.Web
 {

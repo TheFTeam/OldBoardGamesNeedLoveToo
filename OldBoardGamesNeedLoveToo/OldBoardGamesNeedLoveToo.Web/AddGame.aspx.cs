@@ -13,7 +13,7 @@ using OldBoardGamesNeedLoveToo.MVP.Presenters;
 using OldBoardGamesNeedLoveToo.MVP.Models;
 using OldBoardGamesNeedLoveToo.MVP.Views;
 using OldBoardGamesNeedLoveToo.Web.App_Start;
-using OldBoardGamesNeedLoveToo.Web.Models;
+using OldBoardGamesNeedLoveToo.Auth;
 
 namespace OldBoardGamesNeedLoveToo.Web
 {
