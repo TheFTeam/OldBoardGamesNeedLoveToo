@@ -71,6 +71,13 @@ namespace OldBoardGamesNeedLoveToo.Services
             return this.gamesRepository.GetAll().Where(x => x.OwnerId == id);
         }
 
+        public IEnumerable<Game> GetGamesByName(string name)
+        {
+            return string.IsNullOrEmpty(name) ? this.gamesRepository.GetAll()
+                : this.gamesRepository.GetAll().Where(g =>
+                (string.IsNullOrEmpty(g.Name) ? false : g.Name.ToLower().Contains(name.ToLower())));
+        }
+
         public Game GetGameById(object id)
         {
             return this.gamesRepository.GetById(id);

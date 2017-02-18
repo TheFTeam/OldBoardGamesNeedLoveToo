@@ -315,6 +315,7 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Search.aspx" />
     <Content Include="Site.Master" />
     <Content Include="UserControls\CommentsList.ascx" />
     <Content Include="UserControls\GamesList.ascx" />
@@ -531,6 +532,13 @@
       <DependentUpon>MyGames.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Search.aspx.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Search.aspx.designer.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -603,7 +611,6 @@
       <Name>OldBoardGamesNeedLoveToo.Services</Name>
     </ProjectReference>
   </ItemGroup>
-
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201702171208377_init.resx">
       <DependentUpon>201702171208377_init.cs</DependentUpon>

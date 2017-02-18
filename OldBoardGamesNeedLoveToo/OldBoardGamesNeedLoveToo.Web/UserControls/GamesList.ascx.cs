@@ -70,6 +70,13 @@ namespace OldBoardGamesNeedLoveToo.Web.UserControls
             this.DataBind();
         }
 
+        protected void LinkButtonGameSearch_Click(object sender, EventArgs e)
+        {
+            string query = this.TextBoxGameSearchParam.Text;
+            string queryParam = string.IsNullOrEmpty(query) ? string.Empty : string.Format("?q={0}", query);
+            Response.Redirect("~/search" + queryParam);
+        }
+
         //protected void ListViewGames_PagePropertiesChanging(object sender, PagePropertiesChangingEventArgs e)
         //{
         //    (this.ListViewGames.FindControl("DataPagerGamesList") as DataPager).SetPageProperties(e.StartRowIndex, e.MaximumRows, false);

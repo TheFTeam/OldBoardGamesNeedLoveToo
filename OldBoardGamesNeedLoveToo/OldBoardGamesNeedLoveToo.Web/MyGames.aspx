@@ -64,7 +64,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Condition" SortExpression="Condition">
                         <ItemTemplate>
-                            <%# Item.Condition %>
+                            <%#: Item.Condition %>
                         </ItemTemplate>
                         <EditItemTemplate>
                             <asp:DropDownList runat="server" SelectedValue="<%# BindItem.Condition %>" AutoPostBack="false" ID="DropDownCondition">
@@ -78,7 +78,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Minimum Number Of Players" SortExpression="MinPlayers">
                         <ItemTemplate>
-                            <%# Item.MinPlayers %>
+                            <%#: Item.MinPlayers %>
                         </ItemTemplate>
                         <EditItemTemplate>
                             <asp:TextBox Text="<%# BindItem.MinPlayers %>" runat="server" ID="TextBoxMinPlayers" />
@@ -110,13 +110,13 @@
                     </asp:TemplateField>
                     <asp:TemplateField SortExpression="ReleaseDate" HeaderText="Release Date">
                         <ItemTemplate>
-                            <%#: Item.ReleaseDate %>
+                            <%#: string.Format("{0:dd/MM/yyyy}", Item.ReleaseDate) %>
                         </ItemTemplate>
                         <EditItemTemplate>
                             <asp:TextBox Text="<%# BindItem.ReleaseDate %>" runat="server" ID="TextBoxReleaseDate" />
                         </EditItemTemplate>
                     </asp:TemplateField>
-                     <asp:TemplateField SortExpression="Language" HeaderText="Language">
+                    <asp:TemplateField SortExpression="Language" HeaderText="Language">
                         <ItemTemplate>
                             <%#: Item.Language %>
                         </ItemTemplate>
@@ -134,7 +134,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField SortExpression="Price" HeaderText="Price">
                         <ItemTemplate>
-                            <%#: Item.Price %>
+                            <%#: string.Format("{0:c}", Item.Price) %>
                         </ItemTemplate>
                         <EditItemTemplate>
                             <asp:TextBox Text="<%# BindItem.Price %>" runat="server" ID="TextBoxPrice" />
@@ -145,7 +145,7 @@
                             <%#: Item.isSold %>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:CheckBox Text="<%# BindItem.isSold %>" runat="server" ID="CheckBoxBoxisSold" />
+                            <asp:CheckBox ID="CheckBoxIsSold" runat="server" Checked="<%# BindItem.isSold %>" />
                         </EditItemTemplate>
                     </asp:TemplateField>
                 </Columns>

@@ -9,6 +9,25 @@
 <asp:UpdatePanel runat="server" UpdateMode="Conditional">
     <ContentTemplate>
         <div class="col-md-3">
+            <h3>Search</h3>
+            <br />
+            <asp:Panel runat="server" DefaultButton="LinkButtonGameSearch" CssClass="row">
+                <div class="search-button">
+                    <div class="form-search">
+                        <div class="input-append">
+                            <p>
+                                <asp:TextBox runat="server" ID="TextBoxGameSearchParam" CssClass="form-control" name="q" placeholder="Search game by name..."></asp:TextBox>
+                            </p>
+                            <br />
+                            <p>
+                                <asp:LinkButton runat="server" ID="LinkButtonGameSearch"
+                                    OnClick="LinkButtonGameSearch_Click" CssClass="btn  btn-primary" Text="Search"></asp:LinkButton>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </asp:Panel>
+            <hr />
             <h3>Filters</h3>
             <div>
                 <h5>Price - EUR</h5>
@@ -129,10 +148,10 @@
         </div>
         <div class="col-md-9">
             <asp:ListView ID="ListViewGames" runat="server"
-                ItemType="OldBoardGamesNeedLoveToo.Models.Game" AllowPaging="true"  ItemPlaceholderID="groupGamesPlaceHolder"
+                ItemType="OldBoardGamesNeedLoveToo.Models.Game" ItemPlaceholderID="groupGamesPlaceHolder"
                 DataKeyNames="Id">
                 <ItemTemplate>
-                    <div class="col-md-3">
+                    <div class="col-md-3 game-container">
                         <div class="panel panel-default">
                             <h3 class="mb-15 text-center"><a runat="server" href='<%# string.Format("/GameDetails.aspx?id={0}", Item.Id) %>'><%#: Item.Name %></a></h3>
                             <asp:Image ID="ImageOfGame" runat="server" ImageUrl='<%# string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(Item.Image)) %>' Width="200" />
@@ -145,11 +164,13 @@
                 </ItemTemplate>
                 <LayoutTemplate>
                     <asp:PlaceHolder runat="server" ID="groupGamesPlaceHolder"></asp:PlaceHolder>
-                   <%-- <asp:DataPager ID="DataPagerGamesList" runat="server" PagedControlID="ListViewGames" PageSize="4">
-                        <Fields>
-                            <asp:NumericPagerField  ButtonType="Link"/>
-                        </Fields>
-                    </asp:DataPager>--%>
+                    <div class="col-md-12 text-center">
+                        <asp:DataPager ID="DataPagerGamesList" runat="server" PagedControlID="ListViewGames" PageSize="8">
+                            <Fields>
+                                <asp:NumericPagerField ButtonType="Link" />
+                            </Fields>
+                        </asp:DataPager>
+                    </div>
                 </LayoutTemplate>
             </asp:ListView>
         </div>

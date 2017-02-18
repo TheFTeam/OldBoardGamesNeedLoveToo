@@ -13,6 +13,24 @@ namespace OldBoardGamesNeedLoveToo.Web.UserControls {
     public partial class GamesList {
         
         /// <summary>
+        /// TextBoxGameSearchParam control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBoxGameSearchParam;
+        
+        /// <summary>
+        /// LinkButtonGameSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LinkButtonGameSearch;
+        
+        /// <summary>
         /// TextBoxSliderPrice control.
         /// </summary>
         /// <remarks>

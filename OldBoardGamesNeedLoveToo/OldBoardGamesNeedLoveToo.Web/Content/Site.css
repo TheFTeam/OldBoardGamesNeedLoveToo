@@ -69,3 +69,8 @@ tr, td, th {
 .listview-mygames > table{
     font-size: 0.7em;
 }
+
+.game-container{
+    width: 320px;
+    height:400px;
+}
