@@ -58,13 +58,16 @@
     <Compile Include="CustomEventArgs\UserDetailsByIdEventArgs.cs" />
     <Compile Include="CustomEventArgs\UserDetailsByUsernameEventArgs.cs" />
     <Compile Include="Models\AddGameViewModel.cs" />
+    <Compile Include="Models\AdminGamesViewModel.cs" />
     <Compile Include="Models\CommentsViewModel.cs" />
     <Compile Include="Models\IAddGameViewModel.cs" />
+    <Compile Include="Models\IAdminGamesViewModel.cs" />
     <Compile Include="Models\ICommentsViewModel.cs" />
     <Compile Include="Models\IGamesViewModel.cs" />
     <Compile Include="Models\IUsersViewModel.cs" />
     <Compile Include="Models\UsersViewModel.cs" />
     <Compile Include="Presenters\AddGamePresenter.cs" />
+    <Compile Include="Presenters\AdminGamesPresenter.cs" />
     <Compile Include="Presenters\CommentsPresenter.cs" />
     <Compile Include="Presenters\DefaultPagePresenter.cs" />
     <Compile Include="Presenters\GameDetailsPresenter.cs" />
@@ -81,6 +84,7 @@
     <Compile Include="Views\IGamesView.cs" />
     <Compile Include="Views\IAccountInfoView.cs" />
     <Compile Include="Views\IMyGamesView.cs" />
+    <Compile Include="Views\IAdminGamesView.cs" />
     <Compile Include="Views\IUserProfileView.cs" />
   </ItemGroup>
   <ItemGroup>

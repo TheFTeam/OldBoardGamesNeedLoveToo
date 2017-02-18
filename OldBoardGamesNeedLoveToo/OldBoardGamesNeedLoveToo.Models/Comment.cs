@@ -9,7 +9,6 @@ namespace OldBoardGamesNeedLoveToo.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
-
         public string Content { get; set; }
 
         public DateTime PostedOnDate { get; set; }
