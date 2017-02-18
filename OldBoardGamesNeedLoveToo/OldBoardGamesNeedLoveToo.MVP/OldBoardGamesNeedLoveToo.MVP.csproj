@@ -49,20 +49,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomEventArgs\CategoryEventArgs.cs" />
     <Compile Include="CustomEventArgs\CommentDetailsEventArgs.cs" />
     <Compile Include="CustomEventArgs\CommentsByGameIdEventArgs.cs" />
     <Compile Include="CustomEventArgs\FilterGamesEventArgs.cs" />
     <Compile Include="CustomEventArgs\GameDetailsEventArgs.cs" />
     <Compile Include="CustomEventArgs\MyGamesEventArgs.cs" />
+    <Compile Include="CustomEventArgs\NewCategoryEventArgs.cs" />
     <Compile Include="CustomEventArgs\ObjectDataSourceUserDetailsEventArgs.cs" />
     <Compile Include="CustomEventArgs\SearchQueryParamsEventArgs.cs" />
     <Compile Include="CustomEventArgs\UserDetailsByIdEventArgs.cs" />
     <Compile Include="CustomEventArgs\UserDetailsByUsernameEventArgs.cs" />
     <Compile Include="Models\AddGameViewModel.cs" />
+    <Compile Include="Models\AdminCategoriesViewModel.cs" />
     <Compile Include="Models\AdminGamesViewModel.cs" />
     <Compile Include="Models\AdminUsersViewModel.cs" />
     <Compile Include="Models\CommentsViewModel.cs" />
     <Compile Include="Models\IAddGameViewModel.cs" />
+    <Compile Include="Models\IAdminCategoriesViewModel.cs" />
     <Compile Include="Models\IAdminGamesViewModel.cs" />
     <Compile Include="Models\IAdminUsersViewModel.cs" />
     <Compile Include="Models\ICommentsViewModel.cs" />
@@ -72,6 +76,7 @@
     <Compile Include="Models\SearchViewModel.cs" />
     <Compile Include="Models\UsersViewModel.cs" />
     <Compile Include="Presenters\AddGamePresenter.cs" />
+    <Compile Include="Presenters\AdminCategoriesPresenter.cs" />
     <Compile Include="Presenters\AdminGamesPresenter.cs" />
     <Compile Include="Presenters\AdminUserPresenter.cs" />
     <Compile Include="Presenters\CommentsPresenter.cs" />
@@ -85,6 +90,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\GamesViewModel.cs" />
     <Compile Include="Views\IAddGameView.cs" />
+    <Compile Include="Views\IAdminCategoriesView.cs" />
     <Compile Include="Views\IAdminUsersView.cs" />
     <Compile Include="Views\ICommentsView.cs" />
     <Compile Include="Views\IDefaultPageView.cs" />
