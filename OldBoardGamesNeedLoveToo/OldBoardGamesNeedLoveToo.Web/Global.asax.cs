@@ -6,7 +6,6 @@ using System.Web.Routing;
 
 using OldBoardGamesNeedLoveToo.Data;
 using OldBoardGamesNeedLoveToo.Data.Migrations;
-using OldBoardGamesNeedLoveToo.Web.Models;
 
 namespace OldBoardGamesNeedLoveToo.Web
 {

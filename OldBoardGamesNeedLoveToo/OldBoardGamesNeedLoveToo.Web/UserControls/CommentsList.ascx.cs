@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web;
 
+using WebFormsMvp;
+using WebFormsMvp.Web;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+
+using OldBoardGamesNeedLoveToo.Auth;
 using OldBoardGamesNeedLoveToo.MVP.Models;
 using OldBoardGamesNeedLoveToo.MVP.Presenters;
 using OldBoardGamesNeedLoveToo.MVP.Views;
 using OldBoardGamesNeedLoveToo.MVP.CustomEventArgs;
 using OldBoardGamesNeedLoveToo.Models;
-
-using WebFormsMvp;
-using WebFormsMvp.Web;
-using OldBoardGamesNeedLoveToo.Web.Models;
-using System.Web;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
 
 namespace OldBoardGamesNeedLoveToo.Web.UserControls
 {

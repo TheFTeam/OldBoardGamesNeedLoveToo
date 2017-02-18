@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.IO;
 
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -9,8 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Ninject;
 
 using OldBoardGamesNeedLoveToo.Models;
-using OldBoardGamesNeedLoveToo.Web.Models;
-using System.IO;
+using OldBoardGamesNeedLoveToo.Auth;
 
 namespace OldBoardGamesNeedLoveToo.Web.Account
 {
@@ -44,6 +44,7 @@ namespace OldBoardGamesNeedLoveToo.Web.Account
                     Email = currentUser.Email,
                     ApplicationUserId = currentUser.Id,
                     ProfilePricture = this.ReadImageFile(defaultProfilePicLocation)
+                    
                 };
 
                 currentUser.UserCustomInfo = newUserCustomInfo;

@@ -480,13 +480,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\Factories\ICustomPresenterFactory.cs" />
     <Compile Include="App_Start\Factories\WebFormsMvpPresenterFactory.cs" />
-    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\Modules\ApplicationNinjectModule.cs" />
     <Compile Include="App_Start\Modules\mvpNinjectModule.cs" />
     <Compile Include="App_Start\NinjectWeb.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -518,12 +516,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201702171208377_init.cs" />
-    <Compile Include="Migrations\201702171208377_init.Designer.cs">
-      <DependentUpon>201702171208377_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="MyGames.aspx.cs">
       <DependentUpon>MyGames.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -553,7 +545,6 @@
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
-    <Compile Include="Startup.cs" />
     <Compile Include="UserControls\CommentsList.ascx.cs">
       <DependentUpon>CommentsList.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -594,6 +585,10 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OldBoardGamesNeedLoveToo.Auth\OldBoardGamesNeedLoveToo.Auth.csproj">
+      <Project>{101540AB-310D-415B-A61F-94B8B3FFF8AE}</Project>
+      <Name>OldBoardGamesNeedLoveToo.Auth</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OldBoardGamesNeedLoveToo.Data\OldBoardGamesNeedLoveToo.Data.csproj">
       <Project>{914cf4c6-e913-4ffe-9327-1daa99e69c6f}</Project>
       <Name>OldBoardGamesNeedLoveToo.Data</Name>
@@ -610,11 +605,6 @@
       <Project>{d62b3951-73c5-43e6-9d6c-2e7e4cea5aba}</Project>
       <Name>OldBoardGamesNeedLoveToo.Services</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201702171208377_init.resx">
-      <DependentUpon>201702171208377_init.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
