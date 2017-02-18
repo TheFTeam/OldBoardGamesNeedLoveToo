@@ -16,12 +16,11 @@ namespace OldBoardGamesNeedLoveToo.MVP.Presenters
         private readonly string viewCannotBeNullExceptionMessage = "View can not be null.";
         private readonly string gamesServiceCannotBeNullExceptionMessage = "Games service can not be null.";
         private readonly string categoriesServiceCannotBeNullExceptionMessage = "categories service can not be null";
-
-
+        
         private readonly IGamesService gamesService;
-        private readonly ICategoryService categoriesService;
+        private readonly ICategoriesService categoriesService;
 
-        public AdminGamesPresenter(IAdminGamesView view, IGamesService gamesService, ICategoryService categoriesService) : base(view)
+        public AdminGamesPresenter(IAdminGamesView view, IGamesService gamesService, ICategoriesService categoriesService) : base(view)
         {
             if (view == null)
             {
@@ -57,7 +56,7 @@ namespace OldBoardGamesNeedLoveToo.MVP.Presenters
             Game gameToBeUpadeted = this.gamesService.GetGameById(e.Id);
             if (gameToBeUpadeted == null)
             {
-                this.View.ModelState.AddModelError("", String.Format("Item with id {0} was not found", e.Id));
+                this.View.ModelState.AddModelError("", string.Format("Item with id {0} was not found", e.Id));
                 return;
             }
             this.View.TryUpdateModel(gameToBeUpadeted);
@@ -71,7 +70,5 @@ namespace OldBoardGamesNeedLoveToo.MVP.Presenters
         {
             this.View.Model.Categories = this.categoriesService.GetAllCategories();
         }
-
-
     }
 }
