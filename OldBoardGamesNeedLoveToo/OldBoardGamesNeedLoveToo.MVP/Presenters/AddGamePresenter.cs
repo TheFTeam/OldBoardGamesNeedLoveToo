@@ -7,21 +7,31 @@ using OldBoardGamesNeedLoveToo.Models;
 using OldBoardGamesNeedLoveToo.MVP.Models;
 using OldBoardGamesNeedLoveToo.MVP.Views;
 using OldBoardGamesNeedLoveToo.Services.Contracts;
+using System.Collections.Generic;
 
 namespace OldBoardGamesNeedLoveToo.MVP.Presenters
 {
     public class AddGamePresenter : Presenter<IAddGameView>
     {
         private readonly IGamesService gamesService;
+        private readonly ICategoriesService categoriesService;
 
-        public AddGamePresenter(IAddGameView view, IGamesService gamesService)
+        public AddGamePresenter(IAddGameView view, IGamesService gamesService, ICategoriesService categoriesService)
             : base(view)
         {
             Guard.WhenArgument(gamesService, "gamesService").IsNull().Throw();
+            Guard.WhenArgument(categoriesService, "categoriesService").IsNull().Throw();
 
             this.gamesService = gamesService;
+            this.categoriesService = categoriesService;
 
             this.View.SetSubmitAction(this.OnSubmit);
+            this.View.OnPageInit += this.View_OnPageInit;
+        }
+
+        private void View_OnPageInit(object sender, EventArgs e)
+        {
+            this.View.Model.Categories = this.categoriesService.GetAllCategories();
         }
 
         public void OnSubmit()
@@ -57,9 +67,16 @@ namespace OldBoardGamesNeedLoveToo.MVP.Presenters
                 throw new InvalidOperationException(e.Message);
             }
 
+            ICollection<Category> selectedCategories = new List<Category>();
+            foreach (var selectedCategoryId in inputData.SelectedCategoryIds)
+            {
+                selectedCategories.Add(this.categoriesService.GetCategoryById(new Guid(selectedCategoryId)));
+            }
+
+
             byte[] image = inputData.Image;
 
-            Game newGame = this.gamesService.CreateGame(name, content, condition, language, price, ownerId, releaseDate, image, producer, description, minPlayers, maxPlayers, minAgeofPlayers, maxAgeOfPlayers);
+            Game newGame = this.gamesService.CreateGame(name, content, selectedCategories, condition, language, price, ownerId, releaseDate, image, producer, description, minPlayers, maxPlayers, minAgeofPlayers, maxAgeOfPlayers);
             this.gamesService.AddGame(newGame);
         }
     }

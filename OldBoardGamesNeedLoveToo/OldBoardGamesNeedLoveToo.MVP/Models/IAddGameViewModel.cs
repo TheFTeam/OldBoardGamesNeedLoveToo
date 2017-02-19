@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+
+using OldBoardGamesNeedLoveToo.Models;
 
 namespace OldBoardGamesNeedLoveToo.MVP.Models
 {
@@ -31,5 +34,9 @@ namespace OldBoardGamesNeedLoveToo.MVP.Models
         string MaxAgeOfPlayers { get; set; }
 
         Guid OwnerId { get; set; }
+
+        IEnumerable<Category> Categories { get; set; }
+
+        ICollection<string> SelectedCategoryIds { get; set; }
     }
 }

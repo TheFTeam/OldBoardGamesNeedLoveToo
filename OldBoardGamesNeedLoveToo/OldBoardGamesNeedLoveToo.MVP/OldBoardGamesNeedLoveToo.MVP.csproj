@@ -54,7 +54,6 @@
     <Compile Include="CustomEventArgs\FilterGamesEventArgs.cs" />
     <Compile Include="CustomEventArgs\GameDetailsEventArgs.cs" />
     <Compile Include="CustomEventArgs\MyGamesEventArgs.cs" />
-    <Compile Include="CustomEventArgs\ObjectDataSourceUserDetailsEventArgs.cs" />
     <Compile Include="CustomEventArgs\SearchQueryParamsEventArgs.cs" />
     <Compile Include="CustomEventArgs\UserDetailsByIdEventArgs.cs" />
     <Compile Include="CustomEventArgs\UserDetailsByUsernameEventArgs.cs" />

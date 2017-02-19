@@ -65,6 +65,18 @@ namespace OldBoardGamesNeedLoveToo.Data.Repositories
             }
         }
 
+        public IEnumerable<T> GetAllIncluding(params Expression<Func<T, object>>[] includeExpressions)
+        {
+            IQueryable<T> set = this.DbSet;
+
+            foreach (var includeExpression in includeExpressions)
+            {
+                set = set.Include(includeExpression);
+            }
+
+            return set;
+        }
+
         protected ObgnltContext Context { get; set; }
 
         protected IDbSet<T> DbSet { get; set; }

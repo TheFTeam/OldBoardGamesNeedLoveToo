@@ -27,6 +27,8 @@
             </div>
         </ItemTemplate>
     </asp:FormView>
+    <br />
+    <hr />
     <div class="col-md-12">
         <userControls:GamesList runat="server" ID="UserProfileGamesList"></userControls:GamesList>
     </div>

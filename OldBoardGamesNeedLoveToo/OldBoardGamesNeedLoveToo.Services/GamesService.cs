@@ -33,13 +33,14 @@ namespace OldBoardGamesNeedLoveToo.Services
             this.unitOfWork.Commit();
         }
 
-        public Game CreateGame(string name, string contents, ConditionType condition, string language, decimal price, Guid ownerId, DateTime releaseDate, byte[] image, string producer = null, string description = null, int minPlayers = 1, int maxPlayers = 100, int minAgeOfPlayers = 2, int maxAgeOfPlayers = 100)
+        public Game CreateGame(string name, string contents, ICollection<Category> categories, ConditionType condition, string language, decimal price, Guid ownerId, DateTime releaseDate, byte[] image, string producer = null, string description = null, int minPlayers = 1, int maxPlayers = 100, int minAgeOfPlayers = 2, int maxAgeOfPlayers = 100)
         {
             return new Game()
             {
                 Name = name,
                 Contents = contents,
                 Condition = condition,
+                Categories = categories,
                 Language = language,
                 Price = price,
                 OwnerId = ownerId,
@@ -91,9 +92,6 @@ namespace OldBoardGamesNeedLoveToo.Services
 
         public IEnumerable<Game> GetAllFilteredGames(decimal minPrice, decimal maxPrice, int minNumberOfPlayers, int maxNumberOfPlayers, int minPlayersAge, int maxPlayersAge, Guid categoryId, ConditionType condition, DateTime releasedDateFrom, DateTime releasedDateTo)
         {
-            //var categories = this.categoriesRepository.GetAll().Where(c => c.Id == categoryId);
-            //var filteredGamesByCategory = categories.Select(c => c.Games);
-
             var filteredGames = this.gamesRepository.GetAll()
                 .Where(g =>
                 minPrice <= g.Price
@@ -102,6 +100,7 @@ namespace OldBoardGamesNeedLoveToo.Services
                 //&& maxNumberOfPlayers >= g.MaxPlayers
                 //&& minPlayersAge <= g.MinAgeOfPlayers
                 //&& maxPlayersAge <= g.MaxAgeOfPlayers
+                //&& g.Categories.Where(c => c.Id == categoryId).Any()
                 && releasedDateFrom <= g.ReleaseDate
                 && g.ReleaseDate <= releasedDateTo
                 && g.Condition == condition);

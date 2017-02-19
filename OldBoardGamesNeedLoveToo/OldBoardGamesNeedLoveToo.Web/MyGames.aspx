@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="My Games" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="MyGames.aspx.cs" Inherits="OldBoardGamesNeedLoveToo.Web.MyGames" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="col-md-12">
         <h2>My Games</h2>
@@ -56,10 +58,19 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Categories">
                         <ItemTemplate>
-                            <%#: string.Join(" ", Item.Categories) %>
+                            <asp:Repeater ID="RepeaterGameCategories" runat="server" DataSource="<%# Item.Categories %>" ItemType="OldBoardGamesNeedLoveToo.Models.Category">
+                                <ItemTemplate>
+                                    <%# string.Format(" {0}", Item.Name) %>
+                                </ItemTemplate>
+                            </asp:Repeater>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <%--<asp:TextBox Text="<%# BindItem.Categories %>" runat="server" ID="TextBoxCategories" />--%>
+                            <asp:Repeater ID="RepeaterGameCategories" runat="server" DataSource="<%# Item.Categories %>" ItemType="OldBoardGamesNeedLoveToo.Models.Category">
+                                <ItemTemplate>
+                                    <%# string.Format(" {0}", Item.Name) %>
+                                </ItemTemplate>
+                            </asp:Repeater>
+                            <%--<asp:DropDownList ID="DropDownListCategory" runat="server" DataTextField="Name" DataValueField="Id"></asp:DropDownList>--%>
                         </EditItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Condition" SortExpression="Condition">

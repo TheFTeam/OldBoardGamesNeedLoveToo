@@ -6,7 +6,7 @@ using WebFormsMvp.Web;
 using OldBoardGamesNeedLoveToo.MVP.CustomEventArgs;
 using OldBoardGamesNeedLoveToo.MVP.Presenters;
 using OldBoardGamesNeedLoveToo.MVP.Views;
-using System.Web.UI.WebControls;
+using System.Linq;
 
 namespace OldBoardGamesNeedLoveToo.Web.UserControls
 {
@@ -61,7 +61,7 @@ namespace OldBoardGamesNeedLoveToo.Web.UserControls
 
             this.OnButtonFilterSubmit?.Invoke(sender, args);
 
-            this.ListViewGames.DataSource = this.Model.Games;
+            this.ListViewGames.DataSource = this.Model.Games.ToList();
             this.ListViewGames.DataBind();
         }
 

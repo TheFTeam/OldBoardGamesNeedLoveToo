@@ -1,11 +1,13 @@
-﻿using System;
+﻿using OldBoardGamesNeedLoveToo.Models;
+using System;
+using System.Collections.Generic;
 
 namespace OldBoardGamesNeedLoveToo.MVP.Models
 {
     public class AddGameViewModel : IAddGameViewModel
     {
         public string Condition { get; set; }
-
+                
         public string Content { get; set; }
 
         public string Description { get; set; }
@@ -31,5 +33,9 @@ namespace OldBoardGamesNeedLoveToo.MVP.Models
         public string MaxAgeOfPlayers { get; set; }
 
         public Guid OwnerId { get; set; }
+
+        public IEnumerable<Category> Categories { get; set; }
+
+        public ICollection<string> SelectedCategoryIds { get; set; }
     }
 }

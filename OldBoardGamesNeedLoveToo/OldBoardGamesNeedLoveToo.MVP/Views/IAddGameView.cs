@@ -10,6 +10,8 @@ namespace OldBoardGamesNeedLoveToo.MVP.Views
     /// </summary>
     public interface IAddGameView : IView<AddGameViewModel>
     {
+        event EventHandler OnPageInit;
+
         /// <summary>
         /// Get the submitted user data for adding a new game
         /// </summary>

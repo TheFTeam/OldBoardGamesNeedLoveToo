@@ -91,17 +91,25 @@
                         ControlToValidate="DropDownListCondition">
                     </asp:RequiredFieldValidator>
                 </p>
-                <br />
                 <p>
-                    <h5>Release Date</h5>
-                    <asp:TextBox runat="server" TextMode="Date" ID="TextBoxReleaseDate" CssClass="form-control" />
-                    <asp:RequiredFieldValidator
-                        ID="RequiredFieldValidatorReleaseDate" runat="server"
-                        ControlToValidate="TextBoxReleaseDate"
-                        ValidationGroup="DetailedGameInfo"
-                        ErrorMessage="*Release date is required">
-                    </asp:RequiredFieldValidator>
-                </p>
+                    <h5>Categories</h5>
+                    <asp:ListBox ID="ListBoxCategories" runat="server"
+                        ItemType="OldBoardGamesNeedLoveToo.Models.Category"
+                        DataTextField="Name" DataValueField="Id"
+                        DataKeyNames="Id"
+                        SelectionMode="Multiple"
+                        CssClass="form-control"></asp:ListBox>
+                    <br />
+                    <p>
+                        <h5>Release Date</h5>
+                        <asp:TextBox runat="server" TextMode="Date" ID="TextBoxReleaseDate" CssClass="form-control" />
+                        <asp:RequiredFieldValidator
+                            ID="RequiredFieldValidatorReleaseDate" runat="server"
+                            ControlToValidate="TextBoxReleaseDate"
+                            ValidationGroup="DetailedGameInfo"
+                            ErrorMessage="*Release date is required">
+                        </asp:RequiredFieldValidator>
+                    </p>
                 <p>
                     <h5>Language</h5>
                     <asp:TextBox runat="server" ID="TextBoxLanguage" placeholder="Language" CssClass="form-control" />

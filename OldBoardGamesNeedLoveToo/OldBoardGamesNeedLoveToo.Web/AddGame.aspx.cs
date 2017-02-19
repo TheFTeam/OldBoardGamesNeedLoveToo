@@ -14,6 +14,10 @@ using OldBoardGamesNeedLoveToo.MVP.Models;
 using OldBoardGamesNeedLoveToo.MVP.Views;
 using OldBoardGamesNeedLoveToo.Web.App_Start;
 using OldBoardGamesNeedLoveToo.Auth;
+using System.Collections.Generic;
+using OldBoardGamesNeedLoveToo.Models;
+using System.Linq;
+using System.Web.UI.WebControls;
 
 namespace OldBoardGamesNeedLoveToo.Web
 {
@@ -22,8 +26,12 @@ namespace OldBoardGamesNeedLoveToo.Web
     {
         private Action onSubmit;
 
+        public event EventHandler OnPageInit;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            this.OnPageInit?.Invoke(sender, e);
+            this.ListBoxCategories.DataSource = this.Model.Categories;
         }
 
         public IAddGameViewModel GetFormData()
@@ -41,6 +49,15 @@ namespace OldBoardGamesNeedLoveToo.Web
             inputViewData.MaxPlayers = this.TextBoxMaxPlayers.Text;
             inputViewData.MinAgeOfPlayers = this.TextBoxMinAgeOfPlayers.Text;
             inputViewData.MaxAgeOfPlayers = this.TextBoxMaxAgeOfPlayers.Text;
+
+            inputViewData.SelectedCategoryIds = new List<string>();
+            foreach (ListItem item in this.ListBoxCategories.Items)
+            {
+                if (item.Selected)
+                {
+                    inputViewData.SelectedCategoryIds.Add(item.Value);
+                }
+            }
 
             byte[] fileData = null;
             Stream fileStream = null;

@@ -17,7 +17,7 @@ namespace OldBoardGamesNeedLoveToo.Services.Contracts
 
         IEnumerable<Game> GetGamesByName(string name);
 
-        Game CreateGame(string name, string contents, ConditionType condition, string language, decimal price, Guid ownerId, DateTime releaseDate, byte[] image, string producer = null, string description = null, int minPlayers = 1, int maxPlayers = 100, int minAgeOfPlayers = 2, int maxAgeOfPlayers = 100);
+        Game CreateGame(string name, string contents, ICollection<Category> categories, ConditionType condition, string language, decimal price, Guid ownerId, DateTime releaseDate, byte[] image, string producer = null, string description = null, int minPlayers = 1, int maxPlayers = 100, int minAgeOfPlayers = 2, int maxAgeOfPlayers = 100);
 
         void AddGame(Game game);
 
