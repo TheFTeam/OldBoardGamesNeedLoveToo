@@ -19,7 +19,7 @@
                             </p>
                             <small>Posted on <%# Item.PostedOnDate %></small>
                             by
-                            <a><%# GetUsernameFromApplicationUserManager() %></a>
+                            <a href='<%# string.Format("/userprofile.aspx?username={0}", Item.PostedByUserName) %>'><%# Item.PostedByUserName %></a>
                         </ItemTemplate>
                     </asp:Repeater>
                 </ul>

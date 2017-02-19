@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 
 namespace OldBoardGamesNeedLoveToo.Data.Repositories
@@ -16,7 +15,7 @@ namespace OldBoardGamesNeedLoveToo.Data.Repositories
 
         IEnumerable<T> GetAll<T1>(Expression<Func<T, bool>> filterExpression, Expression<Func<T, T1>> sortExpression);
 
-        IEnumerable<T2> GetAll<T1, T2>(Expression<Func<T, bool>> filterExpression, Expression<Func<T, T1>> sortExpression, Expression<Func<T, T2>> selectExpression);
+        IEnumerable<T2> GetAll<T1, T2>(Expression<Func<T, bool>> filterExpression, Expression<Func<T, T1>> sortExpression);
 
         IEnumerable<T> GetAllIncluding(params Expression<Func<T, object>>[] includeExpressions);
 

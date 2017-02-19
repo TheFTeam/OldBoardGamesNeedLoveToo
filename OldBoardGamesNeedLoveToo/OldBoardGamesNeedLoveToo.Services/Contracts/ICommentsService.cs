@@ -11,7 +11,7 @@ namespace OldBoardGamesNeedLoveToo.Services.Contracts
 
         IEnumerable<Comment> GetAllCommentsByGameId(Guid id);
 
-        Comment CreateComment(string content, Guid gameId);
+        Comment CreateComment(string content, Guid gameId, string username);
 
         void AddComment(Comment category);
     }

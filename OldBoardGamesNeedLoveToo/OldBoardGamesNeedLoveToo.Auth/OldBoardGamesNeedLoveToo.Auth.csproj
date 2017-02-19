@@ -96,6 +96,10 @@
     <Compile Include="Migrations\201702181830462_Initial.Designer.cs">
       <DependentUpon>201702181830462_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702190944339_Comments user.cs" />
+    <Compile Include="Migrations\201702190944339_Comments user.Designer.cs">
+      <DependentUpon>201702190944339_Comments user.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SmsService.cs" />
@@ -114,6 +118,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201702181830462_Initial.resx">
       <DependentUpon>201702181830462_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702190944339_Comments user.resx">
+      <DependentUpon>201702190944339_Comments user.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

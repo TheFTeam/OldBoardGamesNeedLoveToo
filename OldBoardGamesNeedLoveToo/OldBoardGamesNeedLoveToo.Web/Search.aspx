@@ -2,6 +2,14 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="col-md-12">
+        <div class="row mb-60 xs-mb-20">
+            <div class="col-sm-6 col-lg-offset-1 col-lg-5">
+                <h2 class="mb-20 xs-mb-10 heading color-dark heading-bordered xl-heading-outdent">Search Results for "<%# this.Request.QueryString["q"] %>"</h2>
+                <h3 class="w-300 color-dark mb-10">Find Your Board Game And Have Fun</h3>
+                <p class="xs-mw">
+            </div>
+        </div>
+
         <asp:ListView ID="ListViewSearchResultsGames" runat="server" SelectMethod="ListViewSearchResultsGames_GetData"
             ItemType="OldBoardGamesNeedLoveToo.Models.Game" ItemPlaceholderID="groupGamesPlaceHolder"
             DataKeyNames="Id">

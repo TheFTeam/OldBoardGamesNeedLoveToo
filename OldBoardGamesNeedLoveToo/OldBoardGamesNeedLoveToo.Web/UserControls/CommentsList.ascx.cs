@@ -38,7 +38,8 @@ namespace OldBoardGamesNeedLoveToo.Web.UserControls
         {
             string content = this.TextBoxInputComment.Text;
             Guid gameId = GetGameIdFromQueryString();
-            this.OnSubmitComment?.Invoke(this, new CommentDetailsEventArgs(content, gameId));
+            string username = GetUsernameFromApplicationUserManager();
+            this.OnSubmitComment?.Invoke(this, new CommentDetailsEventArgs(content, gameId, username));
             this.TextBoxInputComment.Text = string.Empty;
         }
 

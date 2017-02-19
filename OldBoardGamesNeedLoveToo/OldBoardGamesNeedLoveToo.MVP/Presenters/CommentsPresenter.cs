@@ -29,7 +29,7 @@ namespace OldBoardGamesNeedLoveToo.MVP.Presenters
 
         private void View_OnSubmitComment(object sender, CustomEventArgs.CommentDetailsEventArgs e)
         {
-            Comment commentToAdd = this.commentsService.CreateComment(e.Content, e.GameId);
+            Comment commentToAdd = this.commentsService.CreateComment(e.Content, e.GameId, e.PostedByUserName);
             this.commentsService.AddComment(commentToAdd);
         }
     }

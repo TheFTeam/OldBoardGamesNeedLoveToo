@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 using Bytes2you.Validation;
 
@@ -69,14 +68,19 @@ namespace OldBoardGamesNeedLoveToo.Services
 
         public IEnumerable<Game> GetAllGamesOfCurrentUser(Guid id)
         {
-            return this.gamesRepository.GetAll().Where(x => x.OwnerId == id);
+            return this.gamesRepository.GetAll(x => x.OwnerId == id);
         }
 
         public IEnumerable<Game> GetGamesByName(string name)
         {
-            return string.IsNullOrEmpty(name) ? this.gamesRepository.GetAll()
-                : this.gamesRepository.GetAll().Where(g =>
-                (string.IsNullOrEmpty(g.Name) ? false : g.Name.ToLower().Contains(name.ToLower())));
+            if (string.IsNullOrEmpty(name))
+            {
+                return this.gamesRepository.GetAll();
+            }
+            else
+            {
+                return this.gamesRepository.GetAll(g => g.Name.ToLower().Contains(name.ToLower()));
+            }
         }
 
         public Game GetGameById(object id)
@@ -92,8 +96,7 @@ namespace OldBoardGamesNeedLoveToo.Services
 
         public IEnumerable<Game> GetAllFilteredGames(decimal minPrice, decimal maxPrice, int minNumberOfPlayers, int maxNumberOfPlayers, int minPlayersAge, int maxPlayersAge, Guid categoryId, ConditionType condition, DateTime releasedDateFrom, DateTime releasedDateTo)
         {
-            var filteredGames = this.gamesRepository.GetAll()
-                .Where(g =>
+            var filteredGames = this.gamesRepository.GetAll(g =>
                 minPrice <= g.Price
                 && g.Price <= maxPrice
                 //&& minNumberOfPlayers <= g.MinPlayers

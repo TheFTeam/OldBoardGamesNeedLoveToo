@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Bytes2you.Validation;
 
 namespace OldBoardGamesNeedLoveToo.Data.UnitOfWork
 {
@@ -8,10 +8,7 @@ namespace OldBoardGamesNeedLoveToo.Data.UnitOfWork
 
         public UnitOfWork(ObgnltContext context)
         {
-            if (context == null)
-            {
-                throw new ArgumentException("DbContect cannot be null");
-            }
+            Guard.WhenArgument(context, "context").IsNull().Throw();
 
             this.context = context;
         }

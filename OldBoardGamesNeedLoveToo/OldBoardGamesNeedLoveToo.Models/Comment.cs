@@ -15,7 +15,7 @@ namespace OldBoardGamesNeedLoveToo.Models
 
         //public Guid PostedByUserId { get; set; }
 
-        //public UserCustomInfo PostedByUser { get; set; }
+        public string PostedByUserName { get; set; }
 
         public Guid GameId { get; set; }
 

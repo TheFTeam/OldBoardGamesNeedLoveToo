@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 using Bytes2you.Validation;
 
@@ -31,19 +30,20 @@ namespace OldBoardGamesNeedLoveToo.Services
             this.unitOfWork.Commit();
         }
 
-        public Comment CreateComment(string content, Guid gameId)
+        public Comment CreateComment(string content, Guid gameId, string username)
         {
             return new Comment()
             {
                 GameId = gameId,
                 Content = content,
-                PostedOnDate = DateTime.Now
+                PostedOnDate = DateTime.Now,
+                PostedByUserName = username             
             };
         }
 
         public IEnumerable<Comment> GetAllCommentsByGameId(Guid id)
         {
-            return this.commentsRepository.GetAll().Where(c => c.GameId == id);
+            return this.commentsRepository.GetAll(c => c.GameId == id, c => c.PostedOnDate);
         }
 
         public Comment GetCommentById(object id)

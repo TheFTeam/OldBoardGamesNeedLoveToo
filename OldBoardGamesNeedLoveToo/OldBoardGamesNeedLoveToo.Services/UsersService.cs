@@ -48,7 +48,7 @@ namespace OldBoardGamesNeedLoveToo.Services
 
         public IEnumerable<Game> GetAllUserCustomInfoSellinGames(string username)
         {
-            return this.userCustomInfoRepository.GetAll().Where(u => u.Username == username).SelectMany(u => u.SellingGames);
+            return this.userCustomInfoRepository.GetAll(u => u.Username == username).SelectMany(u => u.SellingGames);
         }
 
         public UserCustomInfo GetUserDetailsById(object id)

@@ -243,6 +243,8 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\Dice_WhiteHearts.png" />
+    <Content Include="Content\images\empty-star-image.png" />
+    <Content Include="Content\images\full-star-image.png" />
     <Content Include="Content\images\Superman-profile-pic.svg.png" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\Theme\css\about.css" />

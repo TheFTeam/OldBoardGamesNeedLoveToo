@@ -139,12 +139,13 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="col-sm-3">
-                                    <i class="icon icon-user"></i>
+                                    <i class="icon icon-check"></i>
                                 </div>
                                 <div class="col-sm-9">
-                                    <h3 class="mb-15">Owner</h3>
+                                    <h3 class="mb-15">Categories</h3>
                                     <p class="smaller xs-mw">
-                                        <%#: Item.Owner.Username %>
+                                        <asp:BulletedList ID="BulletedListCategories" runat="server" DataSource="<%# Item.Categories %>" DataTextField="Name"></asp:BulletedList>
+                                     </p>
                                 </div>
                             </div>
                             <div class="col-md-4">
