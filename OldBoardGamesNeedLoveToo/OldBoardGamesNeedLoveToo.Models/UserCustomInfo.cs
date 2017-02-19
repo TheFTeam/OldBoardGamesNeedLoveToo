@@ -62,7 +62,7 @@ namespace OldBoardGamesNeedLoveToo.Models
 
         public int NumberOfUsersGivenRating { get; set; }
 
-        public int SumOfUsersRating { get; set; }
+        public int? SumOfUsersRating { get; set; }
 
         public byte[] ProfilePricture { get; set; }
 

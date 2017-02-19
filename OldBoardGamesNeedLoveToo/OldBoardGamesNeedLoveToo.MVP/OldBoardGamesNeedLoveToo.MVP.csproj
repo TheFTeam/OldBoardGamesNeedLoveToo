@@ -56,6 +56,7 @@
     <Compile Include="CustomEventArgs\GameDetailsEventArgs.cs" />
     <Compile Include="CustomEventArgs\MyGamesEventArgs.cs" />
     <Compile Include="CustomEventArgs\NewCategoryEventArgs.cs" />
+    <Compile Include="CustomEventArgs\RatingValueEventArgs.cs" />
     <Compile Include="CustomEventArgs\SearchQueryParamsEventArgs.cs" />
     <Compile Include="CustomEventArgs\UserDetailsByIdEventArgs.cs" />
     <Compile Include="CustomEventArgs\UserDetailsByUsernameEventArgs.cs" />
@@ -70,8 +71,10 @@
     <Compile Include="Models\IAdminUsersViewModel.cs" />
     <Compile Include="Models\ICommentsViewModel.cs" />
     <Compile Include="Models\IGamesViewModel.cs" />
+    <Compile Include="Models\IRatingViewModel.cs" />
     <Compile Include="Models\ISearchViewModel.cs" />
     <Compile Include="Models\IUsersViewModel.cs" />
+    <Compile Include="Models\RatingViewModel.cs" />
     <Compile Include="Models\SearchViewModel.cs" />
     <Compile Include="Models\UsersViewModel.cs" />
     <Compile Include="Presenters\AddGamePresenter.cs" />
@@ -84,6 +87,7 @@
     <Compile Include="Presenters\GamesListUserControlPresenter.cs" />
     <Compile Include="Presenters\AccountInfoPresenter.cs" />
     <Compile Include="Presenters\MyGamesPresenter.cs" />
+    <Compile Include="Presenters\RatingPresenter.cs" />
     <Compile Include="Presenters\SearchPresenter.cs" />
     <Compile Include="Presenters\UserProfilePresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -98,6 +102,7 @@
     <Compile Include="Views\IAccountInfoView.cs" />
     <Compile Include="Views\IMyGamesView.cs" />
     <Compile Include="Views\IAdminGamesView.cs" />
+    <Compile Include="Views\IRatingView.cs" />
     <Compile Include="Views\ISearchView.cs" />
     <Compile Include="Views\IUserProfileView.cs" />
   </ItemGroup>

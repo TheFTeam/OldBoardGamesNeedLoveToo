@@ -20,6 +20,10 @@ namespace OldBoardGamesNeedLoveToo.Services.Contracts
 
         void UpdateUserCustomInfo(UserCustomInfo userCustomInfo);
 
+        void UpdateUserCustomInfoWithRatingValue(int? ratingValue, string username);
+
+        double GetAverageUserRating(string username);
+
         void DeleteUserCustomInfo(UserCustomInfo userCustomInfo);
     }
 }

@@ -62,6 +62,15 @@ namespace OldBoardGamesNeedLoveToo.Services
             this.unitOfWork.Commit();
         }
 
+        public void UpdateUserCustomInfoWithRatingValue(int? ratingValue, string username)
+        {
+            UserCustomInfo userToUpdate = this.userCustomInfoRepository.GetAll(u => u.Username == username).FirstOrDefault();
+            userToUpdate.NumberOfUsersGivenRating += 1;
+            userToUpdate.SumOfUsersRating += ratingValue;
+            userToUpdate.AverageRatingResult = (double)userToUpdate.SumOfUsersRating / userToUpdate.NumberOfUsersGivenRating;
+            this.UpdateUserCustomInfo(userToUpdate);
+        }
+
         public void SetApplicationUserIdToUserCustomInfo(UserCustomInfo userCustomInfo, string applicationUserId)
         {
             userCustomInfo.ApplicationUserId = applicationUserId;
@@ -73,6 +82,23 @@ namespace OldBoardGamesNeedLoveToo.Services
         {
             this.userCustomInfoRepository.Delete(userCustomInfo);
             this.unitOfWork.Commit();
+        }
+
+        public double GetAverageUserRating(string username)
+        {
+            Guard.WhenArgument(username, "username").IsNull().Throw();
+
+            UserCustomInfo user = this.userCustomInfoRepository.GetAll(u => u.Username == username).FirstOrDefault();
+            double averageResult = 0;
+
+            if (user == null)
+            {
+                throw new InvalidOperationException("User does not exist.");
+            }
+            else
+            {
+                return averageResult = user.AverageRatingResult;
+            }
         }
     }
 }

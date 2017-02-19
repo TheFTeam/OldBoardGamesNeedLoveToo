@@ -11,7 +11,7 @@
             <ItemTemplate>
                 <div class="level level-img-right">
                     <div class="container xs-mb-30">
-                        <asp:Image ID="ImageOfGame" runat="server" CssClass="img-right-sprite" ImageUrl='<%# string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(Item.Image)) %>' />
+                        <asp:Image ID="ImageOfGame" runat="server" CssClass="img-right-sprite img-fluid" ImageUrl='<%# string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(Item.Image)) %>' />
 
                         <div class="row mb-60 xs-mb-20">
                             <div class="col-sm-6 col-lg-offset-1 col-lg-5">
@@ -21,7 +21,7 @@
                             </div>
 
                             <div class=" col-md-4 visible-xs xs-mw xs-mb-30">
-                                <asp:Image ID="ImageOfGame2" runat="server" CssClass="img-right-sprite" ImageUrl='<%# string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(Item.Image)) %>' />
+                                <asp:Image ID="ImageOfGame2" runat="server" CssClass="img-right-sprite img-fluid" ImageUrl='<%# string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(Item.Image)) %>' />
                             </div>
                         </div>
 

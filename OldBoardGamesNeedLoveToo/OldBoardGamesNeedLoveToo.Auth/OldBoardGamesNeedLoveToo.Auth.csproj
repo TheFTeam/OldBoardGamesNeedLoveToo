@@ -100,6 +100,10 @@
     <Compile Include="Migrations\201702190944339_Comments user.Designer.cs">
       <DependentUpon>201702190944339_Comments user.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702191651241_UserCustomInfo AverageRating Changed To Nullable Type.cs" />
+    <Compile Include="Migrations\201702191651241_UserCustomInfo AverageRating Changed To Nullable Type.Designer.cs">
+      <DependentUpon>201702191651241_UserCustomInfo AverageRating Changed To Nullable Type.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SmsService.cs" />
@@ -121,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702190944339_Comments user.resx">
       <DependentUpon>201702190944339_Comments user.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702191651241_UserCustomInfo AverageRating Changed To Nullable Type.resx">
+      <DependentUpon>201702191651241_UserCustomInfo AverageRating Changed To Nullable Type.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

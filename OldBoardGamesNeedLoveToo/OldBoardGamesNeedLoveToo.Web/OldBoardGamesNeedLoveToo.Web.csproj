@@ -243,9 +243,9 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\Dice_WhiteHearts.png" />
+    <Content Include="Content\images\empty-star-image-50px.png" />
     <Content Include="Content\images\empty-star-image.png" />
-    <Content Include="Content\images\full-star-image.png" />
-    <Content Include="Content\images\Superman-profile-pic.svg.png" />
+    <Content Include="Content\images\full-star-image-50px.png" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\Theme\css\about.css" />
     <Content Include="Content\Theme\css\grid.css" />
@@ -321,6 +321,7 @@
     <Content Include="Site.Master" />
     <Content Include="UserControls\CommentsList.ascx" />
     <Content Include="UserControls\GamesList.ascx" />
+    <Content Include="UserControls\Rating.ascx" />
     <Content Include="UserProfile.aspx" />
     <Content Include="VerifyAccount.aspx" />
     <Content Include="ViewSwitcher.ascx" />
@@ -560,6 +561,13 @@
     </Compile>
     <Compile Include="UserControls\GamesList.ascx.designer.cs">
       <DependentUpon>GamesList.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Rating.ascx.cs">
+      <DependentUpon>Rating.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\Rating.ascx.designer.cs">
+      <DependentUpon>Rating.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserProfile.aspx.cs">
       <DependentUpon>UserProfile.aspx</DependentUpon>

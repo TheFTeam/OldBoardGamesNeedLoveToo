@@ -7,36 +7,45 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OldBoardGamesNeedLoveToo.Web {
+namespace OldBoardGamesNeedLoveToo.Web.UserControls {
     
     
-    public partial class UserProfile {
+    public partial class Rating {
         
         /// <summary>
-        /// FormViewUserProfile control.
+        /// UpdatePanelRating control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FormView FormViewUserProfile;
+        protected global::System.Web.UI.UpdatePanel UpdatePanelRating;
         
         /// <summary>
-        /// UserControlRating control.
+        /// RatingAjaxToolkit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::OldBoardGamesNeedLoveToo.Web.UserControls.Rating UserControlRating;
+        protected global::AjaxControlToolkit.Rating RatingAjaxToolkit;
         
         /// <summary>
-        /// UserProfileGamesList control.
+        /// ButtomRateSumbit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::OldBoardGamesNeedLoveToo.Web.UserControls.GamesList UserProfileGamesList;
+        protected global::System.Web.UI.WebControls.Button ButtomRateSumbit;
+        
+        /// <summary>
+        /// LabelAverageRating control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelAverageRating;
     }
 }
