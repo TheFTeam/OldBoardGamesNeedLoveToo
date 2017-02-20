@@ -35,13 +35,13 @@ namespace OldBoardGamesNeedLoveToo.Services.Tests.CommentsServiceTests
             var unitOfWorkMock = new Mock<IUnitOfWork>();
             CommentsService commentService = new CommentsService(commentRepositoryMock.Object, unitOfWorkMock.Object);
             Guid id = Guid.Parse("1db6f07d-46f2-4a63-8efd-10306478dd7e");
-            commentRepositoryMock.Setup(x => x.GetAll(It.IsAny<Expression<Func<Comment, bool>>>(), It.IsAny<Expression<Func<Comment, DateTime>>>())); 
+            commentRepositoryMock.Setup(x => x.GetAll(It.IsAny<Expression<Func<Comment, bool>>>(), It.IsAny<Expression<Func<Comment, DateTime>>>()));
 
             //Act
             IEnumerable<Comment> commentsResult = commentService.GetAllCommentsByGameId(id);
 
             //Assert
-            commentRepositoryMock.Verify(c => c.GetAll(It.IsAny<Expression<Func<Comment, bool>>>(), It.IsAny<Expression<Func<Comment, DateTime>>>()),Times.Once);
+            commentRepositoryMock.Verify(c => c.GetAll(It.IsAny<Expression<Func<Comment, bool>>>(), It.IsAny<Expression<Func<Comment, DateTime>>>()), Times.Once);
         }
 
         [Test]

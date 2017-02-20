@@ -77,6 +77,15 @@
     <Compile Include="CommentsServiceTests\CreateComment_Should.cs" />
     <Compile Include="CommentsServiceTests\GetAllCommentsByGameId_Should.cs" />
     <Compile Include="CommentsServiceTests\GetCommentById.cs" />
+    <Compile Include="GamesServiceTests\AddGames_Should.cs" />
+    <Compile Include="GamesServiceTests\CreateGame_Should.cs" />
+    <Compile Include="GamesServiceTests\DeleteGames_Should.cs" />
+    <Compile Include="GamesServiceTests\GetAllFilteredGames_Should.cs" />
+    <Compile Include="GamesServiceTests\GetAllGamesOfCurrentUser_Should.cs" />
+    <Compile Include="GamesServiceTests\GetAllGames_Should.cs" />
+    <Compile Include="GamesServiceTests\GetGameById_Should.cs" />
+    <Compile Include="GamesServiceTests\GetGamesByName_Should.cs" />
+    <Compile Include="GamesServiceTests\UpdateGames_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
