@@ -24,14 +24,20 @@ namespace OldBoardGamesNeedLoveToo.Services
             this.unitOfWork = unitOfWork;
         }
 
-        public void AddComment(Comment category)
+        public void AddComment(Comment comment)
         {
-            this.commentsRepository.Add(category);
+            Guard.WhenArgument(comment, "comment").IsNull().Throw();
+
+            this.commentsRepository.Add(comment);
             this.unitOfWork.Commit();
         }
 
         public Comment CreateComment(string content, Guid gameId, string username)
         {
+            Guard.WhenArgument(content, "content").IsNull().Throw();
+            Guard.WhenArgument(gameId, "gameId").IsEmptyGuid().Throw();
+            Guard.WhenArgument(username, "username").IsNull().Throw();
+
             return new Comment()
             {
                 GameId = gameId,
@@ -43,11 +49,15 @@ namespace OldBoardGamesNeedLoveToo.Services
 
         public IEnumerable<Comment> GetAllCommentsByGameId(Guid id)
         {
+            Guard.WhenArgument(id, "id").IsEmptyGuid().Throw();
+
             return this.commentsRepository.GetAll(c => c.GameId == id, c => c.PostedOnDate);
         }
 
         public Comment GetCommentById(object id)
         {
+            Guard.WhenArgument(id, "id").IsNull().Throw();
+
             return this.commentsRepository.GetById(id);
         }
     }

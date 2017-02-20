@@ -56,6 +56,8 @@ namespace OldBoardGamesNeedLoveToo.Services
 
         public Category GetCategoryById(object id)
         {
+            Guard.WhenArgument(id, "id").IsNull().Throw();
+
             return this.categoriesRepository.GetById(id);
         }
 
