@@ -156,7 +156,7 @@
                             <h3 class="mb-15 text-center"><a runat="server" href='<%# string.Format("/GameDetails.aspx?id={0}", Item.Id) %>' CssClass="img-fluid"><%#: Item.Name %></a></h3>
                             <asp:Image ID="ImageOfGame" runat="server" ImageUrl='<%# string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(Item.Image)) %>' Width="200" />
                             <p class="smaller xs-mb-40 xs-mw">Producer: <%#: Item.Producer %></p>
-                            <p class="smaller xs-mb-40 xs-mw">Price: <%# string.Format("{0:c}", Item.Price) %></p>
+                            <p class="smaller xs-mb-40 xs-mw">Price: <%#: string.Format("{0:c}", Item.Price) %></p>
                             <p class="smaller xs-mb-40 xs-mw">Added on: <%#: string.Format("{0:dd/MM/ yyyy}", Item.AddedOnDate) %></p>
                             <a runat="server" href='<%# string.Format("/GameDetails.aspx?id={0}", Item.Id) %>'>Details</a>
                         </div>

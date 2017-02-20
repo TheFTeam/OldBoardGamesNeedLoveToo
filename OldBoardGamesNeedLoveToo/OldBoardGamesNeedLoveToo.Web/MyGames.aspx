@@ -60,14 +60,14 @@
                         <ItemTemplate>
                             <asp:Repeater ID="RepeaterGameCategories" runat="server" DataSource="<%# Item.Categories %>" ItemType="OldBoardGamesNeedLoveToo.Models.Category">
                                 <ItemTemplate>
-                                    <%# string.Format(" {0}", Item.Name) %>
+                                    <%#: string.Format(" {0}", Item.Name) %>
                                 </ItemTemplate>
                             </asp:Repeater>
                         </ItemTemplate>
                         <EditItemTemplate>
                             <asp:Repeater ID="RepeaterGameCategories" runat="server" DataSource="<%# Item.Categories %>" ItemType="OldBoardGamesNeedLoveToo.Models.Category">
                                 <ItemTemplate>
-                                    <%# string.Format(" {0}", Item.Name) %>
+                                    <%#: string.Format(" {0}", Item.Name) %>
                                 </ItemTemplate>
                             </asp:Repeater>
                             <%--<asp:DropDownList ID="DropDownListCategory" runat="server" DataTextField="Name" DataValueField="Id"></asp:DropDownList>--%>

@@ -27,23 +27,26 @@
         background-image: url("../Content/images/full-star-image-50px.png");
     }
 </style>
-<asp:UpdatePanel ID="UpdatePanelRating" runat="server" UpdateMode="Always">
-    <ContentTemplate>
-        <ajaxToolkit:Rating ID="RatingAjaxToolkit" runat="server"
-            StarCssClass="starRating"
-            Direction="LeftToRight"
-            FilledStarCssClass="filledStars"
-            EmptyStarCssClass="emptyStars"
-            WaitingStarCssClass="savedRatingStar"
-            AutoPostBack="true"
-            OnChanged="RatingAjaxToolkit_Changed"
-            MaxRating="5">
-        </ajaxToolkit:Rating>
-        <asp:Button Text="Rate" runat="server" ID="ButtomRateSumbit" CssClass="btn btn-default" OnClick="ButtomRateSumbit_Click" />
-        <p>
-            Average rating: 
+
+<div class="rating-container">
+    <asp:UpdatePanel ID="UpdatePanelRating" runat="server" UpdateMode="Always">
+        <ContentTemplate>
+            <ajaxToolkit:Rating ID="RatingAjaxToolkit" runat="server"
+                StarCssClass="starRating"
+                Direction="LeftToRight"
+                FilledStarCssClass="filledStars"
+                EmptyStarCssClass="emptyStars"
+                WaitingStarCssClass="savedRatingStar"
+                AutoPostBack="true"
+                OnChanged="RatingAjaxToolkit_Changed"
+                MaxRating="5">
+            </ajaxToolkit:Rating>
+            <asp:Button Text="Rate" runat="server" ID="ButtomRateSumbit" CssClass="btn btn-default" OnClick="ButtomRateSumbit_Click" />
+            <p>
+                Average rating: 
         <asp:Label runat="server" ID="LabelAverageRating"></asp:Label>
 
-        </p>
-    </ContentTemplate>
-</asp:UpdatePanel>
+            </p>
+        </ContentTemplate>
+    </asp:UpdatePanel>
+</div>

@@ -16,6 +16,6 @@ namespace OldBoardGamesNeedLoveToo.Services.Contracts
 
         void UpdateCategory(Category category);
 
-        void Deletecategory(Category category);
+        void DeleteCategory(Category category);
     }
 }

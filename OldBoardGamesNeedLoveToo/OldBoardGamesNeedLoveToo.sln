@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OldBoardGamesNeedLoveToo.Se
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OldBoardGamesNeedLoveToo.Auth", "OldBoardGamesNeedLoveToo.Auth\OldBoardGamesNeedLoveToo.Auth.csproj", "{101540AB-310D-415B-A61F-94B8B3FFF8AE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{652C2BF8-C0D7-4D20-9598-460AE64E2EB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OldBoardGamesNeedLoveToo.Services.Tests", "OldBoardGamesNeedLoveToo.Services.Tests\OldBoardGamesNeedLoveToo.Services.Tests.csproj", "{7B8F6C6D-7F37-4F18-936C-31312940E7F1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,8 +49,15 @@ Global
 		{101540AB-310D-415B-A61F-94B8B3FFF8AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{101540AB-310D-415B-A61F-94B8B3FFF8AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{101540AB-310D-415B-A61F-94B8B3FFF8AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B8F6C6D-7F37-4F18-936C-31312940E7F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B8F6C6D-7F37-4F18-936C-31312940E7F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B8F6C6D-7F37-4F18-936C-31312940E7F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B8F6C6D-7F37-4F18-936C-31312940E7F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7B8F6C6D-7F37-4F18-936C-31312940E7F1} = {652C2BF8-C0D7-4D20-9598-460AE64E2EB0}
 	EndGlobalSection
 EndGlobal

@@ -15,11 +15,11 @@
                     <asp:Repeater ID="RepeaterComments" runat="server" ItemType="OldBoardGamesNeedLoveToo.Models.Comment" SelectMethod="RepeaterComments_GetData">
                         <ItemTemplate>
                             <p>
-                                <%# Item.Content %>
+                                <%#: Item.Content %>
                             </p>
-                            <small>Posted on <%# Item.PostedOnDate %></small>
+                            <small>Posted on <%#: Item.PostedOnDate %></small>
                             by
-                            <a href='<%# string.Format("/userprofile.aspx?username={0}", Item.PostedByUserName) %>'><%# Item.PostedByUserName %></a>
+                            <a href='<%# string.Format("/userprofile.aspx?username={0}", Item.PostedByUserName) %>'><%#: Item.PostedByUserName %></a>
                         </ItemTemplate>
                     </asp:Repeater>
                 </ul>

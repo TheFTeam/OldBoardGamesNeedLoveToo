@@ -1,13 +1,17 @@
-﻿using OldBoardGamesNeedLoveToo.MVP.Models;
-using OldBoardGamesNeedLoveToo.MVP.Presenters;
-using OldBoardGamesNeedLoveToo.MVP.Views;
-using System;
+﻿using System;
+using System.Linq;
+using System.Web;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 
 using WebFormsMvp;
 using WebFormsMvp.Web;
 
+using OldBoardGamesNeedLoveToo.Auth;
 using OldBoardGamesNeedLoveToo.MVP.CustomEventArgs;
-using System.Linq;
+using OldBoardGamesNeedLoveToo.MVP.Models;
+using OldBoardGamesNeedLoveToo.MVP.Presenters;
+using OldBoardGamesNeedLoveToo.MVP.Views;
 
 namespace OldBoardGamesNeedLoveToo.Web
 {
@@ -18,6 +22,8 @@ namespace OldBoardGamesNeedLoveToo.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            this.CheckIfUserIsLoggedToSetRatingVisibility();
+
             string username = this.GetUsernameFromQueryString();
             this.OnUserProfilePageInit?.Invoke(sender, new UserDetailsByUsernameEventArgs(username));
             this.FormViewUserProfile.DataSource = this.Model.Users;
@@ -28,6 +34,23 @@ namespace OldBoardGamesNeedLoveToo.Web
         public string GetUsernameFromQueryString()
         {
             return this.Request.QueryString["username"];
+        }
+
+        public void CheckIfUserIsLoggedToSetRatingVisibility()
+        {
+            ApplicationUser user = HttpContext.Current.GetOwinContext()
+                .GetUserManager<ApplicationUserManager>()
+                .FindById(HttpContext.Current.User.Identity.GetUserId());
+
+            if (user != null)
+            {
+                this.UserControlRating.IsVisible = true;
+            }
+            else
+            {
+                this.UserControlRating.IsVisible = false;
+                this.UserControlRating.ReadOnly = true;
+            }
         }
     }
 }

@@ -13,6 +13,30 @@ namespace OldBoardGamesNeedLoveToo.Web.UserControls
     [PresenterBinding(typeof(RatingPresenter))]
     public partial class Rating : MvpUserControl<RatingViewModel>, IRatingView
     {
+        public bool IsVisible
+        {
+            get
+            {
+                return this.ButtomRateSumbit.Visible;
+            }
+            set
+            {
+                this.ButtomRateSumbit.Visible = value;
+            }
+        }
+
+        public bool ReadOnly
+        {
+            get
+            {
+                return this.RatingAjaxToolkit.ReadOnly;
+            }
+            set
+            {
+                this.RatingAjaxToolkit.ReadOnly = value;
+            }
+        }
+
         public event EventHandler<RatingValueEventArgs> onPageInit;
         public event EventHandler<RatingValueEventArgs> OnRatingChanged;
 

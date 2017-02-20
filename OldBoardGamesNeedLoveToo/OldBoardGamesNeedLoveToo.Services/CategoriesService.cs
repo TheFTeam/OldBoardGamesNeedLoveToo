@@ -25,20 +25,26 @@ namespace OldBoardGamesNeedLoveToo.Services
 
         public void AddCategory(Category category)
         {
+            Guard.WhenArgument(category, "category").IsNull().Throw();
+
             this.categoriesRepository.Add(category);
             this.unitOfWork.Commit();
         }
 
         public Category CreateCategory(string name)
         {
+            Guard.WhenArgument(name, "name").IsNull().Throw();
+
             return new Category()
             {
                 Name = name
             };
         }
 
-        public void Deletecategory(Category category)
+        public void DeleteCategory(Category category)
         {
+            Guard.WhenArgument(category, "category").IsNull().Throw();
+
             this.categoriesRepository.Delete(category);
             this.unitOfWork.Commit();
         }
@@ -55,6 +61,8 @@ namespace OldBoardGamesNeedLoveToo.Services
 
         public void UpdateCategory(Category category)
         {
+            Guard.WhenArgument(category, "category").IsNull().Throw();
+
             this.categoriesRepository.Update(category);
             this.unitOfWork.Commit();
         }

@@ -24,9 +24,9 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <h4>Name  <%# Item.FirstName %> <%# Item.LastName %></h4>
-                <h4>Email  <%# Item.Email %></h4>
-                <h4>Phone  <%# Item.Phone %></h4>
+                <h4>Name  <%#: Item.FirstName %> <%#: Item.LastName %></h4>
+                <h4>Email  <%#: Item.Email %></h4>
+                <h4>Phone  <%#: Item.Phone %></h4>
             </div>
         </ItemTemplate>
     </asp:FormView>

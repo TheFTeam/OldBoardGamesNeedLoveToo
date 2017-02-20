@@ -65,7 +65,7 @@ namespace OldBoardGamesNeedLoveToo.MVP.Presenters
                 this.View.ModelState.AddModelError("", string.Format("Item with id {0} was not found", e.Id));
                 return;
             }
-            this.categoriesService.Deletecategory(categoryToBeDeleted);
+            this.categoriesService.DeleteCategory(categoryToBeDeleted);
         }
 
         private void View_AdmingetAllCateogires(object sender, EventArgs e)
