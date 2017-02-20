@@ -13,18 +13,15 @@ namespace OldBoardGamesNeedLoveToo.Services.Tests.CategoriesServiceTests
     public class GetById_Should
     {
         [Test]
-        public void ReturnNull_WhenIdParameterIsNull()
+        public void ShouldThrow_WhenIdParameterIsNull()
         {
             //Arrange
             var categoriesRepositoryMock = new Mock<IRepository<Category>>();
             var unitOfWorkMock = new Mock<IUnitOfWork>();
             CategoriesService categoriesService = new CategoriesService(categoriesRepositoryMock.Object, unitOfWorkMock.Object);
 
-            //Act
-            Category categoryResult = categoriesService.GetCategoryById(null);
-
-            //Assert
-            Assert.IsNull(categoryResult);
+            //Act&Assert
+            Assert.Throws<ArgumentNullException>(() => categoriesService.GetCategoryById(null));
         }
 
         [Test]

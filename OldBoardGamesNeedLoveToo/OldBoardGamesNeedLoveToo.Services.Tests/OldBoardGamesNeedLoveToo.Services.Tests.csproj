@@ -73,6 +73,10 @@
     <Compile Include="CategoriesServiceTests\GetAllCategories_Should.cs" />
     <Compile Include="CategoriesServiceTests\GetById_Should.cs" />
     <Compile Include="CategoriesServiceTests\UpdateCategory_Should.cs" />
+    <Compile Include="CommentsServiceTests\AddComment_Should.cs" />
+    <Compile Include="CommentsServiceTests\CreateComment_Should.cs" />
+    <Compile Include="CommentsServiceTests\GetAllCommentsByGameId_Should.cs" />
+    <Compile Include="CommentsServiceTests\GetCommentById.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsersServiceTests\AddUserCustomInfo_Should.cs" />
     <Compile Include="UsersServiceTests\CreateUserCustomInfo_Should.cs" />
