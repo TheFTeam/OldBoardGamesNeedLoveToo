@@ -1,39 +1,28 @@
-﻿using OldBoardGamesNeedLoveToo.Models;
+﻿using System;
+
+using WebFormsMvp;
+using Bytes2you.Validation;
+
+using OldBoardGamesNeedLoveToo.Models;
 using OldBoardGamesNeedLoveToo.MVP.CustomEventArgs;
 using OldBoardGamesNeedLoveToo.MVP.Views;
 using OldBoardGamesNeedLoveToo.Services.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WebFormsMvp;
 
 namespace OldBoardGamesNeedLoveToo.MVP.Presenters
 {
     public class AdminCategoriesPresenter : Presenter<IAdminCategoriesView>
     {
-        private readonly string viewCannotBeNullExceptionMessage = "View can not be null.";
-        private readonly string categoriesServiceCannotBeNullExceptionMessage = "Games service can not be null.";
-
         private readonly ICategoriesService categoriesService;
         public AdminCategoriesPresenter(IAdminCategoriesView view, ICategoriesService categoriesService) : base(view)
         {
-            if (view == null)
-            {
-                throw new ArgumentException(viewCannotBeNullExceptionMessage);
-            }
-            if (categoriesService == null)
-            {
-                throw new ArgumentException(categoriesServiceCannotBeNullExceptionMessage);
-            }
+            Guard.WhenArgument(categoriesService, "categoriesService").IsNull().Throw();
 
             this.categoriesService = categoriesService;
 
-            this.View.AdmingetAllCateogires += View_AdmingetAllCateogires;
-            this.View.AdminDeteleCategory += View_AdminDeteleCategory;
-            this.View.AdminAddCategory += View_AdminAddCategory;
-            this.View.AdminChangeCategory += View_AdminChangeCategory;
+            this.View.AdminGetAllCateogires += this.View_AdminGetAllCateogires;
+            this.View.AdminDeteleCategory += this.View_AdminDeteleCategory;
+            this.View.AdminAddCategory += this.View_AdminAddCategory;
+            this.View.AdminChangeCategory += this.View_AdminChangeCategory;
         }
 
         private void View_AdminChangeCategory(object sender, CategoryEventArgs e)
@@ -41,7 +30,7 @@ namespace OldBoardGamesNeedLoveToo.MVP.Presenters
             Category categoryToBeChanged = this.categoriesService.GetCategoryById(e.Id);
             if (categoryToBeChanged == null)
             {
-                this.View.ModelState.AddModelError("", String.Format("Item with id {0} was not found", e.Id));
+                this.View.ModelState.AddModelError("", string.Format("Item with id {0} was not found", e.Id));
                 return;
             }
             this.View.TryUpdateModel(categoryToBeChanged);
@@ -60,7 +49,7 @@ namespace OldBoardGamesNeedLoveToo.MVP.Presenters
         private void View_AdminDeteleCategory(object sender, CategoryEventArgs e)
         {
             Category categoryToBeDeleted = this.categoriesService.GetCategoryById(e.Id);
-            if (categoryToBeDeleted==null)
+            if (categoryToBeDeleted == null)
             {
                 this.View.ModelState.AddModelError("", string.Format("Item with id {0} was not found", e.Id));
                 return;
@@ -68,7 +57,7 @@ namespace OldBoardGamesNeedLoveToo.MVP.Presenters
             this.categoriesService.DeleteCategory(categoryToBeDeleted);
         }
 
-        private void View_AdmingetAllCateogires(object sender, EventArgs e)
+        private void View_AdminGetAllCateogires(object sender, EventArgs e)
         {
             this.View.Model.Categories = this.categoriesService.GetAllCategories();
         }

@@ -20,8 +20,8 @@ namespace OldBoardGamesNeedLoveToo.MVP.Presenters
 
             this.usersService = usersService;
 
-            this.View.OnGetData += View_OnGetData;
-            this.View.OnUpdateItem += View_OnUpdateItem;
+            this.View.OnGetData += this.View_OnGetData;
+            this.View.OnUpdateItem += this.View_OnUpdateItem;
         }
 
         private void View_OnUpdateItem(object sender, CustomEventArgs.UserDetailsByIdEventArgs e)

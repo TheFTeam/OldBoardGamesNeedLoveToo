@@ -19,7 +19,7 @@ namespace OldBoardGamesNeedLoveToo.Web.Admin
     {
         public event EventHandler<NewCategoryEventArgs> AdminAddCategory;
         public event EventHandler<CategoryEventArgs> AdminDeteleCategory;
-        public event EventHandler AdmingetAllCateogires;
+        public event EventHandler AdminGetAllCateogires;
         public event EventHandler<CategoryEventArgs> AdminChangeCategory;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -35,7 +35,7 @@ namespace OldBoardGamesNeedLoveToo.Web.Admin
         //     string sortByExpression
         public IQueryable<OldBoardGamesNeedLoveToo.Models.Category> GridViewManageCategories_GetData()
         {
-            this.AdmingetAllCateogires?.Invoke(this, null);
+            this.AdminGetAllCateogires?.Invoke(this, null);
 
             return this.Model.Categories.ToList().AsQueryable();
         }
