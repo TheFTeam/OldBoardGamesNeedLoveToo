@@ -74,6 +74,16 @@
     <Compile Include="CategoriesServiceTests\GetById_Should.cs" />
     <Compile Include="CategoriesServiceTests\UpdateCategory_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UsersServiceTests\AddUserCustomInfo_Should.cs" />
+    <Compile Include="UsersServiceTests\CreateUserCustomInfo_Should.cs" />
+    <Compile Include="UsersServiceTests\DeleteUserCustomInfo_Should.cs" />
+    <Compile Include="UsersServiceTests\GetAllUserCustomInfoSellinGames_Should.cs" />
+    <Compile Include="UsersServiceTests\GetAllUserCustomInfos_Should.cs" />
+    <Compile Include="UsersServiceTests\GetAverageUserRating_Should.cs" />
+    <Compile Include="UsersServiceTests\GetUserCustomInfoById_Should.cs" />
+    <Compile Include="UsersServiceTests\SetApplicationUserIdToUserCustomInfo_Should.cs" />
+    <Compile Include="UsersServiceTests\UpdateUserCustomInfoWithRatingValue_Should.cs" />
+    <Compile Include="UsersServiceTests\UpdateUserCustomInfo_Should.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -93,6 +103,7 @@
       <Name>OldBoardGamesNeedLoveToo.Services</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

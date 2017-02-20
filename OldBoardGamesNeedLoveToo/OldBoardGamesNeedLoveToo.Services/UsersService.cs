@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 using Bytes2you.Validation;
 
@@ -7,7 +8,6 @@ using OldBoardGamesNeedLoveToo.Models;
 using OldBoardGamesNeedLoveToo.Services.Contracts;
 using OldBoardGamesNeedLoveToo.Data.Repositories;
 using OldBoardGamesNeedLoveToo.Data.UnitOfWork;
-using System.Linq;
 
 namespace OldBoardGamesNeedLoveToo.Services
 {
@@ -32,6 +32,8 @@ namespace OldBoardGamesNeedLoveToo.Services
 
         public void AddUserCustomInfo(UserCustomInfo userCustomInfo)
         {
+            Guard.WhenArgument(userCustomInfo, "userCustomInfo").IsNull().Throw();
+
             this.userCustomInfoRepository.Add(userCustomInfo);
             this.unitOfWork.Commit();
         }
@@ -51,28 +53,43 @@ namespace OldBoardGamesNeedLoveToo.Services
             return this.userCustomInfoRepository.GetAll(u => u.Username == username).SelectMany(u => u.SellingGames);
         }
 
-        public UserCustomInfo GetUserDetailsById(object id)
-        {
-            return this.userCustomInfoRepository.GetById(id);
-        }
-
         public void UpdateUserCustomInfo(UserCustomInfo userCustomInfo)
         {
+            Guard.WhenArgument(userCustomInfo, "userCustomInfo").IsNull().Throw();
+
             this.userCustomInfoRepository.Update(userCustomInfo);
             this.unitOfWork.Commit();
         }
 
         public void UpdateUserCustomInfoWithRatingValue(int? ratingValue, string username)
         {
+            Guard.WhenArgument(username, "username").IsNull().Throw();
+
             UserCustomInfo userToUpdate = this.userCustomInfoRepository.GetAll(u => u.Username == username).FirstOrDefault();
+
+            Guard.WhenArgument(userToUpdate, "userToUpdate").IsNull().Throw();
+
             userToUpdate.NumberOfUsersGivenRating += 1;
             userToUpdate.SumOfUsersRating += ratingValue;
-            userToUpdate.AverageRatingResult = (double)userToUpdate.SumOfUsersRating / userToUpdate.NumberOfUsersGivenRating;
+
+            if (userToUpdate.NumberOfUsersGivenRating == 0)
+            {
+                userToUpdate.NumberOfUsersGivenRating = 1;
+            }
+
+            if (userToUpdate.SumOfUsersRating == null || userToUpdate.SumOfUsersRating == 0)
+            {
+                userToUpdate.SumOfUsersRating = 1;
+            }
+            userToUpdate.AverageRatingResult = (double) userToUpdate.SumOfUsersRating / userToUpdate.NumberOfUsersGivenRating;
             this.UpdateUserCustomInfo(userToUpdate);
         }
 
         public void SetApplicationUserIdToUserCustomInfo(UserCustomInfo userCustomInfo, string applicationUserId)
         {
+            Guard.WhenArgument(userCustomInfo, "userCustomInfo").IsNull().Throw();
+            Guard.WhenArgument(applicationUserId, "applicationUserId").IsNull().Throw();
+
             userCustomInfo.ApplicationUserId = applicationUserId;
             this.userCustomInfoRepository.Update(userCustomInfo);
             this.unitOfWork.Commit();
@@ -80,6 +97,8 @@ namespace OldBoardGamesNeedLoveToo.Services
 
         public void DeleteUserCustomInfo(UserCustomInfo userCustomInfo)
         {
+            Guard.WhenArgument(userCustomInfo, "userCustomInfo").IsNull().Throw();
+
             this.userCustomInfoRepository.Delete(userCustomInfo);
             this.unitOfWork.Commit();
         }
@@ -89,16 +108,10 @@ namespace OldBoardGamesNeedLoveToo.Services
             Guard.WhenArgument(username, "username").IsNull().Throw();
 
             UserCustomInfo user = this.userCustomInfoRepository.GetAll(u => u.Username == username).FirstOrDefault();
-            double averageResult = 0;
 
-            if (user == null)
-            {
-                throw new InvalidOperationException("User does not exist.");
-            }
-            else
-            {
-                return averageResult = user.AverageRatingResult;
-            }
+            Guard.WhenArgument(user, "user").IsNull().Throw();
+
+            return user.AverageRatingResult;
         }
     }
 }
