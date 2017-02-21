@@ -66,7 +66,6 @@ namespace OldBoardGamesNeedLoveToo.MVP.Presenters
                 selectedCategories.Add(this.categoriesService.GetCategoryById(new Guid(selectedCategoryId)));
             }
 
-
             byte[] image = e.Image;
 
             Game newGame = this.gamesService.CreateGame(name, content, selectedCategories, condition, language, price, ownerId, releaseDate, image, producer, description, minPlayers, maxPlayers, minAgeofPlayers, maxAgeOfPlayers);

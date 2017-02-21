@@ -152,10 +152,6 @@
                         ControlToValidate="TextBoxMinAgeOfPlayers" MinimumValue="2" MaximumValue="200"
                         ValidationGroup="DetailedGameInfo"
                         ErrorMessage="Min age is 2"></asp:RangeValidator>
-                    <asp:CustomValidator ID="CustomValidatorTextBoxMinAgeOfPlayers" runat="server"
-                        OnServerValidate="CustomValidatorTextBoxMinAgeOfPlayers_ServerValidate"
-                        ValidationGroup="DetailedGameInfo"
-                        ErrorMessage="Minimum age of players is 2"></asp:CustomValidator>
                 </p>
                 <p>
                     <h5>Maximum Age of Players</h5>
@@ -170,12 +166,6 @@
                         ControlToValidate="TextBoxMaxAgeOfPlayers" MaximumValue="200"
                         ValidationGroup="DetailedGameInfo"
                         ErrorMessage="Max age is 100"></asp:RangeValidator>
-                    <asp:CustomValidator ID="CustomValidatorTextBoxMaxAgeOfPlayers" runat="server"
-                        ControlToValidate="TextBoxMaxAgeOfPlayers"
-                        OnServerValidate="CustomValidatorTextBoxMaxAgeOfPlayers_ServerValidate"
-                        ValidationGroup="DetailedGameInfo"
-                        ErrorMessage="Maximum age of players should be greater or equal to the minimum age of players and less than 100">
-                    </asp:CustomValidator>
                 </p>
             </asp:Panel>
         </div>
