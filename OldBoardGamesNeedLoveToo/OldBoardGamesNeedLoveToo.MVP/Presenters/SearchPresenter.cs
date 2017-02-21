@@ -1,11 +1,7 @@
 ﻿using Bytes2you.Validation;
+using OldBoardGamesNeedLoveToo.MVP.CustomEventArgs;
 using OldBoardGamesNeedLoveToo.MVP.Views;
 using OldBoardGamesNeedLoveToo.Services.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WebFormsMvp;
 
 namespace OldBoardGamesNeedLoveToo.MVP.Presenters
@@ -23,7 +19,7 @@ namespace OldBoardGamesNeedLoveToo.MVP.Presenters
             this.View.OnGetData += this.View_OnGetData;
         }
 
-        private void View_OnGetData(object sender, CustomEventArgs.SearchQueryParamsEventArgs e)
+        private void View_OnGetData(object sender, SearchQueryParamsEventArgs e)
         {
             this.View.Model.Games = this.gamesService.GetGamesByName(e.QueryParams);
         }

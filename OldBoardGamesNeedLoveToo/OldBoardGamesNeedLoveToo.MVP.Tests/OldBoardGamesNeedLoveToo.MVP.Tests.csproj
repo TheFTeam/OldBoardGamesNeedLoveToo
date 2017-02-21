@@ -85,7 +85,16 @@
     <Compile Include="CommentsPresenterTests\View_OnSubmitComment_Should.cs" />
     <Compile Include="DefaultPagePresenterTests\View_DefaultPageInit_Should.cs" />
     <Compile Include="GameDetailsPresenterTests\View_GameDatailsPageInit_Should.cs" />
+    <Compile Include="GamesListUserControlPresenterTests\View_DefaultPageInit_Should.cs" />
+    <Compile Include="GamesListUserControlPresenterTests\View_OnButtonFilterSubmit_Should.cs" />
+    <Compile Include="MyGamesPresenterTests\View_OnDeleteItem_Should.cs" />
+    <Compile Include="MyGamesPresenterTests\View_OnGetData_Should.cs" />
+    <Compile Include="MyGamesPresenterTests\View_OnUpdateItem_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RatingPresenterTests\View_OnPageInit_Should.cs" />
+    <Compile Include="RatingPresenterTests\View_OnRatingChange_Should.cs" />
+    <Compile Include="SearchPresenterTests\View_OnGetData_Should.cs" />
+    <Compile Include="UserProfilePresenterTests\View_OnUserProfilePageInit_Should.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OldBoardGamesNeedLoveToo.Models\OldBoardGamesNeedLoveToo.Models.csproj">

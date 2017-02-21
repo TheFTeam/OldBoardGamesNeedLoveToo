@@ -53,7 +53,11 @@ namespace OldBoardGamesNeedLoveToo.MVP.Presenters
                 categoryId = new Guid(e.CategoryId);
                 condition = (ConditionType) Enum.Parse(typeof(ConditionType), e.Condition);
             }
-            catch (InvalidOperationException ex)
+            catch (FormatException ex)
+            {
+                throw new InvalidOperationException(ex.Message);
+            }
+            catch(ArgumentException ex)
             {
                 throw new InvalidOperationException(ex.Message);
             }
