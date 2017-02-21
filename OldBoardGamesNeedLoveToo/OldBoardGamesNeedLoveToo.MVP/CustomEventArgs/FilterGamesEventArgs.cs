@@ -4,6 +4,7 @@ namespace OldBoardGamesNeedLoveToo.MVP.CustomEventArgs
 {
     public class FilterGamesEventArgs : EventArgs
     {
+
         public string MinPrice { get; set; }
 
         public string MaxPrice { get; set; }

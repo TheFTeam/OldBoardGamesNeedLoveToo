@@ -5,6 +5,7 @@ using Bytes2you.Validation;
 
 using OldBoardGamesNeedLoveToo.MVP.Views;
 using OldBoardGamesNeedLoveToo.Services.Contracts;
+using OldBoardGamesNeedLoveToo.MVP.CustomEventArgs;
 
 namespace OldBoardGamesNeedLoveToo.MVP.Presenters
 {
@@ -24,7 +25,7 @@ namespace OldBoardGamesNeedLoveToo.MVP.Presenters
             this.View.OnUserProfilePageInit += this.View_OnUserProfilePageInit;
         }
 
-        private void View_OnUserProfilePageInit(object sender, CustomEventArgs.UserDetailsByUsernameEventArgs e)
+        private void View_OnUserProfilePageInit(object sender, UserDetailsByUsernameEventArgs e)
         {
 
             this.View.Model.Users = this.usersService.GetAllUserCustomInfos().Where(u => u.Username == e.Username);
