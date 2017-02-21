@@ -267,7 +267,7 @@ namespace OldBoardGamesNeedLoveToo.MVP.Tests.AddGamePresenterTests
             AddGamePresenter addgamePresenter = new AddGamePresenter(viewMock.Object, gamesServiceMock.Object, categoriesServiceMock.Object);
 
             // Act
-            viewMock.Raise(c => c.OnAddGameSubmit += null, new AddGameEventArgs(condition, content, description, image, language, name, price, producer, releaseDate, minPlayers, maxPlayers, minAgeOfPlayers, maxAgeOfPlayers, ownerId, selectedCategoriesIds));
+            viewMock.Raise(c => c.OnAddGameSubmit += null, null, new AddGameEventArgs(condition, content, description, image, language, name, price, producer, releaseDate, minPlayers, maxPlayers, minAgeOfPlayers, maxAgeOfPlayers, ownerId, selectedCategoriesIds));
 
             // Assert
             gamesServiceMock.Verify(c => c.AddGame(game), Times.Once());

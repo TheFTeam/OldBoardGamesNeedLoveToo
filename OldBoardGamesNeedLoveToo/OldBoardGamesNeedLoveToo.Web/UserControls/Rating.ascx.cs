@@ -63,10 +63,5 @@ namespace OldBoardGamesNeedLoveToo.Web.UserControls
         {
             return this.Request.QueryString["username"];
         }
-
-        protected void ButtomRateSumbit_Click(object sender, EventArgs e)
-        {
-            this.LabelAverageRating.Text = this.RatingAjaxToolkit.CurrentRating.ToString();
-        }
     }
 }

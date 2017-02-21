@@ -248,6 +248,7 @@
     <Content Include="Content\images\400.png" />
     <Content Include="Content\images\404.png" />
     <Content Include="Content\images\500.png" />
+    <Content Include="Content\images\diceWithHerats.jpg" />
     <Content Include="Content\images\Dice_WhiteHearts.png" />
     <Content Include="Content\images\empty-star-image-50px.png" />
     <Content Include="Content\images\empty-star-image.png" />
