@@ -10,16 +10,16 @@ using OldBoardGamesNeedLoveToo.MVP.Presenters;
 using OldBoardGamesNeedLoveToo.MVP.Views;
 using OldBoardGamesNeedLoveToo.Services.Contracts;
 
-namespace OldBoardGamesNeedLoveToo.MVP.Tests.AccountInfoPresenterTests
+namespace OldBoardGamesNeedLoveToo.MVP.Tests.AdminUserPresenterTests
 {
     [TestFixture]
-    public class View_OnUpdateItem_Should
+    public class View_AdminUpdateUser_Should
     {
         [Test]
         public void AddModelError_WhenItemIsNotFound()
         {
             // Arrange
-            var viewMock = new Mock<IAccountInfoView>();
+            var viewMock = new Mock<IAdminUsersView>();
             viewMock.Setup(v => v.ModelState).Returns(new ModelStateDictionary());
             Guid userId = Guid.NewGuid();
             string errorKey = string.Empty;
@@ -27,10 +27,10 @@ namespace OldBoardGamesNeedLoveToo.MVP.Tests.AccountInfoPresenterTests
             var usersServiceMock = new Mock<IUsersService>();
             usersServiceMock.Setup(c => c.GetUserCustomInfoById(userId)).Returns<UserCustomInfo>(null);
 
-            AccountInfoPresenter accountInfoPresenter = new AccountInfoPresenter(viewMock.Object, usersServiceMock.Object);
+            AdminUserPresenter adminUsersPresenter = new AdminUserPresenter(viewMock.Object, usersServiceMock.Object);
 
             // Act
-            viewMock.Raise(v => v.OnUpdateItem += null, null, new UserDetailsByIdEventArgs(userId));
+            viewMock.Raise(v => v.AdminUpdateUser += null, null, new UserDetailsByIdEventArgs(userId));
 
             // Assert
             Assert.AreEqual(1, viewMock.Object.ModelState[errorKey].Errors.Count);
@@ -41,17 +41,16 @@ namespace OldBoardGamesNeedLoveToo.MVP.Tests.AccountInfoPresenterTests
         public void TryUpdateModelIsNotCalled_WhenItemIsNotFound()
         {
             // Arrange
-            var viewMock = new Mock<IAccountInfoView>();
+            var viewMock = new Mock<IAdminUsersView>();
             viewMock.Setup(v => v.ModelState).Returns(new ModelStateDictionary());
             Guid userId = Guid.NewGuid();
             var usersServiceMock = new Mock<IUsersService>();
             usersServiceMock.Setup(c => c.GetUserCustomInfoById(userId)).Returns<UserCustomInfo>(null);
 
-            AccountInfoPresenter accountInfoPresenter = new AccountInfoPresenter
-                (viewMock.Object, usersServiceMock.Object);
+            AdminUserPresenter adminUsersPresenter = new AdminUserPresenter(viewMock.Object, usersServiceMock.Object);
 
             // Act
-            viewMock.Raise(v => v.OnUpdateItem += null, null, new UserDetailsByIdEventArgs(userId));
+            viewMock.Raise(v => v.AdminUpdateUser += null, null, new UserDetailsByIdEventArgs(userId));
 
             // Assert
             viewMock.Verify(v => v.TryUpdateModel(It.IsAny<UserCustomInfo>()), Times.Never());
@@ -61,16 +60,16 @@ namespace OldBoardGamesNeedLoveToo.MVP.Tests.AccountInfoPresenterTests
         public void TryUpdateModelIsCalled_WhenItemIsFound()
         {
             // Arrange
-            var viewMock = new Mock<IAccountInfoView>();
+            var viewMock = new Mock<IAdminUsersView>();
             viewMock.Setup(v => v.ModelState).Returns(new ModelStateDictionary());
             Guid userId = Guid.NewGuid();
             var usersServiceMock = new Mock<IUsersService>();
             usersServiceMock.Setup(c => c.GetUserCustomInfoById(userId)).Returns(new UserCustomInfo() { Id = userId });
 
-            AccountInfoPresenter accountPresenter = new AccountInfoPresenter(viewMock.Object, usersServiceMock.Object);
+            AdminUserPresenter adminUsersPresenter = new AdminUserPresenter(viewMock.Object, usersServiceMock.Object);
 
             // Act
-            viewMock.Raise(v => v.OnUpdateItem += null, null, new UserDetailsByIdEventArgs(userId));
+            viewMock.Raise(v => v.AdminUpdateUser += null, null, new UserDetailsByIdEventArgs(userId));
 
             // Assert
             viewMock.Verify(v => v.TryUpdateModel(It.IsAny<UserCustomInfo>()), Times.Once());
@@ -80,7 +79,7 @@ namespace OldBoardGamesNeedLoveToo.MVP.Tests.AccountInfoPresenterTests
         public void UpdateUserCustomInfoIsCalled_WhenItemIsFoundAndIsInValidState()
         {
             // Arrange
-            var viewMock = new Mock<IAccountInfoView>();
+            var viewMock = new Mock<IAdminUsersView>();
             viewMock.Setup(v => v.ModelState).Returns(new ModelStateDictionary());
 
             Guid userId = Guid.NewGuid();
@@ -88,10 +87,10 @@ namespace OldBoardGamesNeedLoveToo.MVP.Tests.AccountInfoPresenterTests
             var user = new UserCustomInfo() { Id = userId };
             usersServiceMock.Setup(c => c.GetUserCustomInfoById(userId)).Returns(user);
 
-            AccountInfoPresenter accountInfoPresenter = new AccountInfoPresenter(viewMock.Object, usersServiceMock.Object);
+            AdminUserPresenter adminUsersPresenter = new AdminUserPresenter(viewMock.Object, usersServiceMock.Object);
 
             // Act
-            viewMock.Raise(v => v.OnUpdateItem += null, null, new UserDetailsByIdEventArgs(userId));
+            viewMock.Raise(v => v.AdminUpdateUser += null, null, new UserDetailsByIdEventArgs(userId));
 
             // Assert
             usersServiceMock.Verify(c => c.UpdateUserCustomInfo(user), Times.Once());
@@ -101,7 +100,7 @@ namespace OldBoardGamesNeedLoveToo.MVP.Tests.AccountInfoPresenterTests
         public void UpdateUserCustomInfoIsNotCalled_WhenItemIsFoundAndIsInInValidState()
         {
             // Arrange
-            var viewMock = new Mock<IAccountInfoView>();
+            var viewMock = new Mock<IAdminUsersView>();
             var modelState = new ModelStateDictionary();
             modelState.AddModelError("user", "user is not in valid state");
             viewMock.Setup(v => v.ModelState).Returns(modelState);
@@ -111,10 +110,10 @@ namespace OldBoardGamesNeedLoveToo.MVP.Tests.AccountInfoPresenterTests
             var user = new UserCustomInfo() { Id = userId };
             usersServiceMock.Setup(c => c.GetUserCustomInfoById(userId)).Returns(user);
 
-            AccountInfoPresenter accountInfoPresenter = new AccountInfoPresenter(viewMock.Object, usersServiceMock.Object);
+            AdminUserPresenter adminUsersPresenter = new AdminUserPresenter(viewMock.Object, usersServiceMock.Object);
 
             // Act
-            viewMock.Raise(v => v.OnUpdateItem += null, null, new UserDetailsByIdEventArgs(userId));
+            viewMock.Raise(v => v.AdminUpdateUser += null, null, new UserDetailsByIdEventArgs(userId));
 
             // Assert
             usersServiceMock.Verify(c => c.UpdateUserCustomInfo(user), Times.Never());

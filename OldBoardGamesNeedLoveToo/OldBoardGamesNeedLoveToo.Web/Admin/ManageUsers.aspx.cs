@@ -15,8 +15,8 @@ namespace OldBoardGamesNeedLoveToo.Web.Admin
     public partial class ManageUsers : MvpPage<AdminUsersViewModel>, IAdminUsersView
     {
         public event EventHandler AdminGetAllUsers;
-        public event EventHandler<GameDetailsEventArgs> AdminUpdateUser;
-        public event EventHandler<GameDetailsEventArgs> AdminDeleteUser;
+        public event EventHandler<UserDetailsByIdEventArgs> AdminUpdateUser;
+        public event EventHandler<UserDetailsByIdEventArgs> AdminDeleteUser;
 
         public IQueryable<UserCustomInfo> GridViewManageUsers_GetData()
         {
@@ -26,12 +26,12 @@ namespace OldBoardGamesNeedLoveToo.Web.Admin
 
         public void GridViewManageUsers_UpdateItem(Guid id)
         {
-            this.AdminUpdateUser?.Invoke(this, new GameDetailsEventArgs(id));
+            this.AdminUpdateUser?.Invoke(this, new UserDetailsByIdEventArgs(id));
         }
 
         public void GridViewManageUsers_DeleteItem(Guid id)
         {
-            this.AdminDeleteUser?.Invoke(this, new GameDetailsEventArgs(id));
+            this.AdminDeleteUser?.Invoke(this, new UserDetailsByIdEventArgs(id));
         }
     }
 }

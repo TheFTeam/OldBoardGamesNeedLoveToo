@@ -21,8 +21,8 @@ namespace OldBoardGamesNeedLoveToo.MVP.Tests.AdminCategoriesPresenterTests
             // Arrange
             var viewMock = new Mock<IAdminCategoriesView>();
             viewMock.Setup(v => v.ModelState).Returns(new ModelStateDictionary());
-            string errorKey = string.Empty;
             Guid categoryId = Guid.NewGuid();
+            string errorKey = string.Empty;
             string expectedError = string.Format("Item with id {0} was not found", categoryId);
             var categoryServiceMock = new Mock<ICategoriesService>();
             categoryServiceMock.Setup(c => c.GetCategoryById(categoryId)).Returns<Category>(null);
@@ -43,11 +43,8 @@ namespace OldBoardGamesNeedLoveToo.MVP.Tests.AdminCategoriesPresenterTests
             // Arrange
             var viewMock = new Mock<IAdminCategoriesView>();
             viewMock.Setup(v => v.ModelState).Returns(new ModelStateDictionary());
-            string errorKey = string.Empty;
             Guid categoryId = Guid.NewGuid();
-            string expectedError = string.Format("Item with id {0} was not found", categoryId);
             var categoriesServiceMock = new Mock<ICategoriesService>();
-
             categoriesServiceMock.Setup(c => c.GetCategoryById(categoryId)).Returns<Category>(null);
 
             AdminCategoriesPresenter adminCategoriesPresenter = new AdminCategoriesPresenter(viewMock.Object, categoriesServiceMock.Object);

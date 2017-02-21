@@ -75,9 +75,16 @@
     <Compile Include="AdminCategoriesPresenterTests\View_AdminChangeCategory_Should.cs" />
     <Compile Include="AdminCategoriesPresenterTests\View_AdminDeteleCategory_Should.cs" />
     <Compile Include="AdminCategoriesPresenterTests\View_AdminGetAllCateogires_Should.cs" />
+    <Compile Include="AdminUserPresenterTests\View_AdminDeleteUser_Should.cs" />
+    <Compile Include="AdminUserPresenterTests\View_AdminGetAllUsers_Should.cs" />
+    <Compile Include="AdminUserPresenterTests\View_AdminUpdateUser_Should.cs" />
     <Compile Include="AminGamesPresenterTests\View_AdminDeteleGame_Should.cs" />
     <Compile Include="AminGamesPresenterTests\View_AdminGetAllGames_Should.cs" />
     <Compile Include="AminGamesPresenterTests\View_AdminUpdateGames_Should.cs" />
+    <Compile Include="CommentsPresenterTests\View_OnGetData_Should.cs" />
+    <Compile Include="CommentsPresenterTests\View_OnSubmitComment_Should.cs" />
+    <Compile Include="DefaultPagePresenterTests\View_DefaultPageInit_Should.cs" />
+    <Compile Include="GameDetailsPresenterTests\View_GameDatailsPageInit_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -14,6 +14,7 @@ namespace OldBoardGamesNeedLoveToo.MVP.Tests.AdminCategoriesPresenterTests
     [TestFixture]
     public class View_AdminGetAllCateogires_Should
     {
+        [Test]
         public void AddCategoriesToViewModel_WhenOnPageInitEventIsRaised()
         {
             // Arrange

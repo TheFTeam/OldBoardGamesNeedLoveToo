@@ -9,8 +9,9 @@ namespace OldBoardGamesNeedLoveToo.MVP.Views
     public interface IAdminUsersView : IView<AdminUsersViewModel>
     {
         event EventHandler AdminGetAllUsers;
-        event EventHandler<GameDetailsEventArgs> AdminUpdateUser;
-        event EventHandler<GameDetailsEventArgs> AdminDeleteUser;
+        event EventHandler<UserDetailsByIdEventArgs> AdminUpdateUser;
+        event EventHandler<UserDetailsByIdEventArgs> AdminDeleteUser;
+
         ModelStateDictionary ModelState { get; }
 
         bool TryUpdateModel<TModel>(TModel model) where TModel : class;

@@ -1,16 +1,14 @@
-﻿using Moq;
+﻿using System;
+using System.Web.ModelBinding;
+
+using Moq;
 using NUnit.Framework;
+
 using OldBoardGamesNeedLoveToo.Models;
 using OldBoardGamesNeedLoveToo.MVP.CustomEventArgs;
 using OldBoardGamesNeedLoveToo.MVP.Presenters;
 using OldBoardGamesNeedLoveToo.MVP.Views;
 using OldBoardGamesNeedLoveToo.Services.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.ModelBinding;
 
 namespace OldBoardGamesNeedLoveToo.MVP.Tests.AminGamesPresenterTests
 {
@@ -23,8 +21,8 @@ namespace OldBoardGamesNeedLoveToo.MVP.Tests.AminGamesPresenterTests
             // Arrange
             var viewMock = new Mock<IAdminGamesView>();
             viewMock.Setup(v => v.ModelState).Returns(new ModelStateDictionary());
-            string errorKey = string.Empty;
             Guid gameId = Guid.NewGuid();
+            string errorKey = string.Empty;
             string expectedError = string.Format("Item with id {0} was not found", gameId);
             var gamesServiceMock = new Mock<IGamesService>();
             gamesServiceMock.Setup(c => c.GetGameById(gameId)).Returns<Game>(null);
@@ -45,11 +43,8 @@ namespace OldBoardGamesNeedLoveToo.MVP.Tests.AminGamesPresenterTests
             // Arrange
             var viewMock = new Mock<IAdminGamesView>();
             viewMock.Setup(v => v.ModelState).Returns(new ModelStateDictionary());
-            string errorKey = string.Empty;
-            Guid gameId = Guid.NewGuid();
-            string expectedError = string.Format("Item with id {0} was not found", gameId);
             var gamesServiceMock = new Mock<IGamesService>();
-
+            Guid gameId = Guid.NewGuid();
             gamesServiceMock.Setup(c => c.GetGameById(gameId)).Returns<UserCustomInfo>(null);
 
             AdminGamesPresenter adminGamePresenter = new AdminGamesPresenter(viewMock.Object, gamesServiceMock.Object);
@@ -92,7 +87,7 @@ namespace OldBoardGamesNeedLoveToo.MVP.Tests.AminGamesPresenterTests
             var game = new Game() { Id = gameId };
             gamesServiceMock.Setup(c => c.GetGameById(gameId)).Returns(game);
 
-            AdminGamesPresenter adminGamesView = new AdminGamesPresenter(viewMock.Object, gamesServiceMock.Object);
+            AdminGamesPresenter adminGamesPresenter = new AdminGamesPresenter(viewMock.Object, gamesServiceMock.Object);
 
             // Act
             viewMock.Raise(v => v.AdminUpdateGames += null, null, new GameDetailsEventArgs(gameId));
