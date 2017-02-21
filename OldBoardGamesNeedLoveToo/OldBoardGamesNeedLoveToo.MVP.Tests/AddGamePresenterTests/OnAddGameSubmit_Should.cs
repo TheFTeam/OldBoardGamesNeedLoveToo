@@ -144,7 +144,7 @@ namespace OldBoardGamesNeedLoveToo.MVP.Tests.AddGamePresenterTests
         }
 
         [Test]
-        public void NotCallAddComment_WhenThePassedParameterContentFromEventArgsIsNull()
+        public void NotCallAddGame_WhenThePassedParameterContentFromEventArgsIsNull()
         {
             // Arrange
             var viewMock = new Mock<IAddGameView>();
@@ -209,13 +209,12 @@ namespace OldBoardGamesNeedLoveToo.MVP.Tests.AddGamePresenterTests
         }
 
         [Test]
-        public void CallAddComment_WhenThePassedParameterContentFromEventArgsAreValid()
+        public void CallAddGame_WhenThePassedParameterContentFromEventArgsAreValid()
         {
             // Arrange
             var viewMock = new Mock<IAddGameView>();
             var gamesServiceMock = new Mock<IGamesService>();
             var categoriesServiceMock = new Mock<ICategoriesService>();
-            var categoriesSetMock = new Mock<IEnumerable<Category>>();
 
             string name = "Maria";
             string condition = "2";
@@ -268,7 +267,7 @@ namespace OldBoardGamesNeedLoveToo.MVP.Tests.AddGamePresenterTests
             AddGamePresenter addgamePresenter = new AddGamePresenter(viewMock.Object, gamesServiceMock.Object, categoriesServiceMock.Object);
 
             // Act
-            viewMock.Raise(c => c.OnAddGameSubmit += null, null, new AddGameEventArgs(condition, content, description, image, language, name, price, producer, releaseDate, minPlayers, maxPlayers, minAgeOfPlayers, maxAgeOfPlayers, ownerId, selectedCategoriesIds));
+            viewMock.Raise(c => c.OnAddGameSubmit += null, new AddGameEventArgs(condition, content, description, image, language, name, price, producer, releaseDate, minPlayers, maxPlayers, minAgeOfPlayers, maxAgeOfPlayers, ownerId, selectedCategoriesIds));
 
             // Assert
             gamesServiceMock.Verify(c => c.AddGame(game), Times.Once());
