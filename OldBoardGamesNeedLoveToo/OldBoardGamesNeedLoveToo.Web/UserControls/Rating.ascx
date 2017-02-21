@@ -42,11 +42,6 @@
                 MaxRating="5">
             </ajaxToolkit:Rating>
             <asp:Button Text="Rate" runat="server" ID="ButtomRateSumbit" CssClass="btn btn-default" OnClick="ButtomRateSumbit_Click" />
-            <p>
-                Average rating: 
-        <asp:Label runat="server" ID="LabelAverageRating"></asp:Label>
-
-            </p>
         </ContentTemplate>
     </asp:UpdatePanel>
 </div>
