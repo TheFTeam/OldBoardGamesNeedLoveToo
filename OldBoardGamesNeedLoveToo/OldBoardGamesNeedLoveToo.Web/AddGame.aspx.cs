@@ -33,6 +33,11 @@ namespace OldBoardGamesNeedLoveToo.Web
 
         protected void ButtonSubmit_Click(object sender, EventArgs e)
         {
+            if (!IsValid)
+            {
+                return;
+            }
+
             string name = this.TextBoxName.Text;
             string condition = this.DropDownListCondition.SelectedValue;
             string content = this.TextBoxContents.Text;
@@ -107,6 +112,41 @@ namespace OldBoardGamesNeedLoveToo.Web
             BinaryReader br = new BinaryReader(fs);
             imageData = br.ReadBytes((int) imageFileLength);
             return imageData;
+        }
+
+        protected void CustomValidatorTextBoxMaxAgeOfPlayers_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            int maxAgeOfPlayers = 100;
+            int value = int.Parse(args.Value);
+            int valueMinAgeOfPlayers = int.Parse(this.TextBoxMinAgeOfPlayers.Text);
+            args.IsValid = (valueMinAgeOfPlayers <= value && value <= maxAgeOfPlayers);
+        }
+
+        protected void CustomValidatorTextBoxMinAgeOfPlayers_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            int minimumAgeOfPlayers = 2;
+            int value = int.Parse(args.Value);
+            args.IsValid = (value >= minimumAgeOfPlayers);
+        }
+
+        protected void CustomValidatorTextBoxName_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            int minLength = 2;
+            int maxLength = 100;
+            args.IsValid = (minLength <= args.Value.Length && args.Value.Length <= maxLength);
+        }
+
+        protected void CustomValidatorTextBoxMinPlayers_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            int minPlayers = int.Parse(args.Value);
+            args.IsValid = (minPlayers >= 1);
+        }
+
+        protected void CustomValidatorTextBoxMaxPlayers_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            int maxPlayers = int.Parse(args.Value);
+            int minPlayers = int.Parse(this.TextBoxMinPlayers.Text);
+            args.IsValid = (minPlayers <= maxPlayers && maxPlayers <= 20);
         }
     }
 }

@@ -21,6 +21,10 @@
                         ControlToValidate="TextBoxName"
                         ValidationGroup="DisplayGameInfo">
                     </asp:RequiredFieldValidator>
+                    <asp:CustomValidator ID="CustomValidatorTextBoxName"
+                        runat="server" OnServerValidate="CustomValidatorTextBoxName_ServerValidate"
+                        ValidationGroup="DisplayGameInfo"
+                        ErrorMessage="Name should be minimum 2 and maximum 100 symbols"></asp:CustomValidator>
                 </p>
                 <p>
                     <h5>Upload an image</h5>
@@ -46,12 +50,12 @@
                         ErrorMessage="*Price is required"
                         ControlToValidate="TextBoxPrice">
                     </asp:RequiredFieldValidator>
-                    <%--<asp:RangeValidator ID="RangeValidatorPrice" runat="server"
-                        ErrorMessage="*Price should not be negative"
-                        MinimumValue="0"
-                        MaximumValue="100000000"
-                        ControlToValidate="TextBoxPrice">
-                    </asp:RangeValidator>--%>
+                    <asp:RegularExpressionValidator
+                        ID="RegularExpressionValidatorPriceNumericOnly"
+                        runat="server" ErrorMessage="Example: 48,99"
+                        ControlToValidate="TextBoxPrice"
+                        ValidationExpression="^^\d+(\,\d\d)?$">
+                    </asp:RegularExpressionValidator>
                 </p>
             </asp:Panel>
 
@@ -129,7 +133,7 @@
                     <h5>Maximum Number of Players</h5>
                     <asp:TextBox runat="server" ID="TextBoxMaxPlayers" placeholder="Maximum Number of Players" TextMode="Number" CssClass="form-control" />
                     <asp:RangeValidator ID="RangeValidatorMaxPlayers" runat="server"
-                        ErrorMessage="*Maximum number of players is 100 and should not be negative"
+                        ErrorMessage="*Maximum number of players is 20 and should not be negative"
                         MinimumValue="1"
                         MaximumValue="20"
                         ValidationGroup="DetailedGameInfo"
@@ -138,27 +142,40 @@
                 </p>
                 <p>
                     <h5>Minimum Age of Players</h5>
-                    <asp:TextBox runat="server" ID="TextBoxMinAgeOfPlayers" placeholder="Minimum Age of Players" TextMode="Number" CssClass="form-control" />
-                    <%--<asp:rangevalidator id="rangevalidatorminageofplayers" runat="server"
-                        ErrorMessage="*minimum age of players is 2 and should not be negative" 
-                        ForeColor="BurlyWood"
-                        minimumvalue="2"
-                        maximumvalue="100"
-                        validationgroup="detailedgameinfo"
-                        ControlToValidate="TextBoxMinAgeOfPlayers">
-                    </asp:rangevalidator>--%>
+                    <asp:TextBox runat="server" ID="TextBoxMinAgeOfPlayers" placeholder="Minimum Age of Players"
+                        CssClass="form-control" />
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidatorTextBoxMinAgeOfPlayers" runat="server"
+                        ControlToValidate="TextBoxMinAgeOfPlayers"
+                        ValidationExpression="^[1-9]\d*$" ValidationGroup="DetailedGameInfo"
+                        ErrorMessage="Please enter a valid number"></asp:RegularExpressionValidator>
+                    <asp:RangeValidator ID="RangeValidatorTextBoxMinAgeOfPlayers" runat="server"
+                        ControlToValidate="TextBoxMinAgeOfPlayers" MinimumValue="2" MaximumValue="200"
+                        ValidationGroup="DetailedGameInfo"
+                        ErrorMessage="Min age is 2"></asp:RangeValidator>
+                    <asp:CustomValidator ID="CustomValidatorTextBoxMinAgeOfPlayers" runat="server"
+                        OnServerValidate="CustomValidatorTextBoxMinAgeOfPlayers_ServerValidate"
+                        ValidationGroup="DetailedGameInfo"
+                        ErrorMessage="Minimum age of players is 2"></asp:CustomValidator>
                 </p>
                 <p>
                     <h5>Maximum Age of Players</h5>
-                    <asp:TextBox runat="server" ID="TextBoxMaxAgeOfPlayers" placeholder="Maximum Age of Players" TextMode="Number" CssClass="form-control" />
-                    <%--<asp:RangeValidator ID="RangeValidatorMaxEgeofPlayers" runat="server"
-                        ErrorMessage="*Maximum age of players is 100 and should not be negative"
-                        ForeColor="BurlyWood"
-                        MinimumValue="2"
-                        MaximumValue="100"
+                    <asp:TextBox runat="server" ID="TextBoxMaxAgeOfPlayers" placeholder="Maximum Age of Players"
+                        CssClass="form-control" />
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidatorTextBoxMaxAgeOfPlayers" runat="server"
+                        ControlToValidate="TextBoxMaxAgeOfPlayers"
+                        ValidationExpression="^[1-9]\d*$"
                         ValidationGroup="DetailedGameInfo"
-                        ControlToValidate="TextBoxMaxAgeOfPlayers">
-                    </asp:RangeValidator>--%>
+                        ErrorMessage="Please enter a valid number"></asp:RegularExpressionValidator>
+                    <asp:RangeValidator ID="RangeValidatorTextBoxMaxAgeOfPlayers" runat="server"
+                        ControlToValidate="TextBoxMaxAgeOfPlayers" MaximumValue="200"
+                        ValidationGroup="DetailedGameInfo"
+                        ErrorMessage="Max age is 100"></asp:RangeValidator>
+                    <asp:CustomValidator ID="CustomValidatorTextBoxMaxAgeOfPlayers" runat="server"
+                        ControlToValidate="TextBoxMaxAgeOfPlayers"
+                        OnServerValidate="CustomValidatorTextBoxMaxAgeOfPlayers_ServerValidate"
+                        ValidationGroup="DetailedGameInfo"
+                        ErrorMessage="Maximum age of players should be greater or equal to the minimum age of players and less than 100">
+                    </asp:CustomValidator>
                 </p>
             </asp:Panel>
         </div>

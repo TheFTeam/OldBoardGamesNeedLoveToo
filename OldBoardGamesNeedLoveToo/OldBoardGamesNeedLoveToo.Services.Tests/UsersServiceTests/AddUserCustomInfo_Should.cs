@@ -1,9 +1,10 @@
-﻿using Moq;
+﻿using System;
+using Moq;
 using NUnit.Framework;
+
 using OldBoardGamesNeedLoveToo.Data.Repositories;
 using OldBoardGamesNeedLoveToo.Data.UnitOfWork;
 using OldBoardGamesNeedLoveToo.Models;
-using System;
 
 namespace OldBoardGamesNeedLoveToo.Services.Tests.UsersServiceTests
 {

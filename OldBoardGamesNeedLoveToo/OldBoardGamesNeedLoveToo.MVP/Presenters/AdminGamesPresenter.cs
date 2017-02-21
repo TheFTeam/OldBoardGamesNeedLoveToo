@@ -54,8 +54,6 @@ namespace OldBoardGamesNeedLoveToo.MVP.Presenters
             {
                 this.gamesService.UpdateGame(gameToBeUpadeted);
             }
-        }
-
-        
+        }       
     }
 }
