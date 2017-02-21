@@ -5,28 +5,25 @@ using System.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 
+using System.Collections.Generic;
+using System.Web.UI.WebControls;
+
 using WebFormsMvp.Web;
 using WebFormsMvp;
-using Ninject;
 
 using OldBoardGamesNeedLoveToo.MVP.Presenters;
 using OldBoardGamesNeedLoveToo.MVP.Models;
 using OldBoardGamesNeedLoveToo.MVP.Views;
-using OldBoardGamesNeedLoveToo.Web.App_Start;
 using OldBoardGamesNeedLoveToo.Auth;
-using System.Collections.Generic;
-using OldBoardGamesNeedLoveToo.Models;
-using System.Linq;
-using System.Web.UI.WebControls;
+using OldBoardGamesNeedLoveToo.MVP.CustomEventArgs;
 
 namespace OldBoardGamesNeedLoveToo.Web
 {
     [PresenterBinding(typeof(AddGamePresenter))]
     public partial class AddGame : MvpPage<AddGameViewModel>, IAddGameView
     {
-        private Action onSubmit;
-
         public event EventHandler OnPageInit;
+        public event EventHandler<AddGameEventArgs> OnAddGameSubmit;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -34,34 +31,34 @@ namespace OldBoardGamesNeedLoveToo.Web
             this.ListBoxCategories.DataSource = this.Model.Categories;
         }
 
-        public IAddGameViewModel GetFormData()
+        protected void ButtonSubmit_Click(object sender, EventArgs e)
         {
-            IAddGameViewModel inputViewData = NinjectWebCommon.Kernel.Get<AddGameViewModel>();
-            inputViewData.Name = this.TextBoxName.Text;
-            inputViewData.Condition = this.DropDownListCondition.SelectedValue;
-            inputViewData.Content = this.TextBoxContents.Text;
-            inputViewData.Description = this.TextBoxDescription.Text;
-            inputViewData.Language = this.TextBoxLanguage.Text;
-            inputViewData.Producer = this.TextBoxProducer.Text;
-            inputViewData.Price = this.TextBoxPrice.Text;
-            inputViewData.ReleaseDate = this.TextBoxReleaseDate.Text;
-            inputViewData.MinPlayers = this.TextBoxMinPlayers.Text;
-            inputViewData.MaxPlayers = this.TextBoxMaxPlayers.Text;
-            inputViewData.MinAgeOfPlayers = this.TextBoxMinAgeOfPlayers.Text;
-            inputViewData.MaxAgeOfPlayers = this.TextBoxMaxAgeOfPlayers.Text;
+            string name = this.TextBoxName.Text;
+            string condition = this.DropDownListCondition.SelectedValue;
+            string content = this.TextBoxContents.Text;
+            string description = this.TextBoxDescription.Text;
+            string language = this.TextBoxLanguage.Text;
+            string producer = this.TextBoxProducer.Text;
+            string price = this.TextBoxPrice.Text;
+            string releaseDate = this.TextBoxReleaseDate.Text;
+            string minPlayers = this.TextBoxMinPlayers.Text;
+            string maxPlayers = this.TextBoxMaxPlayers.Text;
+            string minAgeOfPlayers = this.TextBoxMinAgeOfPlayers.Text;
+            string maxAgeOfPlayers = this.TextBoxMaxAgeOfPlayers.Text;
 
-            inputViewData.SelectedCategoryIds = new List<string>();
+            var selectedCategoriesIds = new List<string>();
             foreach (ListItem item in this.ListBoxCategories.Items)
             {
                 if (item.Selected)
                 {
-                    inputViewData.SelectedCategoryIds.Add(item.Value);
+                    selectedCategoriesIds.Add(item.Value);
                 }
             }
 
             byte[] fileData = null;
             Stream fileStream = null;
             int length = 0;
+            byte[] image = fileData;
 
             if (this.FileUploadGameImage.HasFile)
             {
@@ -76,8 +73,7 @@ namespace OldBoardGamesNeedLoveToo.Web
                         fileData = new byte[length + 1];
                         fileStream = this.FileUploadGameImage.PostedFile.InputStream;
                         fileStream.Read(fileData, 0, length);
-                        inputViewData.Image = fileData;
-
+                        image = fileData;
                     }
                     else
                     {
@@ -93,25 +89,13 @@ namespace OldBoardGamesNeedLoveToo.Web
             else
             {
                 string location = Server.MapPath("~\\Content\\images\\Dice_WhiteHearts.png");
-                inputViewData.Image = this.ReadImageFile(location);
+                image = this.ReadImageFile(location);
             }
 
             ApplicationUser user = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(HttpContext.Current.User.Identity.GetUserId());
-            var id = user.UserCustomInfo.Id;
+            var ownerId = user.UserCustomInfo.Id;
 
-            inputViewData.OwnerId = id;
-
-            return inputViewData;
-        }
-
-        public void SetSubmitAction(Action onSubmit)
-        {
-            this.onSubmit = onSubmit;
-        }
-
-        protected void ButtonSubmit_Click(object sender, EventArgs e)
-        {
-            this.onSubmit();
+            this.OnAddGameSubmit?.Invoke(sender, new AddGameEventArgs(condition, content, description, image, language, name, price, producer, releaseDate, minPlayers, maxPlayers, minAgeOfPlayers, maxAgeOfPlayers, ownerId, selectedCategoriesIds));
         }
 
         private byte[] ReadImageFile(string imageLocation)

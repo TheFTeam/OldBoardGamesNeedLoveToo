@@ -5,9 +5,9 @@ using WebFormsMvp;
 using Bytes2you.Validation;
 
 using OldBoardGamesNeedLoveToo.Models;
-using OldBoardGamesNeedLoveToo.MVP.Models;
 using OldBoardGamesNeedLoveToo.MVP.Views;
 using OldBoardGamesNeedLoveToo.Services.Contracts;
+using OldBoardGamesNeedLoveToo.MVP.CustomEventArgs;
 
 namespace OldBoardGamesNeedLoveToo.MVP.Presenters
 {
@@ -25,24 +25,18 @@ namespace OldBoardGamesNeedLoveToo.MVP.Presenters
             this.gamesService = gamesService;
             this.categoriesService = categoriesService;
 
-            this.View.SetSubmitAction(this.OnSubmit);
             this.View.OnPageInit += this.View_OnPageInit;
+            this.View.OnAddGameSubmit += this.View_OnAddGameSubmit;
         }
 
-        private void View_OnPageInit(object sender, EventArgs e)
+        private void View_OnAddGameSubmit(object sender, AddGameEventArgs e)
         {
-            this.View.Model.Categories = this.categoriesService.GetAllCategories();
-        }
-
-        public void OnSubmit()
-        {
-            IAddGameViewModel inputData = this.View.GetFormData();
-            string name = inputData.Name;
-            string content = inputData.Content;
-            string description = inputData.Description;
-            string language = inputData.Language;
-            string producer = inputData.Producer;
-            Guid ownerId = inputData.OwnerId;
+            string name = e.Name;
+            string content = e.Content;
+            string description = e.Description;
+            string language = e.Language;
+            string producer = e.Producer;
+            Guid ownerId = e.OwnerId;
             ConditionType condition;
             DateTime releaseDate;
             decimal price;
@@ -53,31 +47,35 @@ namespace OldBoardGamesNeedLoveToo.MVP.Presenters
 
             try
             {
-                condition = (ConditionType) Enum.Parse(typeof(ConditionType), inputData.Condition);
-                releaseDate = Convert.ToDateTime(inputData.ReleaseDate);
-                price = decimal.Parse(inputData.Price);
-                minPlayers = int.Parse(inputData.MinPlayers);
-                maxPlayers = int.Parse(inputData.MaxPlayers);
-                minAgeofPlayers = int.Parse(inputData.MinAgeOfPlayers);
-                maxAgeOfPlayers = int.Parse(inputData.MaxAgeOfPlayers);
-
+                condition = (ConditionType) Enum.Parse(typeof(ConditionType), e.Condition);
+                releaseDate = Convert.ToDateTime(e.ReleaseDate);
+                price = decimal.Parse(e.Price);
+                minPlayers = int.Parse(e.MinPlayers);
+                maxPlayers = int.Parse(e.MaxPlayers);
+                minAgeofPlayers = int.Parse(e.MinAgeOfPlayers);
+                maxAgeOfPlayers = int.Parse(e.MaxAgeOfPlayers);
             }
-            catch (InvalidOperationException e)
+            catch (InvalidOperationException ex)
             {
-                throw new InvalidOperationException(e.Message);
+                throw new InvalidOperationException(ex.Message);
             }
 
             ICollection<Category> selectedCategories = new List<Category>();
-            foreach (var selectedCategoryId in inputData.SelectedCategoryIds)
+            foreach (var selectedCategoryId in e.SelectedCategoryIds)
             {
                 selectedCategories.Add(this.categoriesService.GetCategoryById(new Guid(selectedCategoryId)));
             }
 
 
-            byte[] image = inputData.Image;
+            byte[] image = e.Image;
 
             Game newGame = this.gamesService.CreateGame(name, content, selectedCategories, condition, language, price, ownerId, releaseDate, image, producer, description, minPlayers, maxPlayers, minAgeofPlayers, maxAgeOfPlayers);
             this.gamesService.AddGame(newGame);
+        }
+
+        private void View_OnPageInit(object sender, EventArgs e)
+        {
+            this.View.Model.Categories = this.categoriesService.GetAllCategories();
         }
     }
 }

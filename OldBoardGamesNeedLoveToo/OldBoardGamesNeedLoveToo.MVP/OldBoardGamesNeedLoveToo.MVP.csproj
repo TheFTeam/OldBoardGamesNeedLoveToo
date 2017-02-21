@@ -49,6 +49,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomEventArgs\AddGameEventArgs.cs" />
     <Compile Include="CustomEventArgs\CategoryEventArgs.cs" />
     <Compile Include="CustomEventArgs\CommentDetailsEventArgs.cs" />
     <Compile Include="CustomEventArgs\CommentsByGameIdEventArgs.cs" />

@@ -69,7 +69,7 @@
   <ItemGroup>
     <Compile Include="AccountInfoPresenterTests\View_OnGetData_Should.cs" />
     <Compile Include="AccountInfoPresenterTests\View_OnUpdateItem_Should.cs" />
-    <Compile Include="AddGamePresenterTests\OnSubmit_Should.cs" />
+    <Compile Include="AddGamePresenterTests\OnAddGameSubmit_Should.cs" />
     <Compile Include="AddGamePresenterTests\View_OnPageInit_Should.cs" />
     <Compile Include="AdminCategoriesPresenterTests\View_AdminAddCategory_Should.cs" />
     <Compile Include="AdminCategoriesPresenterTests\View_AdminChangeCategory_Should.cs" />
@@ -99,6 +99,10 @@
     <ProjectReference Include="..\OldBoardGamesNeedLoveToo.Services\OldBoardGamesNeedLoveToo.Services.csproj">
       <Project>{D62B3951-73C5-43E6-9D6C-2E7E4CEA5ABA}</Project>
       <Name>OldBoardGamesNeedLoveToo.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OldBoardGamesNeedLoveToo.Web\OldBoardGamesNeedLoveToo.Web.csproj">
+      <Project>{4FDDA561-A394-4C17-B416-9D77901AC043}</Project>
+      <Name>OldBoardGamesNeedLoveToo.Web</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
