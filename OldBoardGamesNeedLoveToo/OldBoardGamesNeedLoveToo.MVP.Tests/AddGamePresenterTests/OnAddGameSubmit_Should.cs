@@ -270,7 +270,7 @@ namespace OldBoardGamesNeedLoveToo.MVP.Tests.AddGamePresenterTests
             viewMock.Raise(c => c.OnAddGameSubmit += null, null, new AddGameEventArgs(condition, content, description, image, language, name, price, producer, releaseDate, minPlayers, maxPlayers, minAgeOfPlayers, maxAgeOfPlayers, ownerId, selectedCategoriesIds));
 
             // Assert
-            gamesServiceMock.Verify(c => c.AddGame(game), Times.Once());
+            gamesServiceMock.Verify(c => c.AddGame(It.IsAny<Game>()), Times.Once());
         }
     }
 }

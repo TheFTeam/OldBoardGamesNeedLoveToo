@@ -55,9 +55,13 @@ namespace OldBoardGamesNeedLoveToo.MVP.Presenters
                 minAgeofPlayers = int.Parse(e.MinAgeOfPlayers);
                 maxAgeOfPlayers = int.Parse(e.MaxAgeOfPlayers);
             }
-            catch (InvalidOperationException ex)
+            catch (FormatException ex)
             {
-                throw new InvalidOperationException(ex.Message);
+                throw new FormatException(ex.Message);
+            }
+            catch (ArgumentException ex)
+            {
+                throw new ArgumentException(ex.Message);
             }
 
             ICollection<Category> selectedCategories = new List<Category>();

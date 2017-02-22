@@ -55,11 +55,11 @@ namespace OldBoardGamesNeedLoveToo.MVP.Presenters
             }
             catch (FormatException ex)
             {
-                throw new InvalidOperationException(ex.Message);
+                throw new FormatException(ex.Message);
             }
             catch(ArgumentException ex)
             {
-                throw new InvalidOperationException(ex.Message);
+                throw new ArgumentException(ex.Message);
             }
 
             this.View.Model.Games = this.gamesService.GetAllFilteredGames(minPrice, maxPrice, minNumberOfPlayers, maxNumberOfPlayers, minAgefPlayers, maxAgeOfPlayers, categoryId, condition, releaseDateFrom, releaseDateTo);
