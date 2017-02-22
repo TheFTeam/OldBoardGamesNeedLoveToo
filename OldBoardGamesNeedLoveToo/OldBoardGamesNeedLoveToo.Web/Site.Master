@@ -83,6 +83,7 @@
                                         <li><a href="/admin/managegames">Mange Games</a></li>
                                         <li><a href="/admin/manageusers">Mange Users</a></li>
                                         <li><a href="/admin/managecategories">Mange Categories</a></li>
+                                        <li><a href="/account/manage" title="Manage your account"><%: Context.User.Identity.GetUserName()  %> </a></li>
                                         <li>
                                             <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
                                         </li>

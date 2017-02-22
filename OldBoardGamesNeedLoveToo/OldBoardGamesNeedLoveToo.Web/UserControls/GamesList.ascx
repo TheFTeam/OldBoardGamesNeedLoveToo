@@ -152,7 +152,7 @@
                 DataKeyNames="Id">
                 <ItemTemplate>
                     <div class="col-md-3 game-container">
-                        <div class="panel panel-default">
+                        <div class="panel panel-default game-box">
                             <h3 class="mb-15 text-center"><a runat="server" href='<%# string.Format("/GameDetails.aspx?id={0}", Item.Id) %>' CssClass="img-fluid"><%#: Item.Name %></a></h3>
                             <asp:Image ID="ImageOfGame" runat="server" ImageUrl='<%# string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(Item.Image)) %>' Width="200" />
                             <p class="smaller xs-mb-40 xs-mw">Producer: <%#: Item.Producer %></p>
