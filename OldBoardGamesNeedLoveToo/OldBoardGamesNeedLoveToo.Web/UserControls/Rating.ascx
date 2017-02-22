@@ -41,7 +41,7 @@
                 OnChanged="RatingAjaxToolkit_Changed"
                 MaxRating="5">
             </ajaxToolkit:Rating>
-            <asp:Button Text="Rate" runat="server" ID="ButtomRateSumbit" CssClass="btn btn-default" OnClick="ButtomRateSumbit_Click" />
+            <asp:Button Text="Rate" runat="server" ID="ButtomRateSumbit" CssClass="btn btn-default"/>
         </ContentTemplate>
     </asp:UpdatePanel>
 </div>

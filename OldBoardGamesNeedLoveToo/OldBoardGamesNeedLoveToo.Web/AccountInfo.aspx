@@ -24,8 +24,7 @@
                     <ul class="list-group col-md-6 text-center">
                         <li class="list-group-item">
                             <asp:Image ID="ProfileImageOfCurrentUser" runat="server" ImageUrl='<%# string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(Item.ProfilePricture)) %>' />
-                            <%--<asp:Image ID="ProfileImageOfCurrentUser" runat="server" ImageUrl="~/Content/images/Superman-profile-pic.svg.png" />--%>
-                            <asp:FileUpload ID="FileUploadProfilePic" runat="server" CssClass="form-control" />
+                            <%--<asp:FileUpload ID="FileUploadProfilePic" runat="server" CssClass="form-control" />--%>
                             <asp:Label ID="LabelFileUploadStatus" Text=".jpg | .jpeg | .png" runat="server" CssClass="smallest" />
                         </li>
                         <li class="list-group-item">
